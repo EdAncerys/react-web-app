@@ -6,13 +6,13 @@ export default class Header extends Component {
     return (
       <Navbar sticky="top" className="navbar-home">
         <Navbar.Brand href="/">
-          <h4>Personal Website</h4>
+          <a>Personal Website</a>
         </Navbar.Brand>
         <div className="navbar-right">
-          <Button className="btn btn--danger" variant="danger">
+          <Button className="btn btn-danger" variant="danger">
             Danger
           </Button>
-          <Button className="btn btn--primary" variant="light">
+          <Button className="btn btn-blue" variant="light">
             Light
           </Button>
         </div>

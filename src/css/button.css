@@ -9,19 +9,22 @@
   cursor: pointer;
 }
 
-.btn--primary {
-  color: white;
-  background-color: hsl(200, 100%, 50%);
+.btn-blue {
+  color: hsl(200, 100%, 50%);
+  border: 1px solid hsl(200, 100%, 50%);
+  border-radius: 1em;
 }
 
-.btn--primary:hover {
+.btn-blue:hover {
+  color: hsl(0, 0%, 100%);
   background-color: hsl(200, 100%, 35%);
 }
-.btn--danger {
-  color: white;
-  background-color: hsl(0, 100%, 50%);
+.btn-danger {
+  color: hsl(0, 100%, 50%);
+  border: 1px solid hsl(0, 100%, 50%);
+  border-radius: 1em;
 }
 
-.btn--danger:hover {
+.btn-danger:hover {
   background-color: hsl(0, 100%, 35%);
 }
