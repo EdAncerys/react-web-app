@@ -1,0 +1,12 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+  min-height: 10vh;
+  padding: 0;
+  background-color: #dfdfdf;
+}
+
+.navBar-right {
+  margin-left: auto;
+}
