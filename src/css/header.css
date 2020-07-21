@@ -1,4 +1,4 @@
-.navBar {
+.navbar-home {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -8,6 +8,6 @@
   background-color: #dfdfdf;
 }
 
-.navBar-right {
+.navbar-right {
   margin-left: auto;
 }

@@ -4,11 +4,11 @@ import { Navbar, Button } from 'react-bootstrap';
 export default class Header extends Component {
   render() {
     return (
-      <Navbar className="navBar">
+      <Navbar sticky="top" className="navbar-home">
         <Navbar.Brand href="/">
           <h4>Personal Website</h4>
         </Navbar.Brand>
-        <div className="navBar-right">
+        <div className="navbar-right">
           <Button className="btn btn--danger" variant="danger">
             Danger
           </Button>

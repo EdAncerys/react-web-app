@@ -3,7 +3,8 @@
 @import 'button.css';
 @import 'footer.css';
 
-.App {
+.App,
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
