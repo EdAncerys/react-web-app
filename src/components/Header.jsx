@@ -5,8 +5,8 @@ export default class Header extends Component {
   render() {
     return (
       <Navbar sticky="top" className="navbar-home">
-        <Navbar.Brand href="/">
-          <a>Personal Website</a>
+        <Navbar.Brand>
+          <a href="/">Personal Website</a>
         </Navbar.Brand>
         <div className="navbar-right">
           <Button className="btn btn-danger" variant="danger">

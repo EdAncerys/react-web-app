@@ -10,6 +10,11 @@
   border-top: 1px solid #dfdfdf;
 }
 
-.footer a {
+.footer a,
+p {
   font-size: small;
+}
+
+.footer p {
+  margin: 0;
 }

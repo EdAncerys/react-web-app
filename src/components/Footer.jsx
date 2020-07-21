@@ -9,7 +9,7 @@ export default class Footer extends Component {
     return (
       <div className="footer">
         <React.Fragment>
-          <a>&copy; Copyright {this.state.year}. All Rights Reserved</a>
+          <p>&copy; Copyright {this.state.year}. All Rights Reserved</p>
         </React.Fragment>
         <React.Fragment>
           <a href="/">Hire Me</a>

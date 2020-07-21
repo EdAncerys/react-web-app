@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LandingBanner from './LandingBanner';
-import FeatureBanner from './FeatureBanner';
+import LandingBanner from './content/LandingBanner';
+import FeatureBanner from './content/FeatureBanner';
 
 export default class Content extends Component {
   render() {
