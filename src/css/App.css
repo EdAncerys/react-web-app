@@ -2,9 +2,9 @@
 @import 'header.css';
 @import 'button.css';
 @import 'footer.css';
+@import 'content.css';
 
-.App,
-.container {
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;

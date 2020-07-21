@@ -1,0 +1,42 @@
+.landing-banner {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  width: 90vw;
+  margin: 1rem;
+}
+
+.selection-banner {
+  min-height: 50vh;
+  min-width: 30vw;
+  flex-shrink: 0;
+  background-color: rgb(211, 211, 211);
+}
+
+.content-banner {
+  min-height: 50vh;
+  flex-grow: 1;
+  background-color: rgb(211, 191, 191);
+}
+
+.feature-banner {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: center;
+  width: 75vw;
+  margin: 1rem;
+}
+
+.feature-img {
+  height: 200px;
+  width: 200px;
+  flex-shrink: 0;
+  background-color: rgb(211, 191, 191);
+}
+
+.feature-content {
+  height: 100px;
+  flex-grow: 1;
+  background-color: rgb(191, 211, 200);
+}

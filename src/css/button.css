@@ -12,7 +12,7 @@
 .btn-blue {
   color: hsl(200, 100%, 50%);
   border: 1px solid hsl(200, 100%, 50%);
-  border-radius: 1em;
+  border-radius: 1rem;
 }
 
 .btn-blue:hover {
@@ -22,7 +22,7 @@
 .btn-danger {
   color: hsl(0, 100%, 50%);
   border: 1px solid hsl(0, 100%, 50%);
-  border-radius: 1em;
+  border-radius: 1rem;
 }
 
 .btn-danger:hover {
