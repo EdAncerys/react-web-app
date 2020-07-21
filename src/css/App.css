@@ -1,11 +1,13 @@
 @import-normalize;
-@import 'navBar.css';
+@import 'header.css';
 @import 'button.css';
+@import 'footer.css';
 
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 }
 
 *,
@@ -13,7 +15,7 @@
 *::after {
   font-family: Gotham Rounded, sans-serif;
   box-sizing: border-box;
-  color: #808080;
+  color: #8592a6;
 }
 
 body {
@@ -21,6 +23,8 @@ body {
   margin: 0;
 }
 
-a {
+a,
+a:hover {
   text-decoration: none;
+  color: #8592a6;
 }

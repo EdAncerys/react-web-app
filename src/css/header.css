@@ -1,5 +1,6 @@
 .navBar {
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   width: 90vw;
   min-height: 10vh;
