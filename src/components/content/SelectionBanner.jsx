@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProjectItem from './ProjectItem';
 
 export default class SelectionBanner extends Component {
   state = {
@@ -12,7 +13,9 @@ export default class SelectionBanner extends Component {
     return (
       <div className="selection-banner">
         Selected Projects
-        {this.state.projects.forEach((project) => console.log(project))}
+        {this.state.projects.map((project) => (
+          <ProjectItem key={project.id} project={project} />
+        ))}
       </div>
     );
   }
