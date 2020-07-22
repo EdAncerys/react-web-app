@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 
 export default class ProjectItem extends Component {
   render() {
-    const { name } = this.props.project;
+    const { id, name } = this.props.project;
     return (
       <div>
-        <p className="project-name">{name}</p>
+        <p
+          onClick={this.props.selectedProject.bind(this, id)}
+          // onClick={() => this.props.selectedProject(id)}
+          className="project-name"
+        >
+          {name}
+        </p>
       </div>
     );
   }

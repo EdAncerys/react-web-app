@@ -12,9 +12,13 @@ export default class SelectionBanner extends Component {
   render() {
     return (
       <div className="selection-banner">
-        Selected Projects
+        <h4>Selected Projects</h4>
         {this.state.projects.map((project) => (
-          <ProjectItem key={project.id} project={project} />
+          <ProjectItem
+            key={project.id}
+            project={project}
+            selectedProject={this.props.selectedProject}
+          />
         ))}
       </div>
     );

@@ -6,7 +6,7 @@ export default class LandingBanner extends Component {
   render() {
     return (
       <div className="landing-banner">
-        <SelectionBanner />
+        <SelectionBanner selectedProject={this.props.selectedProject} />
         <ContentBanner />
       </div>
     );
