@@ -41,6 +41,7 @@ export default class App extends Component {
           aboutPage={this.aboutPage}
           contactPage={this.contactPage}
           homePage={this.homePage}
+          state={this.state}
         />
         {!this.state.aboutPage && !this.state.contactPage && <Content />}
         {this.state.aboutPage && <About />}

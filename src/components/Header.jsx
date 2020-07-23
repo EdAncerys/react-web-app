@@ -3,6 +3,7 @@ import { Navbar, Button } from 'react-bootstrap';
 
 export default class Header extends Component {
   render() {
+    const { aboutPage, contactPage } = this.props.state;
     return (
       <Navbar sticky="top" className="navbar-home">
         <Navbar.Brand>
@@ -16,14 +17,14 @@ export default class Header extends Component {
             className="btn btn-danger"
             variant="danger"
           >
-            About
+            {aboutPage ? 'Home' : 'About'}
           </Button>
           <Button
             onClick={this.props.contactPage}
             className="btn btn-blue"
             variant="light"
           >
-            Contact
+            {contactPage ? 'Home' : 'Contact'}
           </Button>
         </div>
       </Navbar>
