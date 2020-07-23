@@ -9,11 +9,15 @@ export default class Header extends Component {
           <a href="/">Personal Website</a>
         </Navbar.Brand>
         <div className="navbar-right">
-          <Button className="btn btn-danger" variant="danger">
-            Danger
+          <Button
+            onClick={this.props.aboutPage}
+            className="btn btn-danger"
+            variant="danger"
+          >
+            About
           </Button>
           <Button className="btn btn-blue" variant="light">
-            Light
+            Contact
           </Button>
         </div>
       </Navbar>
