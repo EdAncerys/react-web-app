@@ -3,27 +3,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Content from './components/Content';
-import About from './components//pages/About';
+import About from './components/pages/About';
+import Contact from './components/pages/Contact';
 import './css/App.css';
 
 export default class App extends Component {
   state = {
-    aboutMe: false,
-    contact: false,
+    aboutPage: false,
+    contactPage: false,
   };
 
   aboutPage = () => {
     this.setState({
-      aboutMe: !this.state.aboutMe,
+      contactPage: false,
+      aboutPage: !this.state.aboutPage,
+    });
+  };
+
+  contactPage = () => {
+    this.setState({
+      aboutPage: false,
+      contactPage: !this.state.contactPage,
     });
   };
 
   render() {
     return (
       <div className="App">
-        <Header aboutPage={this.aboutPage} />
-        {!this.state.aboutMe && !this.state.contact && <Content />}
-        {this.state.aboutMe && <About />}
+        <Header aboutPage={this.aboutPage} contactPage={this.contactPage} />
+        {!this.state.aboutPage && !this.state.contactPage && <Content />}
+        {this.state.aboutPage && <About />}
+        {this.state.contactPage && <Contact />}
         <Footer />
       </div>
     );

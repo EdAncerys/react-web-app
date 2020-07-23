@@ -16,7 +16,11 @@ export default class Header extends Component {
           >
             About
           </Button>
-          <Button className="btn btn-blue" variant="light">
+          <Button
+            onClick={this.props.contactPage}
+            className="btn btn-blue"
+            variant="light"
+          >
             Contact
           </Button>
         </div>
