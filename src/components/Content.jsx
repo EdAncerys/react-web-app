@@ -4,16 +4,13 @@ import FeatureBanner from './content/FeatureBanner/FeatureBanner';
 
 export default class Content extends Component {
   state = {
-    selectedProjectId: false,
+    selectedProjectId: 1,
   };
 
   selectedProject = (id) => {
-    this.setState(
-      {
-        selectedProjectId: id,
-      },
-      () => console.log(id, this.state.selectedProjectId)
-    );
+    this.setState({
+      selectedProjectId: id,
+    });
   };
 
   render() {
