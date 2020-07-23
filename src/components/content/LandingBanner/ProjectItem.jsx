@@ -7,7 +7,6 @@ export default class ProjectItem extends Component {
       <div>
         <p
           onClick={this.props.selectedProject.bind(this, id)}
-          // onClick={() => this.props.selectedProject(id)}
           className="project-name"
         >
           {name}

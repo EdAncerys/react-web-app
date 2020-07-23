@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import LandingBanner from './content/LandingBanner';
-import FeatureBanner from './content/FeatureBanner';
+import LandingBanner from './content/LandingBanner/LandingBanner';
+import FeatureBanner from './content/FeatureBanner/FeatureBanner';
 
 export default class Content extends Component {
-  state = {};
+  state = {
+    selectedProjectId: false,
+  };
 
   selectedProject = (id) => {
     this.setState(
@@ -17,7 +19,10 @@ export default class Content extends Component {
   render() {
     return (
       <React.Fragment>
-        <LandingBanner selectedProject={this.selectedProject} />
+        <LandingBanner
+          selectedProject={this.selectedProject}
+          selectedProjectId={this.state.selectedProjectId}
+        />
         <FeatureBanner />
       </React.Fragment>
     );
