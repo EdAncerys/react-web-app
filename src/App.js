@@ -13,6 +13,13 @@ export default class App extends Component {
     contactPage: false,
   };
 
+  homePage = () => {
+    this.setState({
+      aboutPage: false,
+      contactPage: false,
+    });
+  };
+
   aboutPage = () => {
     this.setState({
       contactPage: false,
@@ -30,7 +37,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header aboutPage={this.aboutPage} contactPage={this.contactPage} />
+        <Header
+          aboutPage={this.aboutPage}
+          contactPage={this.contactPage}
+          homePage={this.homePage}
+        />
         {!this.state.aboutPage && !this.state.contactPage && <Content />}
         {this.state.aboutPage && <About />}
         {this.state.contactPage && <Contact />}
