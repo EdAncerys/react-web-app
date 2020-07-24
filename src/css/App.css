@@ -33,8 +33,12 @@ body {
   margin: 0;
 }
 
-a,
+a {
+  text-decoration: none;
+  color: hsl(200, 100%, 50%);
+}
+
 a:hover {
   text-decoration: none;
-  color: #8592a6;
+  color: hsl(200, 100%, 35%);
 }

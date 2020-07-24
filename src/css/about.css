@@ -5,11 +5,3 @@
   width: 90vw;
   text-align: justify;
 }
-
-.about-page a {
-  color: hsl(200, 100%, 50%);
-}
-
-.about-page a:hover {
-  color: hsl(200, 100%, 35%);
-}

@@ -5,9 +5,9 @@ import ProjectShowCaseBanner from './ProjectShowCaseBanner';
 export default class LandingBanner extends Component {
   state = {
     projects: [
-      { id: 1, name: 'About', description: 'About Description', link: 'link1' },
-      { id: 2, name: 'name2', description: 'description2', link: 'link2' },
-      { id: 3, name: 'name3', description: 'description3', link: 'link3' },
+      { id: 1, name: 'About', link: 'link1' },
+      { id: 2, name: 'ThereAndBack', link: 'link1' },
+      { id: 3, name: 'About', link: 'link1' },
     ],
   };
 
