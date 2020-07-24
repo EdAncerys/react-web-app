@@ -43,9 +43,11 @@ export default class App extends Component {
           homePage={this.homePage}
           state={this.state}
         />
-        {!this.state.aboutPage && !this.state.contactPage && <Content />}
-        {this.state.aboutPage && <About />}
-        {this.state.contactPage && <Contact />}
+        <div className="content">
+          {!this.state.aboutPage && !this.state.contactPage && <Content />}
+          {this.state.aboutPage && <About />}
+          {this.state.contactPage && <Contact />}
+        </div>
         <Footer />
       </div>
     );
