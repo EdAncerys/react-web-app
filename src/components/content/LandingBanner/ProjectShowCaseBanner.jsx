@@ -112,8 +112,8 @@ export default class ProjectShowCaseBanner extends Component {
               We have a request from a client to write the software to control
               the flow of planes at an airport. The planes can land and take off
               provided that the weather is sunny. Occasionally it may be stormy,
-              in which case no planes can land or take off. Here are the user
-              stories that we worked out in collaboration with the client:
+              in which case no planes can land or take off. Here are some of the
+              user stories that we worked out in collaboration with the client:
             </p>
             <p className="align-left">User Stories:</p>
             <p>
@@ -136,6 +136,61 @@ export default class ProjectShowCaseBanner extends Component {
               generator to set the weather (it is normally sunny but on rare
               occasions it may be stormy). In tests, I use a stub to override
               random weather to ensure consistent test behavior.
+            </p>
+          </div>
+        )}
+        {this.props.selectedProjectId === 6 && (
+          <div className="content-banner">
+            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <p>
+              We have a request from a client to write the software for the
+              takeaway business. The takeaway shop should be able to accept
+              customer orders, check availability, calculate the total of the
+              order, and confirm the estimated time. Here are some of the user
+              stories that we worked out in collaboration with the client:
+            </p>
+            <p className="align-left">User Stories:</p>
+            <p>
+              As a customer, So that I can check if, I want to order something I
+              would like to see a list of dishes with prices
+            </p>
+            <p>
+              As a customer, So that I can order the meal, I want I would like
+              to be able to select some number of several available dishes
+            </p>
+            <p>
+              As a customer, So that I can verify that my order is correct, I
+              would like to check that the total I have been given matches the
+              sum of the various dishes in my order
+            </p>
+            <p>
+              Task is to test drive the creation of a set of classes/modules to
+              satisfy all the user stories above and deliver working product to
+              the client.
+            </p>
+          </div>
+        )}
+        {this.props.selectedProjectId === 7 && (
+          <div className="content-banner">
+            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <p>
+              Producing the best code quality when there is a minimal time
+              pressure. Practice OO design and TDD skills. Work alone, and
+              review your own code to practice reflecting on and improving your
+              own work.
+            </p>
+            <p className="align-left">Requirements:</p>
+            <p>
+              Able to interact with your code via a REPL like IRB or the
+              JavaScript console. (No need to implement a command line interface
+              that takes input from STDIN.) Deposits, withdrawal. Account
+              statement (date, amount, balance) printing. Data can be kept in
+              memory (it doesn't need to be stored to a database or anything).
+            </p>
+            <p className="align-left">Acceptance criteria:</p>
+            <p className="align-left">
+              Given a client makes a deposit of 1000 on 10-01-2012 And a deposit
+              of 2000 on 13-01-2012 and a withdrawal of 500 on 14-01-2012
             </p>
           </div>
         )}

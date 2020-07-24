@@ -11,8 +11,8 @@ export default class LandingBanner extends Component {
       { id: 4, name: 'MakersBnB', link: 'link1' },
       { id: 5, name: 'Airport Challenge', link: 'link1' },
       { id: 6, name: 'Takeaway Challenge', link: 'link1' },
-      { id: 7, name: 'AceBook', link: 'link1' },
-      { id: 8, name: 'AceBook', link: 'link1' },
+      { id: 7, name: 'Bank tech test', link: 'link1' },
+      { id: 8, name: 'Gilded Rose Refactoring Kata', link: 'link1' },
     ],
   };
 
