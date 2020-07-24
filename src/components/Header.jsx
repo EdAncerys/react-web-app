@@ -8,7 +8,7 @@ export default class Header extends Component {
       <Navbar sticky="top" className="navbar-home">
         <Navbar.Brand>
           <span onClick={this.props.homePage} className="logo">
-            Personal Website
+            Ed Ancerys
           </span>
         </Navbar.Brand>
         <div className="navbar-right">

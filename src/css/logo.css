@@ -1,5 +1,11 @@
+@font-face {
+  src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
+  font-family: Comfortaa;
+}
+
 .logo {
   cursor: pointer;
-  font-weight: 600;
-  font-size: x-large;
+  font-family: Comfortaa, sans-serif;
+  font-size: 1.75rem;
+  font-weight: bold;
 }

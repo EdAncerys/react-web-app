@@ -8,6 +8,11 @@
 @import 'about.css';
 @import 'landing-banner.css';
 
+@font-face {
+  src: url(../fonts/Raleway-VariableFont_wght.ttf);
+  font-family: Raleway;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -18,7 +23,7 @@
 *,
 *::before,
 *::after {
-  font-family: Gotham Rounded, sans-serif;
+  font-family: Raleway, sans-serif;
   box-sizing: border-box;
   color: #8592a6;
 }
