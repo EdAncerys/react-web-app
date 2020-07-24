@@ -1,13 +1,13 @@
 .landing-banner {
   display: flex;
   align-items: center;
-  width: 90vw;
-  margin: 1rem;
+  margin: 1rem 5vw;
 }
 
 .selection-banner {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   min-height: 50vh;
   flex-shrink: 0;
   background-color: rgb(211, 211, 211);
@@ -20,17 +20,18 @@
   justify-content: center;
   text-align: justify;
   min-height: 50vh;
+  max-width: 800px;
   flex-grow: 1;
   background-color: rgb(211, 191, 191);
+  padding: 1rem;
+  overflow: auto;
 }
 
 .feature-banner {
   display: flex;
   justify-content: space-between;
-  flex-flow: row wrap;
   align-items: center;
-  width: 75vw;
-  margin: 1rem;
+  margin: 1rem 10vw;
 }
 
 .feature-img {
@@ -45,6 +46,9 @@
   align-items: center;
   justify-content: center;
   height: 150px;
+  max-width: 600px;
   flex-grow: 1;
   background-color: rgb(191, 211, 200);
+  padding: 1rem;
+  overflow: auto;
 }

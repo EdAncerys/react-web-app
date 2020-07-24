@@ -7,7 +7,7 @@ export default class LandingBanner extends Component {
     projects: [
       { id: 1, name: 'About', link: 'link1' },
       { id: 2, name: 'ThereAndBack', link: 'link1' },
-      { id: 3, name: 'About', link: 'link1' },
+      { id: 3, name: 'AceBook', link: 'link1' },
     ],
   };
 
