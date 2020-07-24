@@ -5,3 +5,7 @@
   width: 90vw;
   text-align: justify;
 }
+
+.email {
+  color: hsl(200, 100%, 50%);
+}

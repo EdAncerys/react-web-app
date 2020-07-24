@@ -7,7 +7,7 @@ export default class Contact extends Component {
         <h3 className="titleName">Get In Touch</h3>
         <p>Are you interested in working with me or just have a question?</p>
         <p>
-          Email me at <strong>lookatemail@gmail.com</strong>
+          Email me at <span className="email">lookatemail@gmail.com</span>
         </p>
       </div>
     );
