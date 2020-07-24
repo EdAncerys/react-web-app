@@ -12,7 +12,9 @@ export default class Footer extends Component {
           <p>&copy; Copyright {this.state.year}. All Rights Reserved</p>
         </React.Fragment>
         <React.Fragment>
-          <p className="link">Hire Me</p>
+          <p onClick={this.props.contactPage} className="link">
+            Hire Me
+          </p>
         </React.Fragment>
         <React.Fragment>
           <p className="link">Terms & Conditions</p>

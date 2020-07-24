@@ -4,7 +4,7 @@ export default class About extends Component {
   render() {
     return (
       <div className="about-page">
-        <h1>About Me Page</h1>
+        <h3 className="titleName">About Me</h3>
         <p>
           Driven and ambitious Software Developer with collaborative skills and
           strong attention to detail, looking for opportunities to continue to

@@ -48,7 +48,7 @@ export default class App extends Component {
           {this.state.aboutPage && <About />}
           {this.state.contactPage && <Contact />}
         </div>
-        <Footer />
+        <Footer contactPage={this.contactPage} />
       </div>
     );
   }
