@@ -8,6 +8,11 @@ export default class LandingBanner extends Component {
       { id: 1, name: 'About', link: 'link1' },
       { id: 2, name: 'ThereAndBack', link: 'link1' },
       { id: 3, name: 'AceBook', link: 'link1' },
+      { id: 4, name: 'MakersBnB', link: 'link1' },
+      { id: 5, name: 'AceBook', link: 'link1' },
+      { id: 6, name: 'AceBook', link: 'link1' },
+      { id: 7, name: 'AceBook', link: 'link1' },
+      { id: 8, name: 'AceBook', link: 'link1' },
     ],
   };
 

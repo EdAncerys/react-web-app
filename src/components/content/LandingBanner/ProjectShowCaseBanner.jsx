@@ -84,6 +84,27 @@ export default class ProjectShowCaseBanner extends Component {
             </p>
           </div>
         )}
+        {this.props.selectedProjectId === 4 && (
+          <div className="content-banner">
+            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <p>
+              Project created by the team: (Ed Ancerys, Andrew Hulme, Ellis
+              Trickett, Colin Muir, ) at Makers Academy.
+            </p>
+            <p>
+              Create a clone app of Airbnb in Ruby on Rails. This is a group
+              project focused on pair programming and delivering MVP and
+              utilizing XP principles.
+            </p>
+            <p>
+              The app is a clone of the AirBnB website and aims to imitate a
+              similar user experience. User able to do the following on a web
+              app: signup, sign in, Once we are identified by the system we can
+              create a space or book one. As part of our implementation, we can
+              add a name to renting space, a price, and a description.
+            </p>
+          </div>
+        )}
       </React.Fragment>
     );
   }
