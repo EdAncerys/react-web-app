@@ -39,10 +39,12 @@
   margin: 1rem 10vw;
 }
 
-.feature-img {
-  height: 200px;
-  width: 200px;
+.feature-img-container {
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 50%;
   flex-shrink: 0;
+  overflow: hidden;
   background-color: rgb(211, 191, 191);
 }
 
