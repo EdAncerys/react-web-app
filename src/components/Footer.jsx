@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 export default class Footer extends Component {
   state = {
     year: new Date().getFullYear(),
+    date:
+      new Date().getFullYear() +
+      '-' +
+      (new Date().getMonth() + 1) +
+      '-' +
+      new Date().getDate(),
   };
 
   render() {
@@ -17,7 +23,7 @@ export default class Footer extends Component {
           </p>
         </React.Fragment>
         <React.Fragment>
-          <p className="link">Terms & Conditions</p>
+          <p>{this.state.date}</p>
         </React.Fragment>
       </div>
     );
