@@ -41,3 +41,7 @@ a:hover {
   text-decoration: none;
   color: hsl(200, 100%, 35%);
 }
+
+.align-left {
+  align-self: flex-start;
+}
