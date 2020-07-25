@@ -25,6 +25,13 @@ export default class Header extends Component {
           >
             {this.props.contactPage ? 'Home' : 'Contact'}
           </Button>
+          <Button
+            onClick={this.props.goToMediumPage}
+            className="btn btn-blue"
+            variant="light"
+          >
+            {this.props.mediumPage ? 'Home' : 'Medium'}
+          </Button>
         </div>
       </Navbar>
     );

@@ -5,11 +5,13 @@ import Footer from './components/Footer';
 import Content from './components/Content';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
+import Medium from './components/pages/Medium';
 import './css/App.css';
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
+  const [mediumPage, setMediumPage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
 
   // Save state to local storage
@@ -37,16 +39,25 @@ export default function App() {
   function goToHomePage() {
     setAboutPage(false);
     setContactPage(false);
+    setMediumPage(false);
   }
 
   function goToAboutPage() {
     setAboutPage(!aboutPage);
     setContactPage(false);
+    setMediumPage(false);
   }
 
   function goToContactPage() {
     setAboutPage(false);
     setContactPage(!contactPage);
+    setMediumPage(false);
+  }
+
+  function goToMediumPage() {
+    setAboutPage(false);
+    setContactPage(false);
+    setMediumPage(!mediumPage);
   }
 
   // Selected project
@@ -59,12 +70,14 @@ export default function App() {
       <Header
         aboutPage={aboutPage}
         contactPage={contactPage}
+        mediumPage={mediumPage}
         goToHomePage={goToHomePage}
         goToAboutPage={goToAboutPage}
         goToContactPage={goToContactPage}
+        goToMediumPage={goToMediumPage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && (
+        {!aboutPage && !contactPage && !mediumPage && (
           <Content
             selectedProject={selectedProject}
             selectedProjectId={selectedProjectId}
@@ -72,7 +85,7 @@ export default function App() {
         )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
-        {/* {mediumPage && <Medium />} */}
+        {mediumPage && <Medium />}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>
