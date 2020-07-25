@@ -10,13 +10,14 @@ import './css/App.css';
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(1);
 
   // Save state to local storage
-
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
   const saveToLocalStorage = {
     aboutPage: aboutPage,
     contactPage: contactPage,
+    selectedProjectId: selectedProjectId,
   };
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function App() {
     if (savedToJSON != null) {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
+      setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
     }
   }, []);
 
@@ -47,6 +49,11 @@ export default function App() {
     setContactPage(!contactPage);
   }
 
+  // Selected project
+  function selectedProject(id) {
+    setSelectedProjectId(id);
+  }
+
   return (
     <div className="App">
       <Header
@@ -57,7 +64,12 @@ export default function App() {
         goToContactPage={goToContactPage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && <Content />}
+        {!aboutPage && !contactPage && (
+          <Content
+            selectedProject={selectedProject}
+            selectedProjectId={selectedProjectId}
+          />
+        )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
       </div>

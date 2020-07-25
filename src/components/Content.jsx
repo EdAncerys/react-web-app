@@ -3,22 +3,12 @@ import LandingBanner from './content/LandingBanner/LandingBanner';
 import FeatureBanner from './content/FeatureBanner/FeatureBanner';
 
 export default class Content extends Component {
-  state = {
-    selectedProjectId: 1,
-  };
-
-  selectedProject = (id) => {
-    this.setState({
-      selectedProjectId: id,
-    });
-  };
-
   render() {
     return (
       <React.Fragment>
         <LandingBanner
-          selectedProject={this.selectedProject}
-          selectedProjectId={this.state.selectedProjectId}
+          selectedProject={this.props.selectedProject}
+          selectedProjectId={this.props.selectedProjectId}
         />
         <FeatureBanner />
       </React.Fragment>
