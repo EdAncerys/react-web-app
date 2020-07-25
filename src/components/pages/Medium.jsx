@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import MediumArticle from '../content/Articles/MediumArticle';
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 export default function Medium() {
   const [mediumArticles, setMediumArticles] = useState();
@@ -36,7 +37,7 @@ export default function Medium() {
       <h3 className="titleName">Medium Articles</h3>
       {mediumArticles.map((article) => (
         <MediumArticle
-          // key={project.id}
+          key={uuidv4()}
           article={article}
           // selectedProject={this.props.selectedProject}
         />

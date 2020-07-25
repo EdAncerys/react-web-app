@@ -1,0 +1,19 @@
+.medium-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+}
+
+.medium-img {
+  max-width: 60vw;
+  overflow: hidden;
+  margin: 1rem;
+}
+
+.medium-title {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #546677;
+}
