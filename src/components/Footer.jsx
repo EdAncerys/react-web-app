@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 
 export default class Footer extends Component {
-  state = {
-    year: new Date().getFullYear(),
-    date:
-      new Date().getFullYear() +
-      '-' +
-      (new Date().getMonth() + 1) +
-      '-' +
-      new Date().getDate(),
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      year: new Date().getFullYear(),
+      date:
+        new Date().getFullYear() +
+        '-' +
+        (new Date().getMonth() + 1) +
+        '-' +
+        new Date().getDate(),
+    };
+  }
 
   render() {
     return (
