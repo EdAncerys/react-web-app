@@ -19,6 +19,7 @@ export default function App() {
   const saveToLocalStorage = {
     aboutPage: aboutPage,
     contactPage: contactPage,
+    mediumPage: mediumPage,
     selectedProjectId: selectedProjectId,
   };
 
@@ -27,6 +28,7 @@ export default function App() {
     if (savedToJSON != null) {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
+      setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
     }
   }, []);
