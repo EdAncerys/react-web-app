@@ -72,6 +72,7 @@ export default function App() {
         )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
+        {/* {mediumPage && <Medium />} */}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>
