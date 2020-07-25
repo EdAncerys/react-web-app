@@ -19,6 +19,7 @@
   color: hsl(0, 0%, 100%);
   background-color: hsl(200, 100%, 35%);
 }
+
 .btn-danger {
   color: hsl(0, 100%, 50%);
   border: 1px solid hsl(0, 100%, 50%);
@@ -27,4 +28,17 @@
 
 .btn-danger:hover {
   background-color: hsl(0, 100%, 35%);
+}
+
+.btn-lemon {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(50, 100%, 50%);
+  border: 1px solid hsl(50, 100%, 50%);
+  border-radius: 1rem;
+}
+
+.btn-lemon:hover {
+  color: hsl(50, 100%, 50%);
+  background-color: hsl(0, 0%, 100%);
+  border: 1px solid hsl(50, 100%, 50%);
 }

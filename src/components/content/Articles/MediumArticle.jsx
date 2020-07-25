@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-// import ReactMarkdown from 'react-markdown';
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2,
+} from 'react-html-parser';
 
 export default class Article extends Component {
   render() {
@@ -17,12 +21,7 @@ export default class Article extends Component {
           <img className="medium-img" src={thumbnail} alt="Medium Article" />
         </div>
         <h4 className="medium-title">{title}</h4>
-        <p
-          // onClick={this.props.selectedProject.bind(this, id)}
-          className="medium-description"
-        >
-          {description}
-        </p>
+        {ReactHtmlParser(description)}
         {/* <ReactMarkdown source={description} /> */}
         <p className="align-left">
           Published by: {author} on {pubDate}
