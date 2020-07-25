@@ -14,6 +14,7 @@
   font-size: small;
 }
 
-.link {
+.hire-me {
   cursor: pointer;
+  color: hsl(0, 100%, 50%);
 }
