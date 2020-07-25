@@ -7,59 +7,31 @@ import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import './css/App.css';
 
-// export default class App extends Component {
-//   state = {
-//     aboutPage: false,
-//     contactPage: false,
-//   };
-
-//   homePage = () => {
-//     this.setState({
-//       aboutPage: false,
-//       contactPage: false,
-//     });
-//   };
-
-//   aboutPage = () => {
-//     this.setState({
-//       contactPage: false,
-//       aboutPage: !this.state.aboutPage,
-//     });
-//   };
-
-//   contactPage = () => {
-//     this.setState({
-//       aboutPage: false,
-//       contactPage: !this.state.contactPage,
-//     });
-//   };
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <Header
-//           aboutPage={aboutPage}
-//           contactPage={contactPage}
-//           homePage={this.homePage}
-//           state={this.state}
-//         />
-//         <div className="content">
-//           {!this.state.aboutPage && !this.state.contactPage && <Content />}
-//           {this.state.aboutPage && <About />}
-//           {this.state.contactPage && <Contact />}
-//         </div>
-//         <Footer contactPage={contactPage} />
-//       </div>
-//     );
-//   }
-// }
-
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
 
-  useEffect(() => console.log(aboutPage, contactPage));
+  // Save state to local storage
 
+  const LOCAL_STORAGE_KEY = 'EdAncerys.App';
+  const saveToLocalStorage = {
+    aboutPage: aboutPage,
+    contactPage: contactPage,
+  };
+
+  useEffect(() => {
+    const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedToJSON != null) {
+      setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
+      setContactPage(JSON.parse(savedToJSON)['contactPage']);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(saveToLocalStorage));
+  }, [saveToLocalStorage]);
+
+  // Navigate pages
   function goToHomePage() {
     setAboutPage(false);
     setContactPage(false);

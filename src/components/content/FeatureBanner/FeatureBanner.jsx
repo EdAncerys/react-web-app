@@ -7,6 +7,7 @@ export default class FeatureBanner extends Component {
         <div className="feature-img-container">
           <img
             className="feature-img"
+            alt="ThereAndBack"
             src={require('../../../images/map.png')}
           />
         </div>
