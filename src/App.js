@@ -13,6 +13,7 @@ export default function App() {
   const [contactPage, setContactPage] = useState(false);
   const [mediumPage, setMediumPage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
+  const [selectedArticleId, setSelectedArticleId] = useState();
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
@@ -21,6 +22,7 @@ export default function App() {
     contactPage: contactPage,
     mediumPage: mediumPage,
     selectedProjectId: selectedProjectId,
+    // selectedArticleId: selectedArticleId,
   };
 
   useEffect(() => {
@@ -30,6 +32,7 @@ export default function App() {
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
+      // setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
     }
   }, []);
 
@@ -67,6 +70,11 @@ export default function App() {
     setSelectedProjectId(id);
   }
 
+  // Selected article
+  function selectedArticle(id) {
+    setSelectedArticleId(id);
+  }
+
   return (
     <div className="App">
       <Header
@@ -87,7 +95,12 @@ export default function App() {
         )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
-        {mediumPage && <Medium />}
+        {mediumPage && (
+          <Medium
+            selectedArticleId={selectedArticleId}
+            selectedArticle={selectedArticle}
+          />
+        )}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>

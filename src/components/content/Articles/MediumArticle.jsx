@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
+import ArticlePreview from './ArticlePreview';
 
 export default class Article extends Component {
   render() {
@@ -17,15 +14,17 @@ export default class Article extends Component {
 
     return (
       <div className="medium-page">
-        <div>
-          <img className="medium-img" src={thumbnail} alt="Medium Article" />
-        </div>
-        <h4 className="medium-title">{title}</h4>
-        {ReactHtmlParser(description)}
-        {/* <ReactMarkdown source={description} /> */}
-        <p className="align-left">
-          Published by: {author} on {pubDate}
-        </p>
+        {!this.props.selectedArticleId && <ArticlePreview title={title} />}
+        {this.props.selectedArticleId && (
+          <div className="medium-article">
+            <img className="medium-img" src={thumbnail} alt="Medium Article" />
+            <h4 className="medium-title">{title}</h4>
+            {ReactHtmlParser(description)}
+            <p className="align-left">
+              Published by: {author} on {pubDate}
+            </p>
+          </div>
+        )}
       </div>
     );
   }

@@ -3,7 +3,7 @@ import MediumArticle from '../content/Articles/MediumArticle';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-export default function Medium() {
+export default function Medium(props) {
   const [mediumArticles, setMediumArticles] = useState();
   const [axiosError, setAxiosError] = useState();
 
@@ -39,7 +39,8 @@ export default function Medium() {
         <MediumArticle
           key={uuidv4()}
           article={article}
-          // selectedProject={this.props.selectedProject}
+          selectedArticle={props.selectedArticle}
+          selectedArticleId={props.selectedArticleId}
         />
       ))}
     </div>
