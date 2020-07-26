@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MediumArticle from '../content/Articles/MediumArticle';
+import MediumArticle from '../content/Articles/MediumAricleComponent';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
@@ -13,7 +13,6 @@ export default function Medium(props) {
         'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@lookatemail'
       )
       .then(({ data }) => {
-        console.log(data.items);
         setMediumArticles(data.items);
       })
       .catch(handleErrors);
@@ -38,6 +37,7 @@ export default function Medium(props) {
       {mediumArticles.map((article) => (
         <MediumArticle
           key={uuidv4()}
+          id={uuidv4()}
           article={article}
           selectedArticle={props.selectedArticle}
           selectedArticleId={props.selectedArticleId}

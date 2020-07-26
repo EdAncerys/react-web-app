@@ -1,31 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import ArticlePreview from './ArticlePreview';
 
-export default class Article extends Component {
-  render() {
-    const {
-      author,
-      pubDate,
-      title,
-      description,
-      thumbnail,
-    } = this.props.article;
-
-    return (
-      <div className="medium-page">
-        {!this.props.selectedArticleId && <ArticlePreview title={title} />}
-        {this.props.selectedArticleId && (
-          <div className="medium-article">
-            <img className="medium-img" src={thumbnail} alt="Medium Article" />
-            <h4 className="medium-title">{title}</h4>
-            {ReactHtmlParser(description)}
-            <p className="align-left">
-              Published by: {author} on {pubDate}
-            </p>
-          </div>
-        )}
-      </div>
-    );
-  }
+export default function MediumArticle(props) {
+  return (
+    <div className="medium-article">
+      <img className="medium-img" src={props.thumbnail} alt="Medium Article" />
+      <h4 className="medium-title">{props.title}</h4>
+      {ReactHtmlParser(props.description)}
+      <p className="align-left">
+        Published by: {props.author} on {props.pubDate}
+      </p>
+    </div>
+  );
 }

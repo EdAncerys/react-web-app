@@ -6,8 +6,10 @@ export default function ArticlePreview(props) {
       <h4
         className="medium-title"
         // onClick={this.props.selectedArticle.bind(this, id)}
+        onClick={console.log(props.id)}
       >
         {props.title}
+        {props.id}
       </h4>
     </div>
   );
