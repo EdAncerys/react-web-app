@@ -22,7 +22,7 @@ export default function App() {
     contactPage: contactPage,
     mediumPage: mediumPage,
     selectedProjectId: selectedProjectId,
-    // selectedArticleId: selectedArticleId,
+    selectedArticleId: selectedArticleId,
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function App() {
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
-      // setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
+      setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
     }
   }, []);
 
