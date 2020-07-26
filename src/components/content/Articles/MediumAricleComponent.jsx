@@ -19,6 +19,7 @@ export default function MediumAricleComponent(props) {
           article={props.article}
           selectedArticle={props.selectedArticle}
           selectedArticleId={props.selectedArticleId}
+          goToMediumPreviewPage={props.goToMediumPreviewPage}
         />
       )}
     </div>

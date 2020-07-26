@@ -43,6 +43,7 @@ export default function Medium(props) {
           article={article}
           selectedArticle={props.selectedArticle}
           selectedArticleId={props.selectedArticleId}
+          goToMediumPreviewPage={props.goToMediumPreviewPage}
         />
       ))}
     </div>

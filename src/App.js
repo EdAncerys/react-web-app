@@ -65,6 +65,10 @@ export default function App() {
     setMediumPage(!mediumPage);
   }
 
+  function goToMediumPreviewPage() {
+    setSelectedArticleId();
+  }
+
   // Selected project
   function selectedProject(id) {
     setSelectedProjectId(id);
@@ -99,6 +103,7 @@ export default function App() {
           <Medium
             selectedArticleId={selectedArticleId}
             selectedArticle={selectedArticle}
+            goToMediumPreviewPage={goToMediumPreviewPage}
           />
         )}
       </div>
