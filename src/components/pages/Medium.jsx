@@ -37,7 +37,7 @@ export default function Medium(props) {
       {mediumArticles.map((article) => (
         <MediumArticle
           key={uuidv4()}
-          id={uuidv4()}
+          id={new Date(article.pubDate).valueOf()}
           article={article}
           selectedArticle={props.selectedArticle}
           selectedArticleId={props.selectedArticleId}

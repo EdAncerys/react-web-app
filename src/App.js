@@ -13,7 +13,7 @@ export default function App() {
   const [contactPage, setContactPage] = useState(false);
   const [mediumPage, setMediumPage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
-  const [selectedArticleId, setSelectedArticleId] = useState();
+  const [selectedArticleId, setSelectedArticleId] = useState('none');
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
@@ -73,6 +73,7 @@ export default function App() {
   // Selected article
   function selectedArticle(id) {
     setSelectedArticleId(id);
+    console.log(id);
   }
 
   return (

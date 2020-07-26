@@ -5,17 +5,20 @@ import MediumArticle from './MediumArticle';
 export default function MediumAricleComponent(props) {
   return (
     <div className="medium-page">
-      {!props.selectedArticleId && (
-        <ArticlePreview title={props.article.title} id={props.id} />
+      {props.selectedArticleId && (
+        <ArticlePreview
+          id={props.id}
+          title={props.article.title}
+          selectedArticle={props.selectedArticle}
+          selectedArticleId={props.selectedArticleId}
+        />
       )}
       {props.selectedArticleId && (
         <MediumArticle
           id={props.id}
-          thumbnail={props.article.thumbnail}
-          title={props.article.title}
-          description={props.article.description}
-          author={props.article.author}
-          pubDate={props.article.pubDate}
+          article={props.article}
+          selectedArticle={props.selectedArticle}
+          selectedArticleId={props.selectedArticleId}
         />
       )}
     </div>
