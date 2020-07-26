@@ -7,14 +7,20 @@ export default function MediumArticle(props) {
       {/* {props.article.forEach((article) => {
         article.title;
       })} */}
-      {props.id === props.selectedArticleId && 'Bingo'}
-      {props.selectedArticleId}
-      {/* <img className="medium-img" src={props.thumbnail} alt="Medium Article" /> */}
-      {/* <h4 className="medium-title">{props.article.title}</h4> */}
-      {/* {ReactHtmlParser(props.description)} */}
-      <p className="align-left">
-        Published by: {props.article.author} on {props.article.pubDate}
-      </p>
+      {props.id === props.selectedArticleId && (
+        <React.Fragment>
+          <img
+            className="medium-img"
+            src={props.article.thumbnail}
+            alt={props.article.title}
+          />
+          <h4 className="medium-title">{props.article.title}</h4>
+          {ReactHtmlParser(props.article.description)}
+          <p className="align-left">
+            Published by: {props.article.author} on {props.article.pubDate}
+          </p>
+        </React.Fragment>
+      )}
     </div>
   );
 }

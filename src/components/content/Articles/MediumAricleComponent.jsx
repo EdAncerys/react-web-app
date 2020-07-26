@@ -5,12 +5,12 @@ import MediumArticle from './MediumArticle';
 export default function MediumAricleComponent(props) {
   return (
     <div className="medium-page">
-      {props.selectedArticleId && (
+      {!props.selectedArticleId && (
         <ArticlePreview
           id={props.id}
+          thumbnail={props.article.thumbnail}
           title={props.article.title}
           selectedArticle={props.selectedArticle}
-          selectedArticleId={props.selectedArticleId}
         />
       )}
       {props.selectedArticleId && (

@@ -33,7 +33,9 @@ export default function Medium(props) {
 
   return mediumArticles ? (
     <div className="medium-page">
-      <h3 className="titleName">Medium Articles</h3>
+      <h3 className="titleName">
+        {props.selectedArticleId ? '' : 'Medium Articles'}
+      </h3>
       {mediumArticles.map((article) => (
         <MediumArticle
           key={uuidv4()}
