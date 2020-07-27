@@ -8,8 +8,7 @@ export default function MediumAricleComponent(props) {
       {!props.selectedArticleId && (
         <ArticlePreview
           id={props.id}
-          thumbnail={props.article.thumbnail}
-          title={props.article.title}
+          article={props.article}
           selectedArticle={props.selectedArticle}
         />
       )}

@@ -11,6 +11,16 @@
   margin: 1rem;
 }
 
+.article-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-preview img {
+  max-width: 300px;
+}
+
 .medium-title {
   cursor: pointer;
   font-size: 1.5rem;
