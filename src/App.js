@@ -5,19 +5,24 @@ import Footer from './components/Footer';
 import Content from './components/Content';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
+import Medium from './components/pages/Medium';
 import './css/App.css';
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
+  const [mediumPage, setMediumPage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
+  const [selectedArticleId, setSelectedArticleId] = useState();
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
   const saveToLocalStorage = {
     aboutPage: aboutPage,
     contactPage: contactPage,
+    mediumPage: mediumPage,
     selectedProjectId: selectedProjectId,
+    selectedArticleId: selectedArticleId,
   };
 
   useEffect(() => {
@@ -25,7 +30,9 @@ export default function App() {
     if (savedToJSON != null) {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
+      setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
+      setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
     }
   }, []);
 
@@ -37,16 +44,29 @@ export default function App() {
   function goToHomePage() {
     setAboutPage(false);
     setContactPage(false);
+    setMediumPage(false);
   }
 
   function goToAboutPage() {
     setAboutPage(!aboutPage);
     setContactPage(false);
+    setMediumPage(false);
   }
 
   function goToContactPage() {
     setAboutPage(false);
     setContactPage(!contactPage);
+    setMediumPage(false);
+  }
+
+  function goToMediumPage() {
+    setAboutPage(false);
+    setContactPage(false);
+    setMediumPage(!mediumPage);
+  }
+
+  function goToMediumPreviewPage() {
+    setSelectedArticleId();
   }
 
   // Selected project
@@ -54,17 +74,24 @@ export default function App() {
     setSelectedProjectId(id);
   }
 
+  // Selected article
+  function selectedArticle(id) {
+    setSelectedArticleId(id);
+  }
+
   return (
     <div className="App">
       <Header
         aboutPage={aboutPage}
         contactPage={contactPage}
+        mediumPage={mediumPage}
         goToHomePage={goToHomePage}
         goToAboutPage={goToAboutPage}
         goToContactPage={goToContactPage}
+        goToMediumPage={goToMediumPage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && (
+        {!aboutPage && !contactPage && !mediumPage && (
           <Content
             selectedProject={selectedProject}
             selectedProjectId={selectedProjectId}
@@ -72,6 +99,13 @@ export default function App() {
         )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
+        {mediumPage && (
+          <Medium
+            selectedArticleId={selectedArticleId}
+            selectedArticle={selectedArticle}
+            goToMediumPreviewPage={goToMediumPreviewPage}
+          />
+        )}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>

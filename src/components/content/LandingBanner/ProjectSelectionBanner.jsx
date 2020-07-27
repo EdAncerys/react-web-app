@@ -5,7 +5,7 @@ export default class SelectionBanner extends Component {
   render() {
     return (
       <div className="selection-banner">
-        <h4 className="titleName">Selected Projects</h4>
+        <h4 className="title-name">Selected Projects</h4>
         {this.props.projects.map((project) => (
           <ProjectItem
             key={project.id}

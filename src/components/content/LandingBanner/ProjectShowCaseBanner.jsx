@@ -15,7 +15,7 @@ export default class ProjectShowCaseBanner extends Component {
       <React.Fragment>
         {this.props.selectedProjectId === 1 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               I've detailed here some of my favorite projects, things I'm proud
               of, and all the skills I've developed since beginning to code.
@@ -43,7 +43,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 2 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               The final project created by team JAZE (Jed Stanton, Andrew Hulme,
               Zsofia Szonyi, Ed Ancerys) at Makers Academy.
@@ -62,7 +62,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 3 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               Project created by the team: (Ed Ancerys, Catriona Bennett, Gareth
               Woodman, Marius Brad, Paula Darias, Asifur Rahman) at Makers
@@ -86,7 +86,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 4 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               Project created by the team: (Ed Ancerys, Andrew Hulme, Ellis
               Trickett, Colin Muir, ) at Makers Academy.
@@ -107,7 +107,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 5 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               We have a request from a client to write the software to control
               the flow of planes at an airport. The planes can land and take off
@@ -141,7 +141,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 6 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               We have a request from a client to write the software for the
               takeaway business. The takeaway shop should be able to accept
@@ -172,7 +172,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 7 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               Producing the best code quality when there is a minimal time
               pressure. Practice OO design and TDD skills. Work alone, and
@@ -196,7 +196,7 @@ export default class ProjectShowCaseBanner extends Component {
         )}
         {this.props.selectedProjectId === 8 && (
           <div className="content-banner">
-            <h4 className="titleName">{this.showCaseProject()}</h4>
+            <h4 className="title-name">{this.showCaseProject()}</h4>
             <p>
               Hi and welcome to team Gilded Rose. As you know, we are a small
               inn with a prime location in a prominent city ran by a friendly
