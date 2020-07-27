@@ -1,0 +1,28 @@
+@media only screen and (max-width: 600px) {
+  .navbar-home {
+    width: 100vw;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .landing-banner,
+  .feature-banner,
+  .feature-content {
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  .selection-banner {
+    max-height: 25vh;
+    width: 90vw;
+    flex-direction: row;
+    flex-flow: row wrap;
+    padding: 0;
+  }
+
+  .selection-title {
+    text-align: center;
+    flex: 0 0 100%;
+    margin-top: 1rem;
+  }
+}
