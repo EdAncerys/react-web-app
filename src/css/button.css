@@ -4,8 +4,8 @@
   outline: none;
   font-weight: bold;
   font-size: inherit;
-  padding: 5px 20px;
-  margin: 5px;
+  padding: 0.3rem 1rem;
+  margin: 0.2rem;
   cursor: pointer;
 }
 
