@@ -13,7 +13,16 @@
   .feature-banner,
   .feature-content {
     flex-direction: column;
-    margin: 1rem;
+    max-height: 55vh;
+  }
+
+  .feature-content {
+    height: 35vh;
+    margin-top: 1rem;
+  }
+
+  .feature-banner {
+    margin-top: 1rem;
   }
 
   .selection-banner {
