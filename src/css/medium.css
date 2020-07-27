@@ -2,7 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: justify;
   max-width: 90vw;
+  margin: 2rem;
+}
+
+.medium-title {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #546677;
 }
 
 .medium-page img {
@@ -15,15 +24,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+}
+
+.medium-article-preview {
+  max-width: 600px;
+  max-height: 20vh;
+  overflow: hidden;
+}
+
+.medium-article-preview img {
+  display: none;
 }
 
 .article-preview img {
   max-width: 300px;
-}
-
-.medium-title {
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #546677;
 }
