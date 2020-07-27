@@ -14,6 +14,7 @@ export default function Medium(props) {
       )
       .then(({ data }) => {
         setMediumArticles(data.items);
+        // console.log(data.items);
       })
       .catch(handleErrors);
   }, []);
@@ -21,13 +22,13 @@ export default function Medium(props) {
   function handleErrors(err) {
     if (err.response) {
       setAxiosError('Problem With Response ' + err.response.status);
-      console.log('Problem With Response ', err.response.status);
+      // console.log('Problem With Response ', err.response.status);
     } else if (err.request) {
       setAxiosError('Problem With Request!');
-      console.log('Problem With Request!');
+      // console.log('Problem With Request!');
     } else {
       setAxiosError('Error' + err.message);
-      console.log('Error', err.message);
+      // console.log('Error', err.message);
     }
   }
 
@@ -39,7 +40,8 @@ export default function Medium(props) {
       {mediumArticles.map((article) => (
         <MediumArticle
           key={uuidv4()}
-          id={new Date(article.pubDate).valueOf()}
+          // id={new Date(article.pubDate).valueOf()}
+          id={article.pubDate}
           article={article}
           selectedArticle={props.selectedArticle}
           selectedArticleId={props.selectedArticleId}

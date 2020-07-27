@@ -39,6 +39,7 @@
   justify-content: space-evenly;
   align-items: center;
   max-width: 800px;
+  margin: 4rem 0rem;
 }
 
 .feature-img-container {

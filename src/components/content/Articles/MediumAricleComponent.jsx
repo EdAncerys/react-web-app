@@ -12,7 +12,7 @@ export default function MediumAricleComponent(props) {
           selectedArticle={props.selectedArticle}
         />
       )}
-      {props.selectedArticleId && (
+      {!!props.selectedArticleId && (
         <MediumArticle
           id={props.id}
           article={props.article}
