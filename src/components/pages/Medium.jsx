@@ -33,7 +33,7 @@ export default function Medium(props) {
 
   return mediumArticles ? (
     <div className="medium-page">
-      <h3 className="titleName">
+      <h3 className="title-name">
         {props.selectedArticleId ? '' : 'Medium Articles'}
       </h3>
       {mediumArticles.map((article) => (

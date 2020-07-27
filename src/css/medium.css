@@ -4,11 +4,9 @@
   align-items: center;
   text-align: justify;
   max-width: 90vw;
-  margin: 2rem;
 }
 
 .medium-title {
-  cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;
   color: #546677;
@@ -18,6 +16,12 @@
   max-width: 60vw;
   overflow: hidden;
   margin: 1rem;
+}
+
+.medium-article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .article-preview {
@@ -39,4 +43,15 @@
 
 .article-preview img {
   max-width: 300px;
+}
+
+.back-link {
+  align-self: flex-start;
+  padding-left: 0 !important;
+  color: hsl(0, 100%, 50%);
+  font-weight: 600;
+}
+
+.medium-page .medium-title {
+  margin: 1rem;
 }
