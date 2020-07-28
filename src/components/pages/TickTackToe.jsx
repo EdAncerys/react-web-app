@@ -7,7 +7,7 @@ export default function TickTackToe() {
   const [tileTwoCSS, setTileTwoCSS] = useState();
   const [tileThreeCSS, setTileThreeCSS] = useState();
 
-  function handleTileClicked(e) {
+  const handleTileClicked = (e) => {
     setTileClicked(!tileClicked);
     setPlayerOneTurn(!playerOneTurn);
     if (e.target.id == 1)
@@ -19,7 +19,7 @@ export default function TickTackToe() {
       e.target.id,
       'className ' + e.target.className
     );
-  }
+  };
 
   return (
     <div className="tick-tack-toe-page">

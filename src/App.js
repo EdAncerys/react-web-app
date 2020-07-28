@@ -43,50 +43,50 @@ export default function App() {
   }, [saveToLocalStorage]);
 
   // Navigate pages
-  function goToHomePage() {
+  const goToHomePage = () => {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(false);
-  }
+  };
 
-  function goToAboutPage() {
+  const goToAboutPage = () => {
     setAboutPage(!aboutPage);
     setContactPage(false);
     setMediumPage(false);
-  }
+  };
 
-  function goToContactPage() {
+  const goToContactPage = () => {
     setAboutPage(false);
     setContactPage(!contactPage);
     setMediumPage(false);
-  }
+  };
 
-  function goToMediumPage() {
+  const goToMediumPage = () => {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(!mediumPage);
-  }
+  };
 
-  function goToMediumPreviewPage() {
+  const goToMediumPreviewPage = () => {
     setSelectedArticleId();
-  }
+  };
 
-  function goToTickTackToePage() {
+  const goToTickTackToePage = () => {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(false);
     setTickTackToePage(!tickTackToePage);
-  }
+  };
 
   // Selected project
-  function selectedProject(id) {
+  const selectedProject = (id) => {
     setSelectedProjectId(id);
-  }
+  };
 
   // Selected article
-  function selectedArticle(id) {
+  const selectedArticle = (id) => {
     setSelectedArticleId(id);
-  }
+  };
 
   return (
     <div className="App">

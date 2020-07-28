@@ -19,7 +19,7 @@ export default function Medium(props) {
       .catch(handleErrors);
   }, []);
 
-  function handleErrors(err) {
+  const handleErrors = (err) => {
     if (err.response) {
       setAxiosError('Problem With Response ' + err.response.status);
       // console.log('Problem With Response ', err.response.status);
@@ -30,7 +30,7 @@ export default function Medium(props) {
       setAxiosError('Error' + err.message);
       // console.log('Error', err.message);
     }
-  }
+  };
 
   return mediumArticles ? (
     <div className="medium-page">
@@ -40,7 +40,6 @@ export default function Medium(props) {
       {mediumArticles.map((article) => (
         <MediumArticle
           key={uuidv4()}
-          // id={new Date(article.pubDate).valueOf()}
           id={article.pubDate}
           article={article}
           selectedArticle={props.selectedArticle}
