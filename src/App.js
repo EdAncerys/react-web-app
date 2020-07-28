@@ -47,28 +47,33 @@ export default function App() {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(false);
+    setTickTackToePage(false);
   };
 
   const goToAboutPage = () => {
     setAboutPage(!aboutPage);
     setContactPage(false);
     setMediumPage(false);
+    setTickTackToePage(false);
   };
 
   const goToContactPage = () => {
     setAboutPage(false);
     setContactPage(!contactPage);
     setMediumPage(false);
+    setTickTackToePage(false);
   };
 
   const goToMediumPage = () => {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(!mediumPage);
+    setTickTackToePage(false);
   };
 
   const goToMediumPreviewPage = () => {
     setSelectedArticleId();
+    setTickTackToePage(false);
   };
 
   const goToTickTackToePage = () => {
