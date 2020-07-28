@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
+import Hart from '../../images/TickTackToe/hart.png';
+import Cross from '../../images/TickTackToe/cross.png';
 
 export default function TickTackToe() {
   const [takenTiles, setTakenTiles] = useState([]);
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
-  const [tileOneCSS, setTileOneCSS] = useState('board-tile');
+  const [tileOneCSS, setTileOneCSS] = useState();
   const [tileTwoCSS, setTileTwoCSS] = useState();
   const [tileThreeCSS, setTileThreeCSS] = useState();
 
-  const playerOneCSS = 'board-tile tile-x';
-  const playerTwoCSS = 'board-tile tile-o';
+  const playerOneCSS = { background: 'red' };
+  const playerTwoCSS = { background: 'blue' };
+
+  const handleTileCSS = (id) => {
+    if (id == 1) setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id == 2) setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id == 3) setTileThreeCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+  };
 
   const handleTakenTiles = (id) => {
     if (!takenTiles.includes(id)) {
@@ -16,12 +24,6 @@ export default function TickTackToe() {
       handleTileCSS(id);
       setPlayerOneTurn(!playerOneTurn);
     }
-  };
-
-  const handleTileCSS = (id) => {
-    if (id == 1) setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id == 2) setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id == 3) setTileThreeCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
   };
 
   const handleTileClicked = (e) => {
@@ -37,21 +39,23 @@ export default function TickTackToe() {
         <div className="tile-row">
           <div
             id="1"
-            className={tileOneCSS}
+            style={tileOneCSS}
+            className="board-tile"
             onClick={(e) => handleTileClicked(e)}
           ></div>
           <div
             id="2"
-            className={`board-tile tile-${tileTwoCSS}`}
+            style={tileTwoCSS}
+            className="board-tile"
             onClick={(e) => handleTileClicked(e)}
           ></div>
           <div
             id="3"
-            className={`board-tile tile-${tileThreeCSS}`}
+            style={tileThreeCSS}
+            className="board-tile"
+            // className={`board-tile tile-${tileThreeCSS}`}
             onClick={(e) => handleTileClicked(e)}
-          >
-            &#10060;
-          </div>
+          ></div>
         </div>
       </div>
     </div>
