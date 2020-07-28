@@ -76,7 +76,6 @@ export default function App() {
     setContactPage(false);
     setMediumPage(false);
     setTickTackToePage(!tickTackToePage);
-    console.log('hey');
   }
 
   // Selected project
