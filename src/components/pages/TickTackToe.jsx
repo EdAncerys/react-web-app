@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function TickTackToe() {
-  const [tileClicked, setTileClicked] = useState(false);
+  const [takenTiles, setTakenTiles] = useState([]);
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
   const [tileOneCSS, setTileOneCSS] = useState('board-tile');
   const [tileTwoCSS, setTileTwoCSS] = useState();
@@ -10,6 +10,14 @@ export default function TickTackToe() {
   const playerOneCSS = 'board-tile tile-x';
   const playerTwoCSS = 'board-tile tile-o';
 
+  const handleTakenTiles = (id) => {
+    if (!takenTiles.includes(id)) {
+      takenTiles.push(id);
+      handleTileCSS(id);
+      setPlayerOneTurn(!playerOneTurn);
+    }
+  };
+
   const handleTileCSS = (id) => {
     if (id == 1) setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
     if (id == 2) setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
@@ -17,16 +25,9 @@ export default function TickTackToe() {
   };
 
   const handleTileClicked = (e) => {
-    setTileClicked(!tileClicked);
-    setPlayerOneTurn(!playerOneTurn);
-    handleTileCSS(e.target.id);
-    console.log(
-      'clicked ',
-      tileClicked,
-      'ID:',
-      e.target.id,
-      'className ' + e.target.className
-    );
+    handleTakenTiles(e.target.id);
+
+    console.log('ID:', e.target.id, 'TilesTaken  ' + takenTiles);
   };
 
   return (
