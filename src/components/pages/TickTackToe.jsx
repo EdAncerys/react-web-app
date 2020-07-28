@@ -9,8 +9,16 @@ export default function TickTackToe() {
   const [tileTwoCSS, setTileTwoCSS] = useState();
   const [tileThreeCSS, setTileThreeCSS] = useState();
 
-  const playerOneCSS = { background: 'red' };
-  const playerTwoCSS = { background: 'blue' };
+  const playerOneCSS = {
+    background: 'none',
+    border: '1px solid red',
+    backgroundImage: Hart,
+  };
+  const playerTwoCSS = {
+    background: 'none',
+    border: '1px solid blue',
+    backgroundImage: Cross,
+  };
 
   const handleTileCSS = (id) => {
     if (id == 1) setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);

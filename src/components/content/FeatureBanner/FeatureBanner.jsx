@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ThereAndBackImg from '../../../images/map.png';
 
 export default class FeatureBanner extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class FeatureBanner extends Component {
           <img
             className="feature-img"
             alt="ThereAndBack"
-            src={require('../../../images/map.png')}
+            src={ThereAndBackImg}
           />
         </div>
         <div className="feature-content">
