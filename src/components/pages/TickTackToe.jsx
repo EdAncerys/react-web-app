@@ -7,11 +7,19 @@ export default function TickTackToe() {
   const [tileTwoCSS, setTileTwoCSS] = useState();
   const [tileThreeCSS, setTileThreeCSS] = useState();
 
+  const playerOneCSS = 'board-tile tile-x';
+  const playerTwoCSS = 'board-tile tile-o';
+
+  const handleTileCSS = (id) => {
+    if (id == 1) setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id == 2) setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id == 3) setTileThreeCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+  };
+
   const handleTileClicked = (e) => {
     setTileClicked(!tileClicked);
     setPlayerOneTurn(!playerOneTurn);
-    if (e.target.id == 1)
-      setTileOneCSS(playerOneTurn ? 'board-tile tile-x' : 'board-tile tile-o');
+    handleTileCSS(e.target.id);
     console.log(
       'clicked ',
       tileClicked,
