@@ -32,6 +32,13 @@ export default class Header extends Component {
           >
             {this.props.mediumPage ? 'Home' : 'Medium'}
           </Button>
+          <Button
+            onClick={this.props.goToTickTackToePage}
+            className="btn btn-lemon"
+            variant="light"
+          >
+            {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
+          </Button>
         </div>
       </Navbar>
     );

@@ -6,12 +6,14 @@ import Content from './components/Content';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
+import TickTackToe from './components/pages/TickTackToe';
 import './css/App.css';
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
   const [mediumPage, setMediumPage] = useState(false);
+  const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [selectedArticleId, setSelectedArticleId] = useState();
 
@@ -69,6 +71,14 @@ export default function App() {
     setSelectedArticleId();
   }
 
+  function goToTickTackToePage() {
+    setAboutPage(false);
+    setContactPage(false);
+    setMediumPage(false);
+    setTickTackToePage(!tickTackToePage);
+    console.log('hey');
+  }
+
   // Selected project
   function selectedProject(id) {
     setSelectedProjectId(id);
@@ -89,9 +99,11 @@ export default function App() {
         goToAboutPage={goToAboutPage}
         goToContactPage={goToContactPage}
         goToMediumPage={goToMediumPage}
+        tickTackToePage={tickTackToePage}
+        goToTickTackToePage={goToTickTackToePage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && !mediumPage && (
+        {!aboutPage && !contactPage && !mediumPage && !tickTackToePage && (
           <Content
             selectedProject={selectedProject}
             selectedProjectId={selectedProjectId}
@@ -106,6 +118,7 @@ export default function App() {
             goToMediumPreviewPage={goToMediumPreviewPage}
           />
         )}
+        {tickTackToePage && <TickTackToe />}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>
