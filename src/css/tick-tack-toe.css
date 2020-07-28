@@ -14,5 +14,5 @@
   margin: 5px;
   width: 50px;
   height: 50px;
-  background-color: rgb(186, 186, 186);
+  border: 1px solid hsl(200, 100%, 50%);
 }

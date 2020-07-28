@@ -11,13 +11,13 @@ export default function TickTackToe() {
 
   const playerOneCSS = {
     background: 'none',
-    border: '1px solid red',
+    border: '1px solid hsl(0, 100%, 50%)',
     backgroundImage: `url(${Hart})`,
     backgroundSize: 'cover',
   };
   const playerTwoCSS = {
     background: 'none',
-    border: '1px solid blue',
+    border: '1px solid hsl(50, 100%, 50%)',
     backgroundImage: `url(${Cross})`,
     backgroundSize: 'cover',
   };
