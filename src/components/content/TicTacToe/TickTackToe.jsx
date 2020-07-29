@@ -6,19 +6,19 @@ import GameBoard from './GameBoard';
 
 export default function TickTackToe() {
   const winningFields = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 5, 9],
-    [7, 5, 3],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
+    ['1', '2', '3'],
+    ['4', '5', '6'],
+    ['7', '8', '9'],
+    ['1', '5', '9'],
+    ['7', '5', '3'],
+    ['1', '4', '7'],
+    ['2', '5', '8'],
+    ['3', '6', '9'],
   ];
   const [takenTiles, setTakenTiles] = useState([]);
   const [playerOneTiles, setPlayerOneTiles] = useState([]);
   const [playerTwoTiles, setPlayerTwoTiles] = useState([]);
-  const [winnerName, setWinnerName] = useState('No one');
+  const [winnerName, setWinnerName] = useState();
 
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
   const [tileOneCSS, setTileOneCSS] = useState();
@@ -58,22 +58,46 @@ export default function TickTackToe() {
   };
 
   const handleTakenTiles = (id) => {
-    if (!takenTiles.includes(id)) {
+    if (!takenTiles.includes(id) && !winnerName) {
       takenTiles.push(id);
-      playerOneTurn ? playerOneTiles.push(id) : playerTwoTiles.push(id);
       handleTileCSS(id);
       setPlayerOneTurn(!playerOneTurn);
+      playerOneTurn ? playerOneTiles.push(id) : playerTwoTiles.push(id);
+      handleGameWinner();
     }
+  };
+
+  const handleGameWinner = () => {
+    let playerTiles;
+    let playerName;
+    if (playerOneTurn) {
+      playerTiles = playerOneTiles;
+      playerName = 'Player One';
+    } else {
+      playerTiles = playerTwoTiles;
+      playerName = 'Player Two';
+    }
+    console.log(playerName, playerTiles);
+    winningFields.forEach((combo) => {
+      console.log('hello');
+      if (combo.every((tiles) => playerTiles.includes(tiles))) {
+        setWinnerName(playerName);
+      }
+    });
   };
 
   const handleTileClicked = (e) => {
     const id = e.target.id;
     handleTakenTiles(id);
-    console.log(playerOneTiles, playerTwoTiles);
+    // console.log(playerOneTiles, playerTwoTiles);
   };
 
   const restartGame = () => {
     setTakenTiles([]);
+    setPlayerOneTiles([]);
+    setPlayerTwoTiles([]);
+    setPlayerOneTurn(true);
+    setWinnerName();
     setTileOneCSS();
     setTileTwoCSS();
     setTileThreeCSS();
@@ -107,7 +131,7 @@ export default function TickTackToe() {
         />
       </div>
       <div>
-        {takenTiles.length === 9 && (
+        {(takenTiles.length === 9 || winnerName) && (
           <button
             onClick={restartGame}
             className="btn btn-danger"
