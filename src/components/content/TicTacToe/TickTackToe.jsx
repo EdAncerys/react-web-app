@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import Game from './TickTackToeGame.js';
+import * as Game from './TickTackToeGame.js';
 import Hart from '../../../images/TickTackToe/hart.png';
 import Cross from '../../../images/TickTackToe/cross.png';
 import GameBoard from './GameBoard';
 
 export default function TickTackToe() {
+  const winningFields = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 5, 9],
+    [7, 5, 3],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+  ];
   const [takenTiles, setTakenTiles] = useState([]);
+  const [playerOneTiles, setPlayerOneTiles] = useState([]);
+  const [playerTwoTiles, setPlayerTwoTiles] = useState([]);
   const [winnerName, setWinnerName] = useState('No one');
 
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
@@ -18,15 +30,6 @@ export default function TickTackToe() {
   const [tileSevenCSS, setTileSevenCSS] = useState();
   const [tileEightCSS, setTileEightCSS] = useState();
   const [tileNineCSS, setTileNineCSS] = useState();
-
-  // TikTackToe game
-
-  const testWinner = () => {
-    setWinnerName(Game.winner);
-  };
-
-  const game = new Game();
-  const fromGameClass = game.winner;
 
   const playerOneCSS = {
     background: 'none',
@@ -57,15 +60,16 @@ export default function TickTackToe() {
   const handleTakenTiles = (id) => {
     if (!takenTiles.includes(id)) {
       takenTiles.push(id);
+      playerOneTurn ? playerOneTiles.push(id) : playerTwoTiles.push(id);
       handleTileCSS(id);
       setPlayerOneTurn(!playerOneTurn);
     }
   };
 
   const handleTileClicked = (e) => {
-    handleTakenTiles(e.target.id);
-    testWinner();
-    console.log(fromGameClass);
+    const id = e.target.id;
+    handleTakenTiles(id);
+    console.log(playerOneTiles, playerTwoTiles);
   };
 
   const restartGame = () => {
@@ -103,13 +107,15 @@ export default function TickTackToe() {
         />
       </div>
       <div>
-        <button
-          onClick={restartGame}
-          className="btn btn-danger"
-          variant="danger"
-        >
-          Start Again
-        </button>
+        {takenTiles.length === 9 && (
+          <button
+            onClick={restartGame}
+            className="btn btn-danger"
+            variant="danger"
+          >
+            Start Again
+          </button>
+        )}
       </div>
     </div>
   );

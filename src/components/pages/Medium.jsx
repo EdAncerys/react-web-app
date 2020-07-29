@@ -49,6 +49,6 @@ export default function Medium(props) {
       ))}
     </div>
   ) : (
-    <React.Fragment>{axiosError ? axiosError : 'Loading'}</React.Fragment>
+    <React.Fragment>{axiosError ? axiosError : 'Loading...'}</React.Fragment>
   );
 }
