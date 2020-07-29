@@ -6,12 +6,14 @@ import Content from './components/Content';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
+import TickTackToe from './components/content/TicTacToe/TickTackToe';
 import './css/App.css';
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
   const [mediumPage, setMediumPage] = useState(false);
+  const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [selectedArticleId, setSelectedArticleId] = useState();
 
@@ -21,6 +23,7 @@ export default function App() {
     aboutPage: aboutPage,
     contactPage: contactPage,
     mediumPage: mediumPage,
+    tickTackToePage: tickTackToePage,
     selectedProjectId: selectedProjectId,
     selectedArticleId: selectedArticleId,
   };
@@ -31,6 +34,7 @@ export default function App() {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
+      setTickTackToePage(JSON.parse(savedToJSON)['tickTackToePage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
       setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
     }
@@ -41,43 +45,55 @@ export default function App() {
   }, [saveToLocalStorage]);
 
   // Navigate pages
-  function goToHomePage() {
+  const goToHomePage = () => {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(false);
-  }
+    setTickTackToePage(false);
+  };
 
-  function goToAboutPage() {
+  const goToAboutPage = () => {
     setAboutPage(!aboutPage);
     setContactPage(false);
     setMediumPage(false);
-  }
+    setTickTackToePage(false);
+  };
 
-  function goToContactPage() {
+  const goToContactPage = () => {
     setAboutPage(false);
     setContactPage(!contactPage);
     setMediumPage(false);
-  }
+    setTickTackToePage(false);
+  };
 
-  function goToMediumPage() {
+  const goToMediumPage = () => {
     setAboutPage(false);
     setContactPage(false);
     setMediumPage(!mediumPage);
-  }
+    setTickTackToePage(false);
+  };
 
-  function goToMediumPreviewPage() {
+  const goToMediumPreviewPage = () => {
     setSelectedArticleId();
-  }
+    setTickTackToePage(false);
+  };
+
+  const goToTickTackToePage = () => {
+    setAboutPage(false);
+    setContactPage(false);
+    setMediumPage(false);
+    setTickTackToePage(!tickTackToePage);
+  };
 
   // Selected project
-  function selectedProject(id) {
+  const selectedProject = (id) => {
     setSelectedProjectId(id);
-  }
+  };
 
   // Selected article
-  function selectedArticle(id) {
+  const selectedArticle = (id) => {
     setSelectedArticleId(id);
-  }
+  };
 
   return (
     <div className="App">
@@ -89,9 +105,11 @@ export default function App() {
         goToAboutPage={goToAboutPage}
         goToContactPage={goToContactPage}
         goToMediumPage={goToMediumPage}
+        tickTackToePage={tickTackToePage}
+        goToTickTackToePage={goToTickTackToePage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && !mediumPage && (
+        {!aboutPage && !contactPage && !mediumPage && !tickTackToePage && (
           <Content
             selectedProject={selectedProject}
             selectedProjectId={selectedProjectId}
@@ -106,6 +124,7 @@ export default function App() {
             goToMediumPreviewPage={goToMediumPreviewPage}
           />
         )}
+        {tickTackToePage && <TickTackToe />}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>

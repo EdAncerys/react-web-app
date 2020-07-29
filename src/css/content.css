@@ -42,8 +42,8 @@
 }
 
 .feature-img-container {
-  max-height: 200px;
-  max-width: 200px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   flex-shrink: 0;
   overflow: hidden;
@@ -52,7 +52,6 @@
 .feature-content {
   display: flex;
   flex-direction: column;
-  height: 150px;
   flex-grow: 1;
   text-align: justify;
   padding: 1rem;

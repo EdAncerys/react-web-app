@@ -6,22 +6,25 @@
   .navbar-home {
     width: 100vw;
     flex-direction: column;
-    align-content: center;
+  }
+
+  .navbar-right {
+    display: flex;
+    margin-left: 0;
   }
 
   .landing-banner,
-  .feature-banner,
   .feature-content {
     flex-direction: column;
     max-height: 55vh;
   }
 
   .feature-content {
-    height: 35vh;
     margin-top: 1rem;
   }
 
   .feature-banner {
+    flex-direction: column;
     margin-top: 1rem;
   }
 

@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 90vw;
 }
 
 .article-preview {
@@ -42,7 +43,8 @@
   display: none;
 }
 
-.article-preview img {
+.article-preview img,
+pre {
   max-width: 300px;
 }
 
@@ -55,4 +57,12 @@
 
 .medium-page .medium-title {
   margin: 1rem;
+}
+
+figcaption {
+  text-align: center;
+}
+
+.medium-article h3 {
+  text-align: center;
 }

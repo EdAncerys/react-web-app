@@ -27,10 +27,17 @@ export default class Header extends Component {
           </Button>
           <Button
             onClick={this.props.goToMediumPage}
-            className="btn btn-lemon"
+            className="btn btn-black"
             variant="light"
           >
             {this.props.mediumPage ? 'Home' : 'Medium'}
+          </Button>
+          <Button
+            onClick={this.props.goToTickTackToePage}
+            className="btn btn-lemon"
+            variant="light"
+          >
+            {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
           </Button>
         </div>
       </Navbar>
