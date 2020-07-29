@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Hart from '../../../images/TickTackToe/hart.png';
 import Cross from '../../../images/TickTackToe/cross.png';
-import Stewie01 from '../../../images/TickTackToe/Stewie-01.png';
-import BoardRow from './BoardRow';
+import BoardRow from './GameBoard';
 
 export default function TickTackToe() {
   const [takenTiles, setTakenTiles] = useState([]);
@@ -10,6 +9,12 @@ export default function TickTackToe() {
   const [tileOneCSS, setTileOneCSS] = useState();
   const [tileTwoCSS, setTileTwoCSS] = useState();
   const [tileThreeCSS, setTileThreeCSS] = useState();
+  const [tileForCSS, setTileForCSS] = useState();
+  const [tileFiveCSS, setTileFiveCSS] = useState();
+  const [tileSixCSS, setTileSixCSS] = useState();
+  const [tileSevenCSS, setTileSevenCSS] = useState();
+  const [tileEightCSS, setTileEightCSS] = useState();
+  const [tileNineCSS, setTileNineCSS] = useState();
 
   const playerOneCSS = {
     background: 'none',
@@ -25,9 +30,18 @@ export default function TickTackToe() {
   };
 
   const handleTileCSS = (id) => {
-    if (id == 1) setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id == 2) setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id == 3) setTileThreeCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '1') setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '2') setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '3')
+      setTileThreeCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '4') setTileForCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '5') setTileFiveCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '6') setTileSixCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '7')
+      setTileSevenCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '8')
+      setTileEightCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '9') setTileNineCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
   };
 
   const handleTakenTiles = (id) => {
@@ -55,6 +69,12 @@ export default function TickTackToe() {
           tileOneCSS={tileOneCSS}
           tileTwoCSS={tileTwoCSS}
           tileThreeCSS={tileThreeCSS}
+          tileForCSS={tileForCSS}
+          tileFiveCSS={tileFiveCSS}
+          tileSixCSS={tileSixCSS}
+          tileSevenCSS={tileSevenCSS}
+          tileEightCSS={tileEightCSS}
+          tileNineCSS={tileNineCSS}
           handleTileClicked={handleTileClicked}
         />
       </div>
