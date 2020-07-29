@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Hart from '../../images/TickTackToe/hart.png';
-import Cross from '../../images/TickTackToe/cross.png';
+import Hart from '../../../images/TickTackToe/hart.png';
+import Cross from '../../../images/TickTackToe/cross.png';
+import Stewie01 from '../../../images/TickTackToe/Stewie-01.png';
+import BoardRow from './BoardRow';
 
 export default function TickTackToe() {
   const [takenTiles, setTakenTiles] = useState([]);
@@ -44,29 +46,17 @@ export default function TickTackToe() {
 
   return (
     <div className="tick-tack-toe-page">
-      <h1>TickTackToe</h1>
+      <h1>Family Guy TickTackToe</h1>
+      {/* <div className="feature-img-container">
+        <img className="feature-img" alt="TikTacToeLogo" src={Stewie01} />
+      </div> */}
       <div className="tick-tack-toe-board">
-        <div className="tile-row">
-          <div
-            id="1"
-            style={tileOneCSS}
-            className="board-tile"
-            onClick={(e) => handleTileClicked(e)}
-          ></div>
-          <div
-            id="2"
-            style={tileTwoCSS}
-            className="board-tile"
-            onClick={(e) => handleTileClicked(e)}
-          ></div>
-          <div
-            id="3"
-            style={tileThreeCSS}
-            className="board-tile"
-            // className={`board-tile tile-${tileThreeCSS}`}
-            onClick={(e) => handleTileClicked(e)}
-          ></div>
-        </div>
+        <BoardRow
+          tileOneCSS={tileOneCSS}
+          tileTwoCSS={tileTwoCSS}
+          tileThreeCSS={tileThreeCSS}
+          handleTileClicked={handleTileClicked}
+        />
       </div>
     </div>
   );
