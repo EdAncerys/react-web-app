@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Game from './TickTackToeGame.js';
 import Hart from '../../../images/TickTackToe/hart.png';
 import Cross from '../../../images/TickTackToe/cross.png';
-import BoardRow from './GameBoard';
+import GameBoard from './GameBoard';
 
 export default function TickTackToe() {
   const [takenTiles, setTakenTiles] = useState([]);
@@ -20,6 +21,13 @@ export default function TickTackToe() {
 
   // TikTackToe game
 
+  const testWinner = () => {
+    setWinnerName(Game.winner);
+  };
+
+  const game = new Game();
+  const fromGameClass = game.winner;
+
   const playerOneCSS = {
     background: 'none',
     border: '1px solid hsl(0, 100%, 50%)',
@@ -33,19 +41,17 @@ export default function TickTackToe() {
     backgroundSize: 'cover',
   };
 
+  const cssStyle = playerOneTurn ? playerOneCSS : playerTwoCSS;
   const handleTileCSS = (id) => {
-    if (id === '1') setTileOneCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '2') setTileTwoCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '3')
-      setTileThreeCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '4') setTileForCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '5') setTileFiveCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '6') setTileSixCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '7')
-      setTileSevenCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '8')
-      setTileEightCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
-    if (id === '9') setTileNineCSS(playerOneTurn ? playerOneCSS : playerTwoCSS);
+    if (id === '1') setTileOneCSS(cssStyle);
+    if (id === '2') setTileTwoCSS(cssStyle);
+    if (id === '3') setTileThreeCSS(cssStyle);
+    if (id === '4') setTileForCSS(cssStyle);
+    if (id === '5') setTileFiveCSS(cssStyle);
+    if (id === '6') setTileSixCSS(cssStyle);
+    if (id === '7') setTileSevenCSS(cssStyle);
+    if (id === '8') setTileEightCSS(cssStyle);
+    if (id === '9') setTileNineCSS(cssStyle);
   };
 
   const handleTakenTiles = (id) => {
@@ -58,6 +64,8 @@ export default function TickTackToe() {
 
   const handleTileClicked = (e) => {
     handleTakenTiles(e.target.id);
+    testWinner();
+    console.log(fromGameClass);
   };
 
   const restartGame = () => {
@@ -81,7 +89,7 @@ export default function TickTackToe() {
       </div> */}
       <p>{winnerName}</p>
       <div className="tick-tack-toe-board">
-        <BoardRow
+        <GameBoard
           tileOneCSS={tileOneCSS}
           tileTwoCSS={tileTwoCSS}
           tileThreeCSS={tileThreeCSS}

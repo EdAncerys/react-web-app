@@ -1,6 +1,4 @@
-'use strict';
-
-class TicTacToe {
+module.exports = class TicTacToe {
   constructor() {
     this.fields = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.player1 = [];
@@ -16,7 +14,11 @@ class TicTacToe {
       [2, 5, 8],
       [3, 6, 9],
     ];
-    this.winner;
+    this.winner = 'blah';
+  }
+
+  winner() {
+    return this.fields;
   }
 
   player1Fields() {
@@ -35,7 +37,7 @@ class TicTacToe {
     if (this.gameTurn && this.fields.includes(field)) this.player1.push(field);
     if (!this.gameTurn && this.fields.includes(field)) this.player2.push(field);
     this._checkIfHaveWinner();
-    this.fields = this.fields.filter((num) => num != field);
+    this.fields = this.fields.filter((num) => num !== field);
     this.gameTurn = !this.gameTurn;
   }
 
@@ -54,4 +56,4 @@ class TicTacToe {
   _playerPicker() {
     return this.gameTurn ? 'Player1' : 'Player2';
   }
-}
+};
