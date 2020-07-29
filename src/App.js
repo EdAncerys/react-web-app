@@ -23,6 +23,7 @@ export default function App() {
     aboutPage: aboutPage,
     contactPage: contactPage,
     mediumPage: mediumPage,
+    tickTackToePage: tickTackToePage,
     selectedProjectId: selectedProjectId,
     selectedArticleId: selectedArticleId,
   };
@@ -33,6 +34,7 @@ export default function App() {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
+      setTickTackToePage(JSON.parse(savedToJSON)['tickTackToePage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
       setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
     }

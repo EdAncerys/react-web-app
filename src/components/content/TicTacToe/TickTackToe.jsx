@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Hart from '../../../images/TickTackToe/hart.png';
 import Cross from '../../../images/TickTackToe/cross.png';
 import GameBoard from './GameBoard';
@@ -29,6 +29,49 @@ export default function TickTackToe() {
   const [tileSevenCSS, setTileSevenCSS] = useState();
   const [tileEightCSS, setTileEightCSS] = useState();
   const [tileNineCSS, setTileNineCSS] = useState();
+
+  // Save state to local storage
+  const LOCAL_STORAGE_KEY = 'EdAncerys.TickTackToe';
+  const saveToLocalStorage = {
+    takenTiles: takenTiles,
+    playerOneTiles: playerOneTiles,
+    playerTwoTiles: playerTwoTiles,
+    winnerName: winnerName,
+    playerOneTurn: playerOneTurn,
+    tileOneCSS: tileOneCSS,
+    tileTwoCSS: tileTwoCSS,
+    tileThreeCSS: tileThreeCSS,
+    tileForCSS: tileForCSS,
+    tileFiveCSS: tileFiveCSS,
+    tileSixCSS: tileSixCSS,
+    tileSevenCSS: tileSevenCSS,
+    tileEightCSS: tileEightCSS,
+    tileNineCSS: tileNineCSS,
+  };
+
+  useEffect(() => {
+    const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedToJSON != null) {
+      setTakenTiles(JSON.parse(savedToJSON)['takenTiles']);
+      setPlayerOneTiles(JSON.parse(savedToJSON)['playerOneTiles']);
+      setPlayerTwoTiles(JSON.parse(savedToJSON)['playerTwoTiles']);
+      setWinnerName(JSON.parse(savedToJSON)['winnerName']);
+      setPlayerOneTurn(JSON.parse(savedToJSON)['playerOneTurn']);
+      setTileOneCSS(JSON.parse(savedToJSON)['tileOneCSS']);
+      setTileTwoCSS(JSON.parse(savedToJSON)['tileTwoCSS']);
+      setTileThreeCSS(JSON.parse(savedToJSON)['tileThreeCSS']);
+      setTileForCSS(JSON.parse(savedToJSON)['tileForCSS']);
+      setTileFiveCSS(JSON.parse(savedToJSON)['tileFiveCSS']);
+      setTileSixCSS(JSON.parse(savedToJSON)['tileSixCSS']);
+      setTileSevenCSS(JSON.parse(savedToJSON)['tileSevenCSS']);
+      setTileEightCSS(JSON.parse(savedToJSON)['tileEightCSS']);
+      setTileNineCSS(JSON.parse(savedToJSON)['tileNineCSS']);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(saveToLocalStorage));
+  }, [saveToLocalStorage]);
 
   const playerOneCSS = {
     background: 'none',
