@@ -114,10 +114,10 @@ export default function TickTackToe() {
     let playerName;
     if (playerOneTurn) {
       playerTiles = playerOneTiles;
-      playerName = 'Player One';
+      playerName = 'Player One Wins';
     } else {
       playerTiles = playerTwoTiles;
-      playerName = 'Player Two';
+      playerName = 'Player Two Wins';
     }
     console.log(playerName, playerTiles);
     winningFields.forEach((combo) => {
@@ -151,12 +151,17 @@ export default function TickTackToe() {
     setTileNineCSS();
   };
 
+  const gameOverCondition = takenTiles.length === 9 || winnerName;
+
   return (
     <div className="tick-tack-toe-page">
-      <h1>Family Guy TickTackToe</h1>
+      <h1>TickTackToe</h1>
       {/* <div className="feature-img-container">
         <img className="feature-img" alt="TikTacToeLogo" src={Stewie01} />
       </div> */}
+      {!gameOverCondition && (
+        <p>{playerOneTurn ? 'Player One Move' : 'Player Two Move'}</p>
+      )}
       <p>{winnerName}</p>
       <div className="tick-tack-toe-board">
         <GameBoard
@@ -173,7 +178,7 @@ export default function TickTackToe() {
         />
       </div>
       <div>
-        {(takenTiles.length === 9 || winnerName) && (
+        {gameOverCondition && (
           <button
             onClick={restartGame}
             className="btn btn-danger"

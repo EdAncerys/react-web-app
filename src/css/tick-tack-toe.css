@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.tick-tack-toe-board {
+  margin: 1rem;
+}
+
 .tile-row {
   display: flex;
 }
