@@ -54,8 +54,19 @@ export default function TickTackToe() {
 
   const handleTileClicked = (e) => {
     handleTakenTiles(e.target.id);
+  };
 
-    console.log('ID:', e.target.id, 'TilesTaken  ' + takenTiles);
+  const restartGame = () => {
+    setTakenTiles([]);
+    setTileOneCSS();
+    setTileTwoCSS();
+    setTileThreeCSS();
+    setTileForCSS();
+    setTileFiveCSS();
+    setTileSixCSS();
+    setTileSevenCSS();
+    setTileEightCSS();
+    setTileNineCSS();
   };
 
   return (
@@ -78,6 +89,9 @@ export default function TickTackToe() {
           handleTileClicked={handleTileClicked}
         />
       </div>
+      <button onClick={restartGame} className="btn btn-danger" variant="danger">
+        Start Again
+      </button>
     </div>
   );
 }
