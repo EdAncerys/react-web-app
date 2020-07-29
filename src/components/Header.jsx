@@ -27,7 +27,7 @@ export default class Header extends Component {
           </Button>
           <Button
             onClick={this.props.goToMediumPage}
-            className="btn btn-lemon"
+            className="btn btn-black"
             variant="light"
           >
             {this.props.mediumPage ? 'Home' : 'Medium'}

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import * as Game from './TickTackToeGame.js';
 import Hart from '../../../images/TickTackToe/hart.png';
 import Cross from '../../../images/TickTackToe/cross.png';
 import GameBoard from './GameBoard';
