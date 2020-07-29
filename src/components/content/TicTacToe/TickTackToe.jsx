@@ -5,6 +5,8 @@ import BoardRow from './GameBoard';
 
 export default function TickTackToe() {
   const [takenTiles, setTakenTiles] = useState([]);
+  const [winnerName, setWinnerName] = useState('No one');
+
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
   const [tileOneCSS, setTileOneCSS] = useState();
   const [tileTwoCSS, setTileTwoCSS] = useState();
@@ -15,6 +17,8 @@ export default function TickTackToe() {
   const [tileSevenCSS, setTileSevenCSS] = useState();
   const [tileEightCSS, setTileEightCSS] = useState();
   const [tileNineCSS, setTileNineCSS] = useState();
+
+  // TikTackToe game
 
   const playerOneCSS = {
     background: 'none',
@@ -75,6 +79,7 @@ export default function TickTackToe() {
       {/* <div className="feature-img-container">
         <img className="feature-img" alt="TikTacToeLogo" src={Stewie01} />
       </div> */}
+      <p>{winnerName}</p>
       <div className="tick-tack-toe-board">
         <BoardRow
           tileOneCSS={tileOneCSS}
@@ -89,9 +94,15 @@ export default function TickTackToe() {
           handleTileClicked={handleTileClicked}
         />
       </div>
-      <button onClick={restartGame} className="btn btn-danger" variant="danger">
-        Start Again
-      </button>
+      <div>
+        <button
+          onClick={restartGame}
+          className="btn btn-danger"
+          variant="danger"
+        >
+          Start Again
+        </button>
+      </div>
     </div>
   );
 }
