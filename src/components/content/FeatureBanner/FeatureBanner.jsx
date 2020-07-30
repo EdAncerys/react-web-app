@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ThereAndBackImg from '../../../images/map.png';
+import ThereAndBackImg from '../../../images/map-min.png';
 
 export default class FeatureBanner extends Component {
   render() {

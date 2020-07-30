@@ -19,3 +19,17 @@
   height: 50px;
   border: 1px solid hsl(200, 100%, 50%);
 }
+
+.player-choice-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  overflow: hidden;
+  margin: 1rem;
+}
+
+.selected-img {
+  width: 100px;
+}

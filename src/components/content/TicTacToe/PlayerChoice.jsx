@@ -1,8 +1,9 @@
 import React from 'react';
+import Peter from '../../../images/map-min.png';
 
 export default function PlayerChoice(props) {
   const tickTackToeFigures = [
-    'Peter',
+    Peter,
     'Lois',
     'Glen',
     'Brian',
@@ -21,7 +22,15 @@ export default function PlayerChoice(props) {
       <p>{playerMove} Pick Your Character</p>
       <div className="player-choice-container">
         {tickTackToeFiguresLeft.map((figures) => {
-          return <p>{figures}</p>;
+          return (
+            <div className="player-img-container">
+              <img
+                className="selected-img"
+                alt="TikTacToePlayer"
+                src={figures}
+              />
+            </div>
+          );
         })}
       </div>
     </React.Fragment>

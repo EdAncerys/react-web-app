@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Hart from '../../../images/TickTackToe/hart.png';
-import Cross from '../../../images/TickTackToe/cross.png';
+import Hart from '../../../images/TickTackToe/hart-min.png';
+import Cross from '../../../images/TickTackToe/cross-min.png';
 import GameBoard from './GameBoard';
 import PlayerChoice from './PlayerChoice';
 
@@ -158,9 +158,6 @@ export default function TickTackToe() {
     <div className="tick-tack-toe-page">
       <h1>TickTackToe</h1>
       <PlayerChoice playerOneTurn={playerOneTurn} />
-      {/* <div className="feature-img-container">
-        <img className="feature-img" alt="TikTacToeLogo" src={Stewie01} />
-      </div> */}
       {!gameOverCondition && (
         <p>{playerOneTurn ? 'Player One Move' : 'Player Two Move'}</p>
       )}
