@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Hart from '../../../images/TickTackToe/hart.png';
 import Cross from '../../../images/TickTackToe/cross.png';
 import GameBoard from './GameBoard';
+import PlayerChoice from './PlayerChoice';
 
 export default function TickTackToe() {
   const winningFields = [
@@ -156,6 +157,7 @@ export default function TickTackToe() {
   return (
     <div className="tick-tack-toe-page">
       <h1>TickTackToe</h1>
+      <PlayerChoice playerOneTurn={playerOneTurn} />
       {/* <div className="feature-img-container">
         <img className="feature-img" alt="TikTacToeLogo" src={Stewie01} />
       </div> */}
