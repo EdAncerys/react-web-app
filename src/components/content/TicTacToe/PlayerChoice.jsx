@@ -11,12 +11,15 @@ import Stewie from '../../../images/TickTackToe/FamilyGuyCharacters/Stewie-min.p
 
 export default function PlayerChoice(props) {
   const tickTackToeFigures = [
-    Peter,
-    'Lois',
-    'Glen',
-    'Brian',
-    'Neil',
-    'Charter',
+    PeterOne,
+    Brian,
+    Chris,
+    Glenn,
+    Herbert,
+    Joe,
+    Lois,
+    PeterTwo,
+    Stewie,
   ];
   const playerMove = props.playerOneTurn ? 'Player One' : 'Player Two';
   const playerOneChoice = 'Peter1';
