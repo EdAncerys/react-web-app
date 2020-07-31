@@ -19,8 +19,11 @@ export default function TickTackToe() {
   const [playerOneTiles, setPlayerOneTiles] = useState([]);
   const [playerTwoTiles, setPlayerTwoTiles] = useState([]);
   const [winnerName, setWinnerName] = useState();
-
+  // player choice
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
+  const [playerOneChoice, setPlayerOneChoice] = useState();
+  const [playerTwoChoice, setPlayerTwoChoice] = useState();
+  // css settings
   const [tileOneCSS, setTileOneCSS] = useState();
   const [tileTwoCSS, setTileTwoCSS] = useState();
   const [tileThreeCSS, setTileThreeCSS] = useState();
@@ -135,6 +138,15 @@ export default function TickTackToe() {
     // console.log(playerOneTiles, playerTwoTiles);
   };
 
+  const playerSelection = (e) => {
+    const id = e.target.id;
+    if (playerOneTurn) setPlayerOneChoice(id);
+    if (!playerOneTurn) setPlayerTwoChoice(id);
+    setPlayerOneTurn(!playerOneTurn);
+    console.log(id);
+    console.log(playerOneChoice, playerTwoChoice);
+  };
+
   const restartGame = () => {
     setTakenTiles([]);
     setPlayerOneTiles([]);
@@ -157,25 +169,31 @@ export default function TickTackToe() {
   return (
     <div className="tick-tack-toe-page">
       <h4 className="tick-tack-toe-logo">Family Guy TickTackToe</h4>
-      <PlayerChoice playerOneTurn={playerOneTurn} />
-      {!gameOverCondition && (
-        <p>{playerOneTurn ? 'Player One Move' : 'Player Two Move'}</p>
+      <PlayerChoice
+        playerOneTurn={playerOneTurn}
+        playerOneChoice={playerOneChoice}
+        playerSelection={playerSelection}
+      />
+      {playerTwoChoice && (
+        <div className="tick-tack-toe-board">
+          {!gameOverCondition && (
+            <p>{playerOneTurn ? 'Player One Move' : 'Player Two Move'}</p>
+          )}
+          <p>{winnerName}</p>
+          <GameBoard
+            tileOneCSS={tileOneCSS}
+            tileTwoCSS={tileTwoCSS}
+            tileThreeCSS={tileThreeCSS}
+            tileForCSS={tileForCSS}
+            tileFiveCSS={tileFiveCSS}
+            tileSixCSS={tileSixCSS}
+            tileSevenCSS={tileSevenCSS}
+            tileEightCSS={tileEightCSS}
+            tileNineCSS={tileNineCSS}
+            handleTileClicked={handleTileClicked}
+          />
+        </div>
       )}
-      <p>{winnerName}</p>
-      <div className="tick-tack-toe-board">
-        <GameBoard
-          tileOneCSS={tileOneCSS}
-          tileTwoCSS={tileTwoCSS}
-          tileThreeCSS={tileThreeCSS}
-          tileForCSS={tileForCSS}
-          tileFiveCSS={tileFiveCSS}
-          tileSixCSS={tileSixCSS}
-          tileSevenCSS={tileSevenCSS}
-          tileEightCSS={tileEightCSS}
-          tileNineCSS={tileNineCSS}
-          handleTileClicked={handleTileClicked}
-        />
-      </div>
       <div>
         {gameOverCondition && (
           <button

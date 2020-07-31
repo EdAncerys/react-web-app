@@ -5,9 +5,10 @@ import PeterTwo from '../../../images/TickTackToe/FamilyGuyCharacters/Peter-02-m
 import Brian from '../../../images/TickTackToe/FamilyGuyCharacters/Brian-min.png';
 import Chris from '../../../images/TickTackToe/FamilyGuyCharacters/Chris-min.png';
 import Glenn from '../../../images/TickTackToe/FamilyGuyCharacters/Glenn-min.png';
+import Meg from '../../../images/TickTackToe/FamilyGuyCharacters/Meg-min.png';
 import Herbert from '../../../images/TickTackToe/FamilyGuyCharacters/Herbert-min.png';
 import Joe from '../../../images/TickTackToe/FamilyGuyCharacters/Joe-min.png';
-import Lois from '../../../images/TickTackToe/FamilyGuyCharacters/Meg-min.png';
+import Lois from '../../../images/TickTackToe/FamilyGuyCharacters/Lois-min.png';
 import Stewie from '../../../images/TickTackToe/FamilyGuyCharacters/Stewie-min.png';
 
 export default function PlayerChoice(props) {
@@ -16,6 +17,7 @@ export default function PlayerChoice(props) {
     { name: Brian, id: 'Brian' },
     { name: Chris, id: 'Chris' },
     { name: Glenn, id: 'Glenn' },
+    { name: Meg, id: 'Meg' },
     { name: Herbert, id: 'Herbert' },
     { name: Joe, id: 'Joe' },
     { name: Lois, id: 'Lois' },
@@ -23,17 +25,10 @@ export default function PlayerChoice(props) {
     { name: Stewie, id: 'Stewie' },
   ];
   const playerMove = props.playerOneTurn ? 'Player One' : 'Player Two';
-  const [playerOneChoice, setPlayerOneChoice] = useState();
 
   const tickTackToeFiguresLeft = tickTackToeFigures.filter((figure) => {
-    return figure !== playerOneChoice;
+    return figure !== props.playerOneChoice;
   });
-
-  const playerSelection = (e) => {
-    const id = e.target.id;
-    setPlayerOneChoice(id);
-    console.log(id);
-  };
 
   return (
     <React.Fragment>
@@ -41,12 +36,12 @@ export default function PlayerChoice(props) {
       <div className="player-choice-container">
         {tickTackToeFiguresLeft.map((figure) => {
           return (
-            figure['id'] !== playerOneChoice && (
+            figure['id'] !== props.playerOneChoice && (
               <div key={uuidv4()} className="player-img-container">
                 <img
                   id={figure['id']}
                   className="selected-img"
-                  onClick={(e) => playerSelection(e)}
+                  onClick={(e) => props.playerSelection(e)}
                   alt="TikTacToePlayer"
                   src={figure['name']}
                 />
