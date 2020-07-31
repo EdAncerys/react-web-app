@@ -1,3 +1,8 @@
+@font-face {
+  src: url(../fonts/Family-Guy-Font.ttf);
+  font-family: Family-Guy;
+}
+
 .tick-tack-toe-page,
 .tick-tack-toe-board {
   display: flex;
@@ -33,4 +38,10 @@
 .selected-img {
   height: 25vw;
   margin: 1rem;
+}
+
+.tick-tack-toe-logo {
+  font-family: Family-Guy, sans-serif;
+  font-size: 2.5rem;
+  color: hsl(200, 100%, 35%);
 }
