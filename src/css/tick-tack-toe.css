@@ -31,5 +31,6 @@
 }
 
 .selected-img {
-  width: 100px;
+  width: 20vw;
+  max-width: 100px;
 }
