@@ -42,6 +42,7 @@
 
 .tick-tack-toe-logo {
   font-family: Family-Guy, sans-serif;
+  text-align: center;
   font-size: 2.5rem;
   color: hsl(200, 100%, 35%);
 }
