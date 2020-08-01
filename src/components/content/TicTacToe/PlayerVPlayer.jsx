@@ -21,6 +21,7 @@ export default function PlayerVPlayer(props) {
         );
       })}
       <p className="tick-tack-toe-logo player-v-player">vs</p>
+
       {props.tickTackToeFigures.map((figure) => {
         return (
           <React.Fragment key={uuidv4()}>

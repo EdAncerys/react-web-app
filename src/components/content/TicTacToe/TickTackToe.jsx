@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Hart from '../../../images/TickTackToe/hart-min.png';
-import Cross from '../../../images/TickTackToe/cross-min.png';
+import Peter from '../../../images/TickTackToe/TileBoards/Peter-min.png';
+import Brian from '../../../images/TickTackToe/TileBoards/Brian-min.png';
+import Chris from '../../../images/TickTackToe/TileBoards/Chris-min.png';
+import Glenn from '../../../images/TickTackToe/TileBoards/Glenn-min.png';
+import Meg from '../../../images/TickTackToe/TileBoards/Meg-min.png';
+import Herbert from '../../../images/TickTackToe/TileBoards/Herbert-min.png';
+import Joe from '../../../images/TickTackToe/TileBoards/Joe-min.png';
+import Lois from '../../../images/TickTackToe/TileBoards/Lois-min.png';
+import Stewie from '../../../images/TickTackToe/TileBoards/hart-min.png';
 import GameBoard from './GameBoard';
 import PlayerChoice from './PlayerChoice';
 
@@ -15,6 +22,18 @@ export default function TickTackToe() {
     ['2', '5', '8'],
     ['3', '6', '9'],
   ];
+
+  const tileBoards = {
+    Peter: Peter,
+    Brian: Brian,
+    Chris: Chris,
+    Glenn: Glenn,
+    Meg: Meg,
+    Herbert: Herbert,
+    Joe: Joe,
+    Lois: Lois,
+    Stewie: Stewie,
+  };
   const [takenTiles, setTakenTiles] = useState([]);
   const [playerOneTiles, setPlayerOneTiles] = useState([]);
   const [playerTwoTiles, setPlayerTwoTiles] = useState([]);
@@ -23,6 +42,8 @@ export default function TickTackToe() {
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
   const [playerOneChoice, setPlayerOneChoice] = useState();
   const [playerTwoChoice, setPlayerTwoChoice] = useState();
+  const [playerOneWins, setPlayerOneWins] = useState(0);
+  const [playerTwoWins, setPlayerTwoWins] = useState(0);
   // css settings
   const [tileOneCSS, setTileOneCSS] = useState();
   const [tileTwoCSS, setTileTwoCSS] = useState();
@@ -53,6 +74,8 @@ export default function TickTackToe() {
     tileNineCSS: tileNineCSS,
     playerOneChoice: playerOneChoice,
     playerTwoChoice: playerTwoChoice,
+    playerOneWins: playerOneWins,
+    playerTwoWins: playerTwoWins,
   };
 
   useEffect(() => {
@@ -74,6 +97,8 @@ export default function TickTackToe() {
       setTileNineCSS(JSON.parse(savedToJSON)['tileNineCSS']);
       setPlayerOneChoice(JSON.parse(savedToJSON)['playerOneChoice']);
       setPlayerTwoChoice(JSON.parse(savedToJSON)['playerTwoChoice']);
+      setPlayerOneWins(JSON.parse(savedToJSON)['playerOneWins']);
+      setPlayerTwoWins(JSON.parse(savedToJSON)['playerTwoWins']);
     }
   }, []);
 
@@ -84,13 +109,13 @@ export default function TickTackToe() {
   const playerOneCSS = {
     background: 'none',
     border: '1px solid hsl(0, 100%, 50%)',
-    backgroundImage: `url(${Hart})`,
+    backgroundImage: `url(${tileBoards[`${playerOneChoice}`]})`,
     backgroundSize: 'cover',
   };
   const playerTwoCSS = {
     background: 'none',
-    border: '1px solid hsl(50, 100%, 50%)',
-    backgroundImage: `url(${Cross})`,
+    border: '1px solid hsl(0, 0%, 0%)',
+    backgroundImage: `url(${tileBoards[`${playerTwoChoice}`]})`,
     backgroundSize: 'cover',
   };
 
@@ -122,15 +147,15 @@ export default function TickTackToe() {
     let playerName;
     if (playerOneTurn) {
       playerTiles = playerOneTiles;
-      playerName = 'Player One Wins';
+      playerName = `${playerOneChoice} Wins`;
     } else {
       playerTiles = playerTwoTiles;
-      playerName = 'Player Two Wins';
+      playerName = `${playerOneChoice} Wins`;
     }
-    console.log(playerName, playerTiles);
     winningFields.forEach((combo) => {
-      console.log('hello');
       if (combo.every((tiles) => playerTiles.includes(tiles))) {
+        if (playerOneTurn) setPlayerOneWins(playerOneWins + 1);
+        if (!playerOneTurn) setPlayerTwoWins(playerTwoWins + 1);
         setWinnerName(playerName);
       }
     });
@@ -139,6 +164,7 @@ export default function TickTackToe() {
   const handleTileClicked = (e) => {
     const id = e.target.id;
     handleTakenTiles(id);
+    // console.log(playerOneWins, playerTwoWins);
     // console.log(playerOneTiles, playerTwoTiles);
   };
 
@@ -147,8 +173,6 @@ export default function TickTackToe() {
     if (playerOneTurn) setPlayerOneChoice(id);
     if (!playerOneTurn) setPlayerTwoChoice(id);
     setPlayerOneTurn(!playerOneTurn);
-    console.log(id);
-    console.log(playerOneChoice, playerTwoChoice);
   };
 
   const restartGame = () => {
@@ -172,6 +196,8 @@ export default function TickTackToe() {
     restartGame();
     setPlayerOneChoice();
     setPlayerTwoChoice();
+    setPlayerOneWins(0);
+    setPlayerTwoWins(0);
   };
 
   const gameOverCondition = takenTiles.length === 9 || winnerName;
@@ -184,6 +210,8 @@ export default function TickTackToe() {
         playerOneChoice={playerOneChoice}
         playerTwoChoice={playerTwoChoice}
         playerSelection={playerSelection}
+        playerOneWins={playerOneWins}
+        playerTwoWins={playerTwoWins}
       />
       {playerTwoChoice && (
         <div className="tick-tack-toe-board">
@@ -194,7 +222,7 @@ export default function TickTackToe() {
                 : `${playerTwoChoice} make a move`}
             </p>
           )}
-          <p>{winnerName}</p>
+          <p className="main-ticktacktoe-text">{winnerName}</p>
           <GameBoard
             tileOneCSS={tileOneCSS}
             tileTwoCSS={tileTwoCSS}

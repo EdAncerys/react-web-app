@@ -48,6 +48,8 @@ export default function PlayerChoice(props) {
         <PlayerVPlayer
           playerOneChoice={props.playerOneChoice}
           playerTwoChoice={props.playerTwoChoice}
+          playerOneWins={props.playerOneWins}
+          playerTwoWins={props.playerTwoWins}
           tickTackToeFigures={tickTackToeFigures}
         />
       )}
