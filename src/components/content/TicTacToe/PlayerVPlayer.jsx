@@ -20,9 +20,10 @@ export default function PlayerVPlayer(props) {
           </React.Fragment>
         );
       })}
-      <p className="logo">{props.playerOneWins}</p>
-      <p className="tick-tack-toe-logo player-v-player">vs</p>
-      <p className="logo">{props.playerTwoWins}</p>
+
+      <p className="tick-tack-toe-logo player-v-player">
+        {props.playerOneWins} <br /> vs <br /> {props.playerTwoWins}
+      </p>
 
       {props.tickTackToeFigures.map((figure) => {
         return (

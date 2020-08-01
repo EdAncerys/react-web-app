@@ -157,7 +157,7 @@ export default function TickTackToe() {
       winner = 'Player One';
     } else {
       playerTiles = playerTwoTiles;
-      playerName = `${playerOneChoice} Wins`;
+      playerName = `${playerTwoChoice} Wins`;
     }
     winningFields.forEach((combo) => {
       if (combo.every((tiles) => playerTiles.includes(tiles))) {
