@@ -177,8 +177,6 @@ export default function TickTackToe() {
       />
       {playerTwoChoice && (
         <div className="tick-tack-toe-board">
-          <p>{playerOneChoice}</p>
-          <p>{playerTwoChoice}</p>
           {!gameOverCondition && (
             <p>{playerOneTurn ? 'Player One Move' : 'Player Two Move'}</p>
           )}

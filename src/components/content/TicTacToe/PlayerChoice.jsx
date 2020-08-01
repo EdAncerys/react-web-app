@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Peter from '../../../images/TickTackToe/FamilyGuyCharacters/Peter-min.png';
 import Brian from '../../../images/TickTackToe/FamilyGuyCharacters/Brian-min.png';
@@ -9,6 +9,7 @@ import Herbert from '../../../images/TickTackToe/FamilyGuyCharacters/Herbert-min
 import Joe from '../../../images/TickTackToe/FamilyGuyCharacters/Joe-min.png';
 import Lois from '../../../images/TickTackToe/FamilyGuyCharacters/Lois-min.png';
 import Stewie from '../../../images/TickTackToe/FamilyGuyCharacters/Stewie-min.png';
+import AvailableCharacters from './AvailableCharacters';
 
 export default function PlayerChoice(props) {
   const tickTackToeFigures = [
@@ -29,44 +30,57 @@ export default function PlayerChoice(props) {
   });
 
   return (
-    <React.Fragment>
-      <p>{playerMove} Pick Your Character</p>
-      <div className="player-choice-container">
-        {!props.playerTwoChoice &&
-          tickTackToeFiguresLeft.map((figure) => {
-            return (
-              figure['id'] !== props.playerOneChoice && (
-                <div key={uuidv4()} className="player-img-container">
+    <div className="player-choice-container">
+      {!props.playerTwoChoice && (
+        <React.Fragment>
+          <p>{playerMove} Pick Your Character</p>
+          <AvailableCharacters
+            playerSelection={props.playerSelection}
+            tickTackToeFiguresLeft={tickTackToeFiguresLeft}
+            playerMove={playerMove}
+          />
+        </React.Fragment>
+      )}
+
+      {props.playerTwoChoice &&
+        tickTackToeFigures.map((figure) => {
+          return (
+            <React.Fragment>
+              {figure['id'] === props.playerOneChoice && (
+                <div className="player-v-player-container">
                   <img
+                    key={uuidv4()}
                     id={figure['id']}
                     className="selected-img"
-                    onClick={(e) => props.playerSelection(e)}
                     alt="TikTacToePlayer"
                     src={figure['name']}
                   />
                 </div>
-              )
-            );
-          })}
-        {props.playerTwoChoice &&
-          tickTackToeFigures.map((figure) => {
-            console.log(figure['id']);
-            return (
-              (figure['id'] === props.playerOneChoice ||
-                figure['id'] === props.playerTwoChoice) && (
-                <div key={uuidv4()} className="player-img-container">
+              )}
+            </React.Fragment>
+          );
+        })}
+
+      <p className="tick-tack-toe-logo player-name">vs</p>
+
+      {/* {props.playerTwoChoice &&
+        tickTackToeFigures.map((figure) => {
+          return (
+            <React.Fragment>
+              {figure['id'] === props.playerTwoChoice && (
+                <div className="player-v-player-container">
                   <img
+                    key={uuidv4()}
                     id={figure['id']}
                     className="selected-img"
-                    onClick={(e) => props.playerSelection(e)}
                     alt="TikTacToePlayer"
                     src={figure['name']}
                   />
                 </div>
-              )
-            );
-          })}
-      </div>
-    </React.Fragment>
+              )}
+            </React.Fragment>
+          );
+        })} */}
+    </div>
   );
 }
