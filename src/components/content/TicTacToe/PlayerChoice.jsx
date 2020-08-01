@@ -1,5 +1,4 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import Peter from '../../../images/TickTackToe/FamilyGuyCharacters/Peter-min.png';
 import Brian from '../../../images/TickTackToe/FamilyGuyCharacters/Brian-min.png';
 import Chris from '../../../images/TickTackToe/FamilyGuyCharacters/Chris-min.png';
@@ -10,6 +9,7 @@ import Joe from '../../../images/TickTackToe/FamilyGuyCharacters/Joe-min.png';
 import Lois from '../../../images/TickTackToe/FamilyGuyCharacters/Lois-min.png';
 import Stewie from '../../../images/TickTackToe/FamilyGuyCharacters/Stewie-min.png';
 import AvailableCharacters from './AvailableCharacters';
+import PlayerVPlayer from './PlayerVPlayer';
 
 export default function PlayerChoice(props) {
   const tickTackToeFigures = [
@@ -37,31 +37,18 @@ export default function PlayerChoice(props) {
           <AvailableCharacters
             playerSelection={props.playerSelection}
             tickTackToeFiguresLeft={tickTackToeFiguresLeft}
-            playerMove={playerMove}
+            playerOneChoice={props.playerOneChoice}
           />
         </React.Fragment>
       )}
 
-      {props.playerTwoChoice &&
-        tickTackToeFigures.map((figure) => {
-          return (
-            <React.Fragment>
-              {figure['id'] === props.playerOneChoice && (
-                <div className="player-v-player-container">
-                  <img
-                    key={uuidv4()}
-                    id={figure['id']}
-                    className="selected-img"
-                    alt="TikTacToePlayer"
-                    src={figure['name']}
-                  />
-                </div>
-              )}
-            </React.Fragment>
-          );
-        })}
-
-      <p className="tick-tack-toe-logo player-name">vs</p>
+      {props.playerTwoChoice && (
+        <PlayerVPlayer
+          playerOneChoice={props.playerOneChoice}
+          playerTwoChoice={props.playerTwoChoice}
+          tickTackToeFigures={tickTackToeFigures}
+        />
+      )}
 
       {/* {props.playerTwoChoice &&
         tickTackToeFigures.map((figure) => {
