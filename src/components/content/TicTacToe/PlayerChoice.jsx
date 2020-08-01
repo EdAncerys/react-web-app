@@ -33,7 +33,9 @@ export default function PlayerChoice(props) {
     <div className="player-choice-container">
       {!props.playerTwoChoice && (
         <React.Fragment>
-          <p>{playerMove} Pick Your Character</p>
+          <h4 className="main-ticktacktoe-text">
+            {playerMove} Pick Your Character
+          </h4>
           <AvailableCharacters
             playerSelection={props.playerSelection}
             tickTackToeFiguresLeft={tickTackToeFiguresLeft}
@@ -49,25 +51,6 @@ export default function PlayerChoice(props) {
           tickTackToeFigures={tickTackToeFigures}
         />
       )}
-
-      {/* {props.playerTwoChoice &&
-        tickTackToeFigures.map((figure) => {
-          return (
-            <React.Fragment>
-              {figure['id'] === props.playerTwoChoice && (
-                <div className="player-v-player-container">
-                  <img
-                    key={uuidv4()}
-                    id={figure['id']}
-                    className="selected-img"
-                    alt="TikTacToePlayer"
-                    src={figure['name']}
-                  />
-                </div>
-              )}
-            </React.Fragment>
-          );
-        })} */}
     </div>
   );
 }

@@ -28,7 +28,7 @@
 .player-choice-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   max-width: 90vw;
   overflow: hidden;
@@ -36,7 +36,8 @@
 }
 
 .selected-img {
-  height: 25vw;
+  height: 100px;
+  max-height: 25vh;
   margin: 1rem;
 }
 
@@ -45,4 +46,16 @@
   text-align: center;
   font-size: 2.5rem;
   color: hsl(200, 100%, 35%);
+}
+
+.player-v-player {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.main-ticktacktoe-text {
+  font-family: Family-Guy, sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  color: hsl(0, 100%, 35%);
 }

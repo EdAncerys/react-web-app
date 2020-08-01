@@ -51,6 +51,8 @@ export default function TickTackToe() {
     tileSevenCSS: tileSevenCSS,
     tileEightCSS: tileEightCSS,
     tileNineCSS: tileNineCSS,
+    playerOneChoice: playerOneChoice,
+    playerTwoChoice: playerTwoChoice,
   };
 
   useEffect(() => {
@@ -70,6 +72,8 @@ export default function TickTackToe() {
       setTileSevenCSS(JSON.parse(savedToJSON)['tileSevenCSS']);
       setTileEightCSS(JSON.parse(savedToJSON)['tileEightCSS']);
       setTileNineCSS(JSON.parse(savedToJSON)['tileNineCSS']);
+      setPlayerOneChoice(JSON.parse(savedToJSON)['playerOneChoice']);
+      setPlayerTwoChoice(JSON.parse(savedToJSON)['playerTwoChoice']);
     }
   }, []);
 
@@ -178,7 +182,11 @@ export default function TickTackToe() {
       {playerTwoChoice && (
         <div className="tick-tack-toe-board">
           {!gameOverCondition && (
-            <p>{playerOneTurn ? 'Player One Move' : 'Player Two Move'}</p>
+            <p className="main-ticktacktoe-text">
+              {playerOneTurn
+                ? `${playerOneChoice} make a move`
+                : `${playerTwoChoice} make a move`}
+            </p>
           )}
           <p>{winnerName}</p>
           <GameBoard
