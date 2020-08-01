@@ -1,3 +1,13 @@
+@font-face {
+  src: url(../fonts/Family-Guy-Font.ttf);
+  font-family: Family-Guy;
+}
+
+@font-face {
+  src: url(../fonts/Rowdies-Bold.ttf);
+  font-family: Rowdies;
+}
+
 .tick-tack-toe-page,
 .tick-tack-toe-board {
   display: flex;
@@ -18,4 +28,41 @@
   width: 50px;
   height: 50px;
   border: 1px solid hsl(200, 100%, 50%);
+}
+
+.player-choice-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  overflow: hidden;
+  margin: 1rem;
+}
+
+.selected-img {
+  height: 100px;
+  max-height: 25vh;
+  margin: 1rem;
+}
+
+.tick-tack-toe-logo {
+  font-family: Family-Guy, sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  color: hsl(200, 100%, 35%);
+}
+
+.player-v-player {
+  font-family: Rowdies, sans-serif;
+  color: hsl(200, 100%, 35%);
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.main-ticktacktoe-text {
+  font-family: Family-Guy, sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  color: hsl(0, 100%, 35%);
 }
