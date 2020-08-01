@@ -168,6 +168,12 @@ export default function TickTackToe() {
     setTileNineCSS();
   };
 
+  const NewGame = () => {
+    restartGame();
+    setPlayerOneChoice();
+    setPlayerTwoChoice();
+  };
+
   const gameOverCondition = takenTiles.length === 9 || winnerName;
 
   return (
@@ -203,17 +209,29 @@ export default function TickTackToe() {
           />
         </div>
       )}
-      <div>
+      <React.Fragment>
         {gameOverCondition && (
           <button
             onClick={restartGame}
-            className="btn btn-danger"
-            variant="danger"
+            className="btn btn-lemon"
+            variant="lemon"
           >
             Start Again
           </button>
         )}
-      </div>
+      </React.Fragment>
+      <React.Fragment>
+        {playerTwoChoice && (
+          <button
+            style={{ margin: '2rem' }}
+            onClick={NewGame}
+            className="btn btn-danger"
+            variant="danger"
+          >
+            New Game
+          </button>
+        )}
+      </React.Fragment>
     </div>
   );
 }
