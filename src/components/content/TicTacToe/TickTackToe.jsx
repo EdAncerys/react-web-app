@@ -142,21 +142,27 @@ export default function TickTackToe() {
     }
   };
 
+  const incrementWins = (name) => {
+    if (name) setPlayerOneWins(playerOneWins + 1);
+    else setPlayerTwoWins(playerTwoWins + 1);
+  };
+
   const handleGameWinner = () => {
     let playerTiles;
     let playerName;
+    let winner;
     if (playerOneTurn) {
       playerTiles = playerOneTiles;
       playerName = `${playerOneChoice} Wins`;
+      winner = 'Player One';
     } else {
       playerTiles = playerTwoTiles;
       playerName = `${playerOneChoice} Wins`;
     }
     winningFields.forEach((combo) => {
       if (combo.every((tiles) => playerTiles.includes(tiles))) {
-        if (playerOneTurn) setPlayerOneWins(playerOneWins + 1);
-        if (!playerOneTurn) setPlayerTwoWins(playerTwoWins + 1);
         setWinnerName(playerName);
+        incrementWins(winner);
       }
     });
   };
