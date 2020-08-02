@@ -7,7 +7,7 @@ import Meg from '../../../images/TickTackToe/TileBoards/Meg-min.png';
 import Herbert from '../../../images/TickTackToe/TileBoards/Herbert-min.png';
 import Joe from '../../../images/TickTackToe/TileBoards/Joe-min.png';
 import Lois from '../../../images/TickTackToe/TileBoards/Lois-min.png';
-import Stewie from '../../../images/TickTackToe/TileBoards/hart-min.png';
+import Stewie from '../../../images/TickTackToe/TileBoards/Stewie-min.png';
 import GameBoard from './GameBoard';
 import PlayerChoice from './PlayerChoice';
 
