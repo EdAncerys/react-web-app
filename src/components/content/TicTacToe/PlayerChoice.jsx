@@ -31,11 +31,13 @@ export default function PlayerChoice(props) {
 
   return (
     <React.Fragment>
-      <h4 className="main-ticktacktoe-text">
-        {playerMove} Pick Your Character
-      </h4>
+      {props.playerTwoChoice['id'] === '' && (
+        <h4 className="main-ticktacktoe-text">
+          {playerMove} Pick Your Character
+        </h4>
+      )}
       <div className="player-choice-container">
-        {!props.playerTwoChoice && (
+        {props.playerTwoChoice['id'] === '' && (
           <React.Fragment>
             <AvailableCharacters
               playerSelection={props.playerSelection}
@@ -45,7 +47,7 @@ export default function PlayerChoice(props) {
           </React.Fragment>
         )}
 
-        {props.playerTwoChoice && (
+        {props.playerTwoChoice['id'] !== '' && (
           <PlayerVPlayer
             playerOneChoice={props.playerOneChoice}
             playerTwoChoice={props.playerTwoChoice}

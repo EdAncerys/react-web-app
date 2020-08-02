@@ -17,22 +17,14 @@ export default function PlayerVPlayer(props) {
         {props.playerOneWins} vs {props.playerTwoWins}
       </p>
 
-      {props.tickTackToeFigures.map((figure) => {
-        return (
-          <React.Fragment key={uuidv4()}>
-            {figure['id'] === props.playerTwoChoice && (
-              <div className="player-v-player-container">
-                <img
-                  id={figure['id']}
-                  className="selected-img"
-                  alt="TikTacToePlayer"
-                  src={figure['name']}
-                />
-              </div>
-            )}
-          </React.Fragment>
-        );
-      })}
+      <div className="player-v-player-container">
+        <img
+          id={uuidv4()}
+          className="selected-img"
+          alt="TikTacToePlayer"
+          src={props.playerTwoChoice['src']}
+        />
+      </div>
     </React.Fragment>
   );
 }
