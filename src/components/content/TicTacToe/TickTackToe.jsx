@@ -40,8 +40,14 @@ export default function TickTackToe() {
   const [winnerName, setWinnerName] = useState();
   // player choice
   const [playerOneTurn, setPlayerOneTurn] = useState(true);
-  const [playerOneChoice, setPlayerOneChoice] = useState();
-  const [playerTwoChoice, setPlayerTwoChoice] = useState();
+  const [playerOneChoice, setPlayerOneChoice] = useState({
+    id: '',
+    src: '',
+  });
+  const [playerTwoChoice, setPlayerTwoChoice] = useState({
+    id: '',
+    src: '',
+  });
   const [playerOneWins, setPlayerOneWins] = useState(0);
   const [playerTwoWins, setPlayerTwoWins] = useState(0);
   // css settings
@@ -106,16 +112,18 @@ export default function TickTackToe() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(saveToLocalStorage));
   }, [saveToLocalStorage]);
 
+  let a = `${playerOneChoice['id']}`;
+
   const playerOneCSS = {
     background: 'none',
     border: '1px solid hsl(0, 100%, 50%)',
-    backgroundImage: `url(${tileBoards[`${playerOneChoice}`]})`,
+    backgroundImage: `url(${tileBoards[`${a}`]})`,
     backgroundSize: 'cover',
   };
   const playerTwoCSS = {
     background: 'none',
     border: '1px solid hsl(0, 0%, 0%)',
-    backgroundImage: `url(${tileBoards[`${playerTwoChoice}`]})`,
+    backgroundImage: `url(${tileBoards[`${playerTwoChoice['id']}`]})`,
     backgroundSize: 'cover',
   };
 
@@ -153,11 +161,11 @@ export default function TickTackToe() {
     let winner;
     if (playerOneTurn) {
       playerTiles = playerOneTiles;
-      playerName = `${playerOneChoice} Wins`;
+      playerName = `${playerOneChoice['id']} Wins`;
       winner = 'Player One';
     } else {
       playerTiles = playerTwoTiles;
-      playerName = `${playerTwoChoice} Wins`;
+      playerName = `${playerTwoChoice['id']} Wins`;
     }
     winningFields.forEach((combo) => {
       if (combo.every((tiles) => playerTiles.includes(tiles))) {
@@ -176,8 +184,9 @@ export default function TickTackToe() {
 
   const playerSelection = (e) => {
     const id = e.target.id;
-    if (playerOneTurn) setPlayerOneChoice(id);
-    if (!playerOneTurn) setPlayerTwoChoice(id);
+    const src = e.target.src;
+    if (playerOneTurn) setPlayerOneChoice({ id: id, src: src });
+    if (!playerOneTurn) setPlayerTwoChoice({ id: id, src: src });
     setPlayerOneTurn(!playerOneTurn);
   };
 
@@ -200,8 +209,8 @@ export default function TickTackToe() {
 
   const NewGame = () => {
     restartGame();
-    setPlayerOneChoice();
-    setPlayerTwoChoice();
+    setPlayerOneChoice({ id: '', src: '' });
+    setPlayerTwoChoice({ id: '', src: '' });
     setPlayerOneWins(0);
     setPlayerTwoWins(0);
   };
@@ -219,13 +228,13 @@ export default function TickTackToe() {
         playerOneWins={playerOneWins}
         playerTwoWins={playerTwoWins}
       />
-      {playerTwoChoice && (
+      {playerTwoChoice['id'] !== '' && (
         <div className="tick-tack-toe-board">
           {!gameOverCondition && (
             <p className="main-ticktacktoe-text">
               {playerOneTurn
-                ? `${playerOneChoice} make a move`
-                : `${playerTwoChoice} make a move`}
+                ? `${playerOneChoice['id']} make a move`
+                : `${playerTwoChoice['id']} make a move`}
             </p>
           )}
           <p className="main-ticktacktoe-text">{winnerName}</p>
