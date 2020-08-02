@@ -10,6 +10,7 @@ import Lois from '../../../images/TickTackToe/TileBoards/Lois-min.png';
 import Stewie from '../../../images/TickTackToe/TileBoards/Stewie-min.png';
 import GameBoard from './GameBoard';
 import PlayerChoice from './PlayerChoice';
+import GameText from './GameText';
 
 export default function TickTackToe() {
   const winningFields = [
@@ -230,14 +231,14 @@ export default function TickTackToe() {
       />
       {playerTwoChoice['id'] !== '' && (
         <div className="tick-tack-toe-board">
-          {!gameOverCondition && (
-            <p className="main-ticktacktoe-text">
-              {playerOneTurn
-                ? `${playerOneChoice['id']} make a move`
-                : `${playerTwoChoice['id']} make a move`}
-            </p>
-          )}
-          <p className="main-ticktacktoe-text">{winnerName}</p>
+          <GameText
+            gameOverCondition={gameOverCondition}
+            playerOneTurn={playerOneTurn}
+            playerOneChoice={playerOneChoice}
+            playerTwoChoice={playerTwoChoice}
+            winnerName={winnerName}
+            takenTiles={takenTiles}
+          />
           <GameBoard
             tileOneCSS={tileOneCSS}
             tileTwoCSS={tileTwoCSS}
