@@ -37,7 +37,6 @@
   flex-wrap: wrap;
   max-width: 90vw;
   overflow: hidden;
-  margin: 1rem;
 }
 
 .selected-img {
@@ -64,6 +63,5 @@
   font-family: Family-Guy, sans-serif;
   text-align: center;
   font-size: 1rem;
-  margin-top: 2rem;
   color: hsl(0, 100%, 35%);
 }
