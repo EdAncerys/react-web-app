@@ -30,29 +30,31 @@ export default function PlayerChoice(props) {
   });
 
   return (
-    <div className="player-choice-container">
-      {!props.playerTwoChoice && (
-        <React.Fragment>
-          <h4 className="main-ticktacktoe-text">
-            {playerMove} Pick Your Character
-          </h4>
-          <AvailableCharacters
-            playerSelection={props.playerSelection}
-            tickTackToeFiguresLeft={tickTackToeFiguresLeft}
-            playerOneChoice={props.playerOneChoice}
-          />
-        </React.Fragment>
-      )}
+    <React.Fragment>
+      <h4 className="main-ticktacktoe-text">
+        {playerMove} Pick Your Character
+      </h4>
+      <div className="player-choice-container">
+        {!props.playerTwoChoice && (
+          <React.Fragment>
+            <AvailableCharacters
+              playerSelection={props.playerSelection}
+              tickTackToeFiguresLeft={tickTackToeFiguresLeft}
+              playerOneChoice={props.playerOneChoice}
+            />
+          </React.Fragment>
+        )}
 
-      {props.playerTwoChoice && (
-        <PlayerVPlayer
-          playerOneChoice={props.playerOneChoice}
-          playerTwoChoice={props.playerTwoChoice}
-          playerOneWins={props.playerOneWins}
-          playerTwoWins={props.playerTwoWins}
-          tickTackToeFigures={tickTackToeFigures}
-        />
-      )}
-    </div>
+        {props.playerTwoChoice && (
+          <PlayerVPlayer
+            playerOneChoice={props.playerOneChoice}
+            playerTwoChoice={props.playerTwoChoice}
+            playerOneWins={props.playerOneWins}
+            playerTwoWins={props.playerTwoWins}
+            tickTackToeFigures={tickTackToeFigures}
+          />
+        )}
+      </div>
+    </React.Fragment>
   );
 }

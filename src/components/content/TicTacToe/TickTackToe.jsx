@@ -176,7 +176,8 @@ export default function TickTackToe() {
 
   const playerSelection = (e) => {
     const id = e.target.id;
-    if (playerOneTurn) setPlayerOneChoice(id);
+    const src = e.target.src;
+    if (playerOneTurn) setPlayerOneChoice({ id: id, src: src });
     if (!playerOneTurn) setPlayerTwoChoice(id);
     setPlayerOneTurn(!playerOneTurn);
   };
