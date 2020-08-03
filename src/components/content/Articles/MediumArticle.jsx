@@ -15,7 +15,8 @@ export default function MediumArticle(props) {
           <h4 className="medium-title">{props.article.title}</h4>
           {ReactHtmlParser(props.article.description)}
           <p className="align-left">
-            Published by: {props.article.author} on {props.article.pubDate}
+            Published by: {props.article.author} on{' '}
+            {props.article.pubDate.substring(0, 10)}
           </p>
           <p
             className="project-name back-link"
