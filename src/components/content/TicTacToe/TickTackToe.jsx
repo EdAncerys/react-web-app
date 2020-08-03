@@ -257,7 +257,7 @@ export default function TickTackToe() {
         {gameOverCondition && (
           <button
             onClick={restartGame}
-            className="btn btn-lemon"
+            className="btn btn-blue"
             variant="lemon"
           >
             Start Again
