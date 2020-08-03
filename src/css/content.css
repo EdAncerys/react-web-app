@@ -39,6 +39,7 @@
   align-items: center;
   max-width: 800px;
   margin: 3rem 0rem;
+  cursor: pointer;
 }
 
 .feature-img-container {

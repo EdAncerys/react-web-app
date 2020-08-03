@@ -10,7 +10,7 @@ export default class Content extends Component {
           selectedProject={this.props.selectedProject}
           selectedProjectId={this.props.selectedProjectId}
         />
-        <FeatureBanner />
+        <FeatureBanner goToTickTackToePage={this.props.goToTickTackToePage} />
       </React.Fragment>
     );
   }

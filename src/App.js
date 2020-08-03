@@ -113,6 +113,7 @@ export default function App() {
           <Content
             selectedProject={selectedProject}
             selectedProjectId={selectedProjectId}
+            goToTickTackToePage={goToTickTackToePage}
           />
         )}
         {aboutPage && <About />}
