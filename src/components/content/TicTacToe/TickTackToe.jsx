@@ -265,7 +265,7 @@ export default function TickTackToe() {
         )}
       </React.Fragment>
       <React.Fragment>
-        {playerTwoChoice && (
+        {playerTwoChoice['id'] && (
           <button
             style={{ margin: '2rem' }}
             onClick={NewGame}

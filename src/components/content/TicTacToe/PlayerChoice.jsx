@@ -30,7 +30,7 @@ export default function PlayerChoice(props) {
   });
 
   return (
-    <React.Fragment>
+    <div className='player-character-container'>
       {props.playerTwoChoice['id'] === '' && (
         <h4 className="main-ticktacktoe-text">
           {playerMove} Pick Your Character
@@ -57,6 +57,6 @@ export default function PlayerChoice(props) {
           />
         )}
       </div>
-    </React.Fragment>
+    </div>
   );
 }
