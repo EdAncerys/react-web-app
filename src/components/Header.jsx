@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, NavDropdown, Button } from 'react-bootstrap';
 
 export default class Header extends Component {
   render() {
@@ -40,6 +40,20 @@ export default class Header extends Component {
             {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
           </Button>
         </div>
+        <NavDropdown title="More" id="nav-dropdown">
+          <NavDropdown.Item onClick={this.props.goToMediumPage}>
+            {this.props.mediumPage ? 'Home' : 'Medium'}
+          </NavDropdown.Item>
+          <NavDropdown.Item onClick={this.props.goToTickTackToePage}>
+            {' '}
+            {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
+          </NavDropdown.Item>
+
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={this.props.goToContactPage}>
+            {this.props.contactPage ? 'Home' : 'Contact'}
+          </NavDropdown.Item>
+        </NavDropdown>
       </Navbar>
     );
   }
