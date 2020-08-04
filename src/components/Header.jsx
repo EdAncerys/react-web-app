@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, NavDropdown, Button } from 'react-bootstrap';
 
 export default class Header extends Component {
   render() {
@@ -18,27 +18,30 @@ export default class Header extends Component {
           >
             {this.props.aboutPage ? 'Home' : 'About'}
           </Button>
-          <Button
-            onClick={this.props.goToContactPage}
-            className="btn btn-blue"
-            variant="light"
-          >
-            {this.props.contactPage ? 'Home' : 'Contact'}
-          </Button>
-          <Button
-            onClick={this.props.goToMediumPage}
-            className="btn btn-black"
-            variant="light"
-          >
-            {this.props.mediumPage ? 'Home' : 'Medium'}
-          </Button>
-          <Button
-            onClick={this.props.goToTickTackToePage}
-            className="btn btn-lemon"
-            variant="light"
-          >
-            {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
-          </Button>
+
+          <NavDropdown title="More" className="nav-dropdown">
+            <NavDropdown.Item
+              className="btn-nav-black"
+              onClick={this.props.goToMediumPage}
+            >
+              {this.props.mediumPage ? 'Home' : 'Medium'}
+            </NavDropdown.Item>
+            <NavDropdown.Item
+              className="btn-nav-lemon"
+              onClick={this.props.goToTickTackToePage}
+            >
+              {' '}
+              {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
+            </NavDropdown.Item>
+
+            <NavDropdown.Divider />
+            <NavDropdown.Item
+              className="btn-nav-blue"
+              onClick={this.props.goToContactPage}
+            >
+              {this.props.contactPage ? 'Home' : 'Contact'}
+            </NavDropdown.Item>
+          </NavDropdown>
         </div>
       </Navbar>
     );

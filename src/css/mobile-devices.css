@@ -3,20 +3,9 @@
     margin-top: 1rem;
   }
 
-  .navbar-home {
-    width: 100vw;
-    flex-direction: column;
-  }
-
-  .navbar-right {
-    display: flex;
-    margin-left: 0;
-  }
-
   .landing-banner,
   .feature-content {
     flex-direction: column;
-    max-height: 55vh;
   }
 
   .feature-content {
