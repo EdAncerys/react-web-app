@@ -57,13 +57,17 @@
 }
 
 .nav-dropdown {
-  color: hsl(200, 100%, 50%);
+  color: hsl(200, 100%, 35%);
 }
 
 .dropdown-menu {
   right: 0;
   left: auto;
   border: 1px solid hsl(200, 100%, 50%);
+}
+
+.dropdown-divider {
+  border-top: 1px solid hsl(200, 100%, 50%);
 }
 
 .dropdown-menu.show {
@@ -80,7 +84,7 @@
 }
 
 .btn-nav-black {
-  color: hsl(0, 0%, 0%);
+  color: hsl(200, 100%, 50%);
 }
 
 .btn-nav-black:hover {
@@ -89,8 +93,7 @@
 }
 
 .btn-nav-lemon {
-  color: hsl(50, 100%, 40%);
-  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 100%, 50%);
 }
 
 .btn-nav-lemon:hover {
