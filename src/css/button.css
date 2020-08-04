@@ -55,3 +55,45 @@
   background-color: hsl(0, 0%, 100%);
   border: 1px solid hsl(0, 0%, 0%);
 }
+
+.nav-dropdown {
+  color: hsl(200, 100%, 50%);
+}
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+  border: 1px solid hsl(200, 100%, 50%);
+}
+
+.dropdown-menu.show {
+  margin-top: 1rem !important;
+}
+
+.btn-nav-blue {
+  color: hsl(200, 100%, 50%);
+}
+
+.btn-nav-blue:hover {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(200, 100%, 35%);
+}
+
+.btn-nav-black {
+  color: hsl(0, 0%, 0%);
+}
+
+.btn-nav-black:hover {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 0%);
+}
+
+.btn-nav-lemon {
+  color: hsl(50, 100%, 40%);
+  background-color: hsl(0, 0%, 100%);
+}
+
+.btn-nav-lemon:hover {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(50, 100%, 45%);
+}
