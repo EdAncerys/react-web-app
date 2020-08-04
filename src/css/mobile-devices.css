@@ -6,7 +6,6 @@
   .landing-banner,
   .feature-content {
     flex-direction: column;
-    max-height: 55vh;
   }
 
   .feature-content {
