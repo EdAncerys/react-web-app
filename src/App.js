@@ -37,6 +37,7 @@ export default function App() {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
+      setRPSPage(JSON.parse(savedToJSON)['rpsPage']);
       setTickTackToePage(JSON.parse(savedToJSON)['tickTackToePage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
       setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
