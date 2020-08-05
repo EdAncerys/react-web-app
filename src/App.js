@@ -99,6 +99,7 @@ export default function App() {
     setMediumPage(false);
     setTickTackToePage(false);
     setRPSPage(!rpsPage);
+    console.log('rps');
   };
 
   // Selected project
@@ -123,15 +124,21 @@ export default function App() {
         goToMediumPage={goToMediumPage}
         tickTackToePage={tickTackToePage}
         goToTickTackToePage={goToTickTackToePage}
+        goToRPSPage={goToRPSPage}
+        rpsPage={rpsPage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && !mediumPage && !tickTackToePage && (
-          <Content
-            selectedProject={selectedProject}
-            selectedProjectId={selectedProjectId}
-            goToTickTackToePage={goToTickTackToePage}
-          />
-        )}
+        {!aboutPage &&
+          !contactPage &&
+          !mediumPage &&
+          !tickTackToePage &&
+          !rpsPage && (
+            <Content
+              selectedProject={selectedProject}
+              selectedProjectId={selectedProjectId}
+              goToTickTackToePage={goToTickTackToePage}
+            />
+          )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
         {mediumPage && (
