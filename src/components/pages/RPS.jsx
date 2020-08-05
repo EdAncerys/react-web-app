@@ -4,18 +4,38 @@ import Peter from '../../images/TickTackToe/TileBoards/Peter-min.png';
 export default function RPS() {
   const [userRPSSelection, setUserRPSSelection] = useState();
   const [computerRPSSelection, setComputerRPSSelection] = useState();
+  const [gameWinner, setGameWinner] = useState();
 
   const computerSelection = () => {
     const rpsOptions = ['rock', 'paper', 'scissors'];
     const randomSelection =
       rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
     setComputerRPSSelection(randomSelection);
+    return randomSelection;
   };
 
   const handleRPSSelection = (e) => {
     const id = e.target.id;
     setUserRPSSelection(id);
-    computerSelection();
+    setRPSWinner(id, computerSelection());
+  };
+
+  const setRPSWinner = (player, computer) => {
+    let winner;
+    if (
+      (player === 'rock' && computer === 'rock') ||
+      (player === 'paper' && computer === 'paper') ||
+      (player === 'scissors' && computer === 'scissors')
+    ) {
+      winner = 'Even Steven';
+    } else if (
+      (player === 'rock' && computer !== 'paper') ||
+      (player === 'paper' && computer !== 'scissors') ||
+      (player === 'scissors' && computer !== 'rock')
+    ) {
+      winner = 'User Wins';
+    } else winner = 'Computer Wins';
+    setGameWinner(winner);
   };
 
   return (
@@ -44,6 +64,7 @@ export default function RPS() {
       <div>
         {userRPSSelection} vs {computerRPSSelection}
       </div>
+      <div>{gameWinner}</div>
     </div>
   );
 }
