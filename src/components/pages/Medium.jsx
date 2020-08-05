@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MediumArticle from '../content/Articles/MediumAricleComponent';
+import MediumArticle from '../content/ArticleComponent/MediumAricleComponent';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 

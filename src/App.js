@@ -6,7 +6,7 @@ import Content from './components/Content';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
-import TickTackToe from './components/content/TicTacToe/TickTackToe';
+import TickTackToe from './components/pages/TickTackToe';
 import './css/App.css';
 
 export default function App() {
