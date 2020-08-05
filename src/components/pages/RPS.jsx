@@ -4,6 +4,8 @@ import Peter from '../../images/TickTackToe/TileBoards/Peter-min.png';
 export default function RPS() {
   const [userRPSSelection, setUserRPSSelection] = useState();
   const [computerRPSSelection, setComputerRPSSelection] = useState();
+  const [userScore, setUserScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
   const [gameWinner, setGameWinner] = useState();
 
   const computerSelection = () => {
@@ -14,10 +16,16 @@ export default function RPS() {
     return randomSelection;
   };
 
-  const handleRPSSelection = (e) => {
+  const scoreCount = () => {
+    if (gameWinner === 'User Wins') setUserScore(userScore + 1);
+    if (gameWinner === 'Computer Wins') setComputerScore(computerScore + 1);
+  };
+
+  const handleRPSClick = (e) => {
     const id = e.target.id;
     setUserRPSSelection(id);
     setRPSWinner(id, computerSelection());
+    scoreCount();
   };
 
   const setRPSWinner = (player, computer) => {
@@ -41,24 +49,30 @@ export default function RPS() {
   return (
     <div className="rps-page-component">
       <h1 className="rps-header-text">Welcome to RPS</h1>
+      <p>
+        Player {userScore} : Computer {computerScore}
+      </p>
       <div className="rps-user-selection">
         <img
           id="rock"
           src={Peter}
           className="rps-img"
-          onClick={(e) => handleRPSSelection(e)}
+          alt="rock-img"
+          onClick={(e) => handleRPSClick(e)}
         ></img>
         <img
           id="paper"
           src={Peter}
           className="rps-img"
-          onClick={(e) => handleRPSSelection(e)}
+          alt="paper-img"
+          onClick={(e) => handleRPSClick(e)}
         ></img>
         <img
           id="scissors"
           src={Peter}
           className="rps-img"
-          onClick={(e) => handleRPSSelection(e)}
+          alt="scissors-img"
+          onClick={(e) => handleRPSClick(e)}
         ></img>
       </div>
       <div>
