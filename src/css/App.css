@@ -11,6 +11,7 @@
 @import 'landing-banner.css';
 @import 'mobile-devices.css';
 @import 'tick-tack-toe.css';
+@import 'rps.css';
 
 @font-face {
   src: url(../fonts/Raleway-VariableFont_wght.ttf);

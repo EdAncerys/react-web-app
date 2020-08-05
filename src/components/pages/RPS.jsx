@@ -6,9 +6,9 @@ export default function RPS() {
     <div className="rps-page-component">
       <h1>Welcome to RPS</h1>
       <div className="rps-user-selection">
-        <img src={Peter}></img>
-        <img src={Peter}></img>
-        <img src={Peter}></img>
+        <img id="rock" src={Peter} className="rps-img"></img>
+        <img id="paper" src={Peter} className="rps-img"></img>
+        <img id="scissors" src={Peter} className="rps-img"></img>
       </div>
     </div>
   );
