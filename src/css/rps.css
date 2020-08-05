@@ -16,3 +16,9 @@
   max-width: 100px;
   height: auto;
 }
+
+.rps-header-text {
+  font-family: Rowdies, sans-serif;
+  font-size: 2.5rem;
+  color: tomato;
+}
