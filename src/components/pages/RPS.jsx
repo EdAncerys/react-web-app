@@ -3,6 +3,7 @@ import Rock from '../../images/RPS/rock-min.png';
 import Paper from '../../images/RPS/paper-min.png';
 import Scissors from '../../images/RPS/scissors-min.png';
 import PlayerChoiceComponent from '../content/RPSComponent/PlayerChoiceComponent';
+import GameWinnerContainer from '../content/RPSComponent/GameWinnerContainer';
 
 export default function RPS() {
   const [userRPSSelection, setUserRPSSelection] = useState();
@@ -16,6 +17,9 @@ export default function RPS() {
     rock: Rock,
     paper: Paper,
     scissors: Scissors,
+    userRPSSelection: userRPSSelection,
+    computerRPSSelection: computerRPSSelection,
+    gameWinner: gameWinner,
   };
 
   const computerSelection = () => {
@@ -30,6 +34,12 @@ export default function RPS() {
     setUserRPSSelection(id);
     computerSelection();
     setRPSWinner(userRPSSelection, computerRPSSelection);
+  };
+
+  const resetGame = () => {
+    setUserRPSSelection();
+    setComputerRPSSelection();
+    setGameWinner();
   };
 
   const setRPSWinner = (player, computer) => {
@@ -61,27 +71,16 @@ export default function RPS() {
       <p className="rps-main-text">
         Player {userScore} & Computer {computerScore} & Even {evenScore}
       </p>
-      <PlayerChoiceComponent rps={rps} handleRPSClick={handleRPSClick} />
-      <div className="rps-game-winner-container">
-        <p className="rps-main-text">{gameWinner}</p>
-        <div className="rps-vs-container">
-          <img
-            id="scissors"
-            src={rps[`${userRPSSelection}`]}
-            className="rps-img"
-            alt="scissors-img"
-            onClick={(e) => handleRPSClick(e)}
-          ></img>
-          <p className="rps-main-text">vs</p>
-          <img
-            id="scissors"
-            src={rps[`${computerRPSSelection}`]}
-            className="rps-img"
-            alt="scissors-img"
-            onClick={(e) => handleRPSClick(e)}
-          ></img>
-        </div>
-      </div>
+      {!userRPSSelection && (
+        <PlayerChoiceComponent rps={rps} handleRPSClick={handleRPSClick} />
+      )}
+      {userRPSSelection && (
+        <GameWinnerContainer
+          rps={rps}
+          handleRPSClick={handleRPSClick}
+          resetGame={resetGame}
+        />
+      )}
     </div>
   );
 }
