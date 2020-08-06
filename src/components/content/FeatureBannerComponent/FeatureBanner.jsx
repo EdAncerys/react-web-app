@@ -5,8 +5,8 @@ import TickTackToeImg from '../../../images/tick-tack-toe-min.png';
 export default class FeatureBanner extends Component {
   render() {
     return (
-      <React.Fragment>
-        <div className="feature-banner">
+      <div className="feature-banner">
+        <div className="feature-banner-component">
           <div className="feature-img-container">
             <img
               className="feature-img"
@@ -26,7 +26,7 @@ export default class FeatureBanner extends Component {
           </div>
         </div>
         <div
-          className="feature-banner"
+          className="feature-banner-component"
           onClick={this.props.goToTickTackToePage}
         >
           <div className="feature-content">
@@ -45,7 +45,7 @@ export default class FeatureBanner extends Component {
             />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
