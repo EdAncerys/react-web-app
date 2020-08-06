@@ -92,6 +92,13 @@ export default function RPS() {
     setGameWinner();
   };
 
+  const newGame = () => {
+    setUserScore(0);
+    setComputerScore(0);
+    setEvenScore(0);
+    resetGame();
+  };
+
   return (
     <div className="rps-page-component">
       <h1 className="rps-header-text">Welcome to RPS</h1>
@@ -108,6 +115,14 @@ export default function RPS() {
           resetGame={resetGame}
         />
       )}
+      <button
+        style={{ margin: '2rem' }}
+        onClick={newGame}
+        className="btn btn-danger"
+        variant="danger"
+      >
+        New Game
+      </button>
     </div>
   );
 }
