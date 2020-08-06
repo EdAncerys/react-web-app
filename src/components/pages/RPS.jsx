@@ -10,6 +10,12 @@ export default function RPS() {
   const [computerScore, setComputerScore] = useState(0);
   const [gameWinner, setGameWinner] = useState();
 
+  const rps = {
+    rock: Rock,
+    paper: Paper,
+    scissors: Scissors,
+  };
+
   const computerSelection = () => {
     const rpsOptions = ['rock', 'paper', 'scissors'];
     const randomSelection =
@@ -54,6 +60,7 @@ export default function RPS() {
       <p>
         Player {userScore} : Computer {computerScore}
       </p>
+      <p className="rps-main-text">Pick Your Choice</p>
       <div className="rps-user-selection">
         <img
           id="rock"
@@ -77,10 +84,26 @@ export default function RPS() {
           onClick={(e) => handleRPSClick(e)}
         ></img>
       </div>
-      <div>
-        {userRPSSelection} vs {computerRPSSelection}
+      <div className="rps-game-winner-container">
+        <p className="rps-main-text">{gameWinner}</p>
+        <div className="rps-vs-container">
+          <img
+            id="scissors"
+            src={rps[`${userRPSSelection}`]}
+            className="rps-img"
+            alt="scissors-img"
+            onClick={(e) => handleRPSClick(e)}
+          ></img>
+          <p className="rps-main-text">vs</p>
+          <img
+            id="scissors"
+            src={rps[`${computerRPSSelection}`]}
+            className="rps-img"
+            alt="scissors-img"
+            onClick={(e) => handleRPSClick(e)}
+          ></img>
+        </div>
       </div>
-      <div>{gameWinner}</div>
     </div>
   );
 }
