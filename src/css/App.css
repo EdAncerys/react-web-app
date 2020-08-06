@@ -9,9 +9,9 @@
 @import 'images.css';
 @import 'medium.css';
 @import 'landing-banner.css';
-@import 'mobile-devices.css';
 @import 'tick-tack-toe.css';
 @import 'rps.css';
+@import 'mobile-devices.css';
 
 @font-face {
   src: url(../fonts/Raleway-VariableFont_wght.ttf);

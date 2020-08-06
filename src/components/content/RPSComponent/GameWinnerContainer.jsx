@@ -20,7 +20,7 @@ export default function GameWinnerContainer(props) {
             alt="scissors-img"
           ></img>
         </div>
-        <p className="rps-main-text">Tap To Play Again</p>
+        <p className="rps-main-text black-text">Tap Me To Play Again</p>
       </div>
     </React.Fragment>
   );

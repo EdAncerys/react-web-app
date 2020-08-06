@@ -34,4 +34,12 @@
     flex: 0 0 100%;
     margin-top: 1rem;
   }
+
+  .rps-header-text {
+    font-size: xx-large;
+  }
+
+  .rps-main-text {
+    font-size: large;
+  }
 }

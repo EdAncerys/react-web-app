@@ -19,7 +19,7 @@ export default class Header extends Component {
             {this.props.aboutPage ? 'Home' : 'About'}
           </Button>
 
-          <NavDropdown title="More" className="nav-dropdown">
+          <NavDropdown title="More">
             <NavDropdown.Item
               className="btn-nav-black"
               onClick={this.props.goToMediumPage}
