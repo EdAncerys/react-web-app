@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Peter from '../../../images/TickTackToe/TileBoards/Peter-min.png';
-import Brian from '../../../images/TickTackToe/TileBoards/Brian-min.png';
-import Chris from '../../../images/TickTackToe/TileBoards/Chris-min.png';
-import Glenn from '../../../images/TickTackToe/TileBoards/Glenn-min.png';
-import Meg from '../../../images/TickTackToe/TileBoards/Meg-min.png';
-import Herbert from '../../../images/TickTackToe/TileBoards/Herbert-min.png';
-import Joe from '../../../images/TickTackToe/TileBoards/Joe-min.png';
-import Lois from '../../../images/TickTackToe/TileBoards/Lois-min.png';
-import Stewie from '../../../images/TickTackToe/TileBoards/Stewie-min.png';
-import GameBoard from './GameBoard';
-import PlayerChoice from './PlayerChoice';
-import GameText from './GameText';
+import Peter from '../../images/TickTackToe/TileBoards/Peter-min.png';
+import Brian from '../../images/TickTackToe/TileBoards/Brian-min.png';
+import Chris from '../../images/TickTackToe/TileBoards/Chris-min.png';
+import Glenn from '../../images/TickTackToe/TileBoards/Glenn-min.png';
+import Meg from '../../images/TickTackToe/TileBoards/Meg-min.png';
+import Herbert from '../../images/TickTackToe/TileBoards/Herbert-min.png';
+import Joe from '../../images/TickTackToe/TileBoards/Joe-min.png';
+import Lois from '../../images/TickTackToe/TileBoards/Lois-min.png';
+import Stewie from '../../images/TickTackToe/TileBoards/Stewie-min.png';
+import GameBoard from '../content/TicTacToeComponent/GameBoard';
+import PlayerChoice from '../content/TicTacToeComponent/PlayerChoice';
+import GameText from '../content/TicTacToeComponent/GameText';
 
 export default function TickTackToe() {
   const winningFields = [

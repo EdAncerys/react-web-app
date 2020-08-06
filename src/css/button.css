@@ -56,24 +56,6 @@
   border: 1px solid hsl(0, 0%, 0%);
 }
 
-.nav-dropdown {
-  color: hsl(200, 100%, 35%);
-}
-
-.dropdown-menu {
-  right: 0;
-  left: auto;
-  border: 1px solid hsl(200, 100%, 50%);
-}
-
-.dropdown-divider {
-  border-top: 1px solid hsl(200, 100%, 50%);
-}
-
-.dropdown-menu.show {
-  margin-top: 1rem !important;
-}
-
 .btn-nav-blue {
   color: hsl(200, 100%, 50%);
 }
@@ -99,4 +81,13 @@
 .btn-nav-lemon:hover {
   color: hsl(0, 0%, 100%);
   background-color: hsl(50, 100%, 45%);
+}
+
+.btn-nav-danger {
+  color: hsl(200, 100%, 50%);
+}
+
+.btn-nav-danger:hover {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 100%, 35%);
 }

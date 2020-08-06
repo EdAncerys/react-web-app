@@ -6,13 +6,15 @@ import Content from './components/Content';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
-import TickTackToe from './components/content/TicTacToe/TickTackToe';
+import TickTackToe from './components/pages/TickTackToe';
+import RPS from './components/pages/RPS';
 import './css/App.css';
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
   const [mediumPage, setMediumPage] = useState(false);
+  const [rpsPage, setRPSPage] = useState(false);
   const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [selectedArticleId, setSelectedArticleId] = useState();
@@ -24,6 +26,7 @@ export default function App() {
     contactPage: contactPage,
     mediumPage: mediumPage,
     tickTackToePage: tickTackToePage,
+    rpsPage: rpsPage,
     selectedProjectId: selectedProjectId,
     selectedArticleId: selectedArticleId,
   };
@@ -34,6 +37,7 @@ export default function App() {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
+      setRPSPage(JSON.parse(savedToJSON)['rpsPage']);
       setTickTackToePage(JSON.parse(savedToJSON)['tickTackToePage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
       setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
@@ -50,6 +54,7 @@ export default function App() {
     setContactPage(false);
     setMediumPage(false);
     setTickTackToePage(false);
+    setRPSPage(false);
   };
 
   const goToAboutPage = () => {
@@ -57,6 +62,7 @@ export default function App() {
     setContactPage(false);
     setMediumPage(false);
     setTickTackToePage(false);
+    setRPSPage(false);
   };
 
   const goToContactPage = () => {
@@ -64,6 +70,7 @@ export default function App() {
     setContactPage(!contactPage);
     setMediumPage(false);
     setTickTackToePage(false);
+    setRPSPage(false);
   };
 
   const goToMediumPage = () => {
@@ -71,6 +78,7 @@ export default function App() {
     setContactPage(false);
     setMediumPage(!mediumPage);
     setTickTackToePage(false);
+    setRPSPage(false);
   };
 
   const goToMediumPreviewPage = () => {
@@ -83,6 +91,16 @@ export default function App() {
     setContactPage(false);
     setMediumPage(false);
     setTickTackToePage(!tickTackToePage);
+    setRPSPage(false);
+  };
+
+  const goToRPSPage = () => {
+    setAboutPage(false);
+    setContactPage(false);
+    setMediumPage(false);
+    setTickTackToePage(false);
+    setRPSPage(!rpsPage);
+    console.log('rps');
   };
 
   // Selected project
@@ -107,15 +125,21 @@ export default function App() {
         goToMediumPage={goToMediumPage}
         tickTackToePage={tickTackToePage}
         goToTickTackToePage={goToTickTackToePage}
+        goToRPSPage={goToRPSPage}
+        rpsPage={rpsPage}
       />
       <div className="content">
-        {!aboutPage && !contactPage && !mediumPage && !tickTackToePage && (
-          <Content
-            selectedProject={selectedProject}
-            selectedProjectId={selectedProjectId}
-            goToTickTackToePage={goToTickTackToePage}
-          />
-        )}
+        {!aboutPage &&
+          !contactPage &&
+          !mediumPage &&
+          !tickTackToePage &&
+          !rpsPage && (
+            <Content
+              selectedProject={selectedProject}
+              selectedProjectId={selectedProjectId}
+              goToTickTackToePage={goToTickTackToePage}
+            />
+          )}
         {aboutPage && <About />}
         {contactPage && <Contact />}
         {mediumPage && (
@@ -126,6 +150,7 @@ export default function App() {
           />
         )}
         {tickTackToePage && <TickTackToe />}
+        {rpsPage && <RPS />}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>

@@ -19,7 +19,7 @@ export default class Header extends Component {
             {this.props.aboutPage ? 'Home' : 'About'}
           </Button>
 
-          <NavDropdown title="More" className="nav-dropdown">
+          <NavDropdown title="More">
             <NavDropdown.Item
               className="btn-nav-black"
               onClick={this.props.goToMediumPage}
@@ -32,6 +32,13 @@ export default class Header extends Component {
             >
               {' '}
               {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
+            </NavDropdown.Item>
+            <NavDropdown.Item
+              className="btn-nav-danger"
+              onClick={this.props.goToRPSPage}
+            >
+              {' '}
+              {this.props.rpsPage ? 'Home' : 'RPS'}
             </NavDropdown.Item>
 
             <NavDropdown.Divider />
