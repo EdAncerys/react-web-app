@@ -8,6 +8,7 @@ export default function RPS() {
   const [computerRPSSelection, setComputerRPSSelection] = useState();
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
+  const [evenScore, setEvenScore] = useState(0);
   const [gameWinner, setGameWinner] = useState();
 
   const rps = {
@@ -21,19 +22,13 @@ export default function RPS() {
     const randomSelection =
       rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
     setComputerRPSSelection(randomSelection);
-    return randomSelection;
-  };
-
-  const scoreCount = () => {
-    if (gameWinner === 'User Wins') setUserScore(userScore + 1);
-    if (gameWinner === 'Computer Wins') setComputerScore(computerScore + 1);
   };
 
   const handleRPSClick = (e) => {
     const id = e.target.id;
     setUserRPSSelection(id);
-    setRPSWinner(id, computerSelection());
-    scoreCount();
+    computerSelection();
+    setRPSWinner(userRPSSelection, computerRPSSelection);
   };
 
   const setRPSWinner = (player, computer) => {
@@ -44,21 +39,26 @@ export default function RPS() {
       (player === 'scissors' && computer === 'scissors')
     ) {
       winner = 'Even Steven';
+      setEvenScore(evenScore + 1);
     } else if (
       (player === 'rock' && computer !== 'paper') ||
       (player === 'paper' && computer !== 'scissors') ||
       (player === 'scissors' && computer !== 'rock')
     ) {
       winner = 'User Wins';
-    } else winner = 'Computer Wins';
+      setUserScore(userScore + 1);
+    } else {
+      winner = 'Computer Wins';
+      setComputerScore(computerScore + 1);
+    }
     setGameWinner(winner);
   };
 
   return (
     <div className="rps-page-component">
       <h1 className="rps-header-text">Welcome to RPS</h1>
-      <p>
-        Player {userScore} : Computer {computerScore}
+      <p className="rps-main-text">
+        Player {userScore} & Computer {computerScore} & Even {evenScore}
       </p>
       <p className="rps-main-text">Pick Your Choice</p>
       <div className="rps-user-selection">
