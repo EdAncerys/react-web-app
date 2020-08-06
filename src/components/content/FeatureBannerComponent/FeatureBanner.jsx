@@ -6,7 +6,7 @@ export default class FeatureBanner extends Component {
   render() {
     return (
       <div className="feature-banner">
-        <div className="feature-banner-component">
+        <div className="feature-banner-component feature-content-2">
           <div className="feature-img-container">
             <img
               className="feature-img"
@@ -26,7 +26,7 @@ export default class FeatureBanner extends Component {
           </div>
         </div>
         <div
-          className="feature-banner-component"
+          className="feature-banner-component feature-banner-component-2"
           onClick={this.props.goToTickTackToePage}
         >
           <div className="feature-content">
@@ -38,11 +38,7 @@ export default class FeatureBanner extends Component {
             </p>
           </div>
           <div className="feature-img-container">
-            <img
-              className="feature-img"
-              alt="ThereAndBack"
-              src={TickTackToeImg}
-            />
+            <img className="feature-img" alt="TicTacToe" src={TickTackToeImg} />
           </div>
         </div>
       </div>
