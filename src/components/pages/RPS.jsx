@@ -22,27 +22,12 @@ export default function RPS() {
     gameWinner: gameWinner,
   };
 
-  const computerSelection = () => {
-    const rpsOptions = ['rock', 'paper', 'scissors'];
-    const randomSelection =
-      rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
-    setComputerRPSSelection(randomSelection);
-  };
-
-  const handleRPSClick = (e) => {
-    const id = e.target.id;
-    setUserRPSSelection(id);
-    computerSelection();
-    setRPSWinner(userRPSSelection, computerRPSSelection);
-  };
-
-  const resetGame = () => {
-    setUserRPSSelection();
-    setComputerRPSSelection();
-    setGameWinner();
-  };
+  // if (userRPSSelection) console.log(userRPSSelection, computerRPSSelection);
 
   const setRPSWinner = (player, computer) => {
+    // if (user) setGameWinner('Player Wins');
+    // if (computer) setGameWinner('Player Wins');
+    // console.log(user, computer);
     let winner;
     if (
       (player === 'rock' && computer === 'rock') ||
@@ -56,13 +41,33 @@ export default function RPS() {
       (player === 'paper' && computer !== 'scissors') ||
       (player === 'scissors' && computer !== 'rock')
     ) {
-      winner = 'User Wins';
+      winner = 'Player Wins';
       setUserScore(userScore + 1);
     } else {
       winner = 'Computer Wins';
       setComputerScore(computerScore + 1);
     }
     setGameWinner(winner);
+  };
+
+  const handleRPSClick = (e) => {
+    const id = e.target.id;
+    setUserRPSSelection(id);
+    setRPSWinner(id, computerSelection());
+  };
+
+  const computerSelection = () => {
+    const rpsOptions = ['rock', 'paper', 'scissors'];
+    const randomSelection =
+      rpsOptions[Math.floor(Math.random() * rpsOptions.length)];
+    setComputerRPSSelection(randomSelection);
+    return randomSelection;
+  };
+
+  const resetGame = () => {
+    setUserRPSSelection();
+    setComputerRPSSelection();
+    setGameWinner();
   };
 
   return (

@@ -3,9 +3,9 @@ import React from 'react';
 export default function GameWinnerContainer(props) {
   return (
     <React.Fragment>
-      <div className="rps-game-winner-container">
+      <div className="rps-game-winner-container" onClick={props.resetGame}>
         <p className="rps-main-text">{props.rps['gameWinner']}</p>
-        <div className="rps-vs-container" onClick={props.resetGame}>
+        <div className="rps-vs-container">
           <img
             id="scissors"
             src={props.rps[`${props.rps['userRPSSelection']}`]}
