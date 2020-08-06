@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Rock from '../../images/RPS/rock-min.png';
 import Paper from '../../images/RPS/paper-min.png';
 import Scissors from '../../images/RPS/scissors-min.png';
@@ -13,6 +13,33 @@ export default function RPS() {
   const [evenScore, setEvenScore] = useState(0);
   const [gameWinner, setGameWinner] = useState();
 
+  // Save state to local storage
+  const LOCAL_STORAGE_KEY = 'EdAncerys.RPS';
+  const saveToLocalStorage = {
+    userRPSSelection: userRPSSelection,
+    computerRPSSelection: computerRPSSelection,
+    userScore: userScore,
+    computerScore: computerScore,
+    evenScore: evenScore,
+    gameWinner: gameWinner,
+  };
+
+  useEffect(() => {
+    const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedToJSON != null) {
+      setUserRPSSelection(JSON.parse(savedToJSON)['userRPSSelection']);
+      setComputerRPSSelection(JSON.parse(savedToJSON)['computerRPSSelection']);
+      setUserScore(JSON.parse(savedToJSON)['userScore']);
+      setComputerScore(JSON.parse(savedToJSON)['computerScore']);
+      setEvenScore(JSON.parse(savedToJSON)['evenScore']);
+      setGameWinner(JSON.parse(savedToJSON)['gameWinner']);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(saveToLocalStorage));
+  }, [saveToLocalStorage]);
+
   const rps = {
     rock: Rock,
     paper: Paper,
@@ -22,12 +49,7 @@ export default function RPS() {
     gameWinner: gameWinner,
   };
 
-  // if (userRPSSelection) console.log(userRPSSelection, computerRPSSelection);
-
   const setRPSWinner = (player, computer) => {
-    // if (user) setGameWinner('Player Wins');
-    // if (computer) setGameWinner('Player Wins');
-    // console.log(user, computer);
     let winner;
     if (
       (player === 'rock' && computer === 'rock') ||
