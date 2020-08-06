@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Rock from '../../images/RPS/rock-min.png';
 import Paper from '../../images/RPS/paper-min.png';
 import Scissors from '../../images/RPS/scissors-min.png';
+import PlayerChoiceComponent from '../content/RPSComponent/PlayerChoiceComponent';
 
 export default function RPS() {
   const [userRPSSelection, setUserRPSSelection] = useState();
@@ -60,30 +61,7 @@ export default function RPS() {
       <p className="rps-main-text">
         Player {userScore} & Computer {computerScore} & Even {evenScore}
       </p>
-      <p className="rps-main-text">Pick Your Choice</p>
-      <div className="rps-user-selection">
-        <img
-          id="rock"
-          src={Rock}
-          className="rps-img"
-          alt="rock-img"
-          onClick={(e) => handleRPSClick(e)}
-        ></img>
-        <img
-          id="paper"
-          src={Paper}
-          className="rps-img"
-          alt="paper-img"
-          onClick={(e) => handleRPSClick(e)}
-        ></img>
-        <img
-          id="scissors"
-          src={Scissors}
-          className="rps-img"
-          alt="scissors-img"
-          onClick={(e) => handleRPSClick(e)}
-        ></img>
-      </div>
+      <PlayerChoiceComponent rps={rps} handleRPSClick={handleRPSClick} />
       <div className="rps-game-winner-container">
         <p className="rps-main-text">{gameWinner}</p>
         <div className="rps-vs-container">
