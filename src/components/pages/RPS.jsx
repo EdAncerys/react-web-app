@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Peter from '../../images/TickTackToe/TileBoards/Peter-min.png';
+import Rock from '../../images/RPS/rock-min.png';
+import Paper from '../../images/RPS/paper-min.png';
+import Scissors from '../../images/RPS/scissors-min.png';
 
 export default function RPS() {
   const [userRPSSelection, setUserRPSSelection] = useState();
@@ -55,21 +57,21 @@ export default function RPS() {
       <div className="rps-user-selection">
         <img
           id="rock"
-          src={Peter}
+          src={Rock}
           className="rps-img"
           alt="rock-img"
           onClick={(e) => handleRPSClick(e)}
         ></img>
         <img
           id="paper"
-          src={Peter}
+          src={Paper}
           className="rps-img"
           alt="paper-img"
           onClick={(e) => handleRPSClick(e)}
         ></img>
         <img
           id="scissors"
-          src={Peter}
+          src={Scissors}
           className="rps-img"
           alt="scissors-img"
           onClick={(e) => handleRPSClick(e)}
