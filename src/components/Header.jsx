@@ -34,7 +34,7 @@ export default class Header extends Component {
               {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
             </NavDropdown.Item>
             <NavDropdown.Item
-              className="btn-nav-blue"
+              className="btn-nav-danger"
               onClick={this.props.goToRPSPage}
             >
               {' '}
