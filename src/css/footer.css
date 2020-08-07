@@ -18,3 +18,10 @@
   cursor: pointer;
   color: hsl(0, 100%, 50%);
 }
+
+.linked-in-logo {
+  cursor: pointer;
+  width: 25px;
+  margin-top: 12.5px;
+  align-self: flex-start;
+}

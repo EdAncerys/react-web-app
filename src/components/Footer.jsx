@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LinkedIn from '../images/LI-In-Bug.png';
 
 export default class Footer extends Component {
   constructor(props) {
@@ -24,6 +25,14 @@ export default class Footer extends Component {
           <p onClick={this.props.goToContactPage} className="hire-me">
             Hire Me
           </p>
+          <img
+            className="linked-in-logo"
+            alt="LinkedIn"
+            src={LinkedIn}
+            onClick={() =>
+              window.open('https://www.linkedin.com/in/ancerys/', '_blank')
+            }
+          />
         </React.Fragment>
         <React.Fragment>
           <p>{this.state.date}</p>
