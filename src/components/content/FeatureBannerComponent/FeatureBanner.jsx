@@ -24,7 +24,15 @@ export default class FeatureBanner extends Component {
             <img className="feature-img" alt="TicTacToe" src={Rock} />
           </div>
         </div>
-        <div className="feature-banner-component feature-content-2">
+        <div
+          className="feature-banner-component feature-content-2"
+          onClick={() =>
+            window.open(
+              'https://github.com/AndrewHulme/route_planner',
+              '_blank'
+            )
+          }
+        >
           <div className="feature-img-container">
             <img
               className="feature-img"
