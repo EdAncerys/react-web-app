@@ -21,7 +21,10 @@ export default function App() {
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
+  const timeSaved = new Date().getTime();
+
   const saveToLocalStorage = {
+    timeSaved: timeSaved,
     aboutPage: aboutPage,
     contactPage: contactPage,
     mediumPage: mediumPage,
@@ -31,9 +34,18 @@ export default function App() {
     selectedArticleId: selectedArticleId,
   };
 
+  const validateLocalStorage = () => {
+    const hours = 1;
+    const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const savedTimeToJSON = JSON.parse(savedToJSON).timeSaved;
+    if (new Date().getTime() - savedTimeToJSON > hours * 60 * 60 * 1000)
+      return false;
+    else return true;
+  };
+
   useEffect(() => {
     const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedToJSON != null) {
+    if (savedToJSON != null && validateLocalStorage()) {
       setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
       setContactPage(JSON.parse(savedToJSON)['contactPage']);
       setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
@@ -41,7 +53,7 @@ export default function App() {
       setTickTackToePage(JSON.parse(savedToJSON)['tickTackToePage']);
       setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
       setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
-    }
+    } else localStorage.clear();
   }, []);
 
   useEffect(() => {

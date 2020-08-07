@@ -64,7 +64,10 @@ export default function TickTackToe() {
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.TickTackToe';
+  const timeSaved = new Date().getTime();
+
   const saveToLocalStorage = {
+    timeSaved: timeSaved,
     takenTiles: takenTiles,
     playerOneTiles: playerOneTiles,
     playerTwoTiles: playerTwoTiles,
@@ -85,9 +88,18 @@ export default function TickTackToe() {
     playerTwoWins: playerTwoWins,
   };
 
+  const validateLocalStorage = () => {
+    const hours = 1;
+    const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const savedTimeToJSON = JSON.parse(savedToJSON).timeSaved;
+    if (new Date().getTime() - savedTimeToJSON > hours * 60 * 60 * 1000)
+      return false;
+    else return true;
+  };
+
   useEffect(() => {
     const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedToJSON != null) {
+    if (savedToJSON != null && validateLocalStorage()) {
       setTakenTiles(JSON.parse(savedToJSON)['takenTiles']);
       setPlayerOneTiles(JSON.parse(savedToJSON)['playerOneTiles']);
       setPlayerTwoTiles(JSON.parse(savedToJSON)['playerTwoTiles']);
@@ -106,7 +118,7 @@ export default function TickTackToe() {
       setPlayerTwoChoice(JSON.parse(savedToJSON)['playerTwoChoice']);
       setPlayerOneWins(JSON.parse(savedToJSON)['playerOneWins']);
       setPlayerTwoWins(JSON.parse(savedToJSON)['playerTwoWins']);
-    }
+    } else localStorage.clear();
   }, []);
 
   useEffect(() => {

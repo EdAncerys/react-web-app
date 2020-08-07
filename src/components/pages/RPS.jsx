@@ -15,7 +15,10 @@ export default function RPS() {
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.RPS';
+  const timeSaved = new Date().getTime();
+
   const saveToLocalStorage = {
+    timeSaved: timeSaved,
     userRPSSelection: userRPSSelection,
     computerRPSSelection: computerRPSSelection,
     userScore: userScore,
@@ -24,16 +27,25 @@ export default function RPS() {
     gameWinner: gameWinner,
   };
 
+  const validateLocalStorage = () => {
+    const hours = 1;
+    const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const savedTimeToJSON = JSON.parse(savedToJSON).timeSaved;
+    if (new Date().getTime() - savedTimeToJSON > hours * 60 * 60 * 1000)
+      return false;
+    else return true;
+  };
+
   useEffect(() => {
     const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedToJSON != null) {
+    if (savedToJSON != null && validateLocalStorage()) {
       setUserRPSSelection(JSON.parse(savedToJSON)['userRPSSelection']);
       setComputerRPSSelection(JSON.parse(savedToJSON)['computerRPSSelection']);
       setUserScore(JSON.parse(savedToJSON)['userScore']);
       setComputerScore(JSON.parse(savedToJSON)['computerScore']);
       setEvenScore(JSON.parse(savedToJSON)['evenScore']);
       setGameWinner(JSON.parse(savedToJSON)['gameWinner']);
-    }
+    } else localStorage.clear();
   }, []);
 
   useEffect(() => {
