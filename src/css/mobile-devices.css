@@ -43,6 +43,7 @@
     flex-direction: row;
     flex-flow: row wrap;
     justify-content: center;
+    align-self: center;
   }
 
   .selection-title {
