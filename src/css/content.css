@@ -11,7 +11,7 @@
   justify-content: center;
   height: 50vh;
   width: 100vw;
-  padding-top: 5vh;
+  padding: 5vh 0 5vh 0;
   background-color: #004db5;
 }
 
@@ -23,7 +23,7 @@
 .selection-banner {
   display: flex;
   flex-direction: column;
-  align-self: flex-start;
+  /* align-self: flex-start; */
   flex-shrink: 0;
   padding: 1rem;
   overflow: auto;
