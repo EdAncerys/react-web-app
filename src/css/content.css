@@ -4,12 +4,20 @@
   align-items: center;
   min-height: 80vh;
   width: 90vw;
-  margin-top: 2vh;
 }
 
 .landing-banner {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100vw;
+  padding-top: 5vh;
+  background-color: #004db5;
+}
+
+.landing-banner *,
+.landing-banner a:hover {
+  color: #fff;
 }
 
 .selection-banner {
@@ -26,14 +34,13 @@
   flex-direction: column;
   align-items: center;
   text-align: justify;
-  max-height: 50vh;
   max-width: 800px;
   flex-grow: 1;
   padding: 1rem;
   overflow: auto;
 }
 
-.feature-banner {
+.feature-banner-component {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -41,10 +48,15 @@
   cursor: pointer;
 }
 
+.feature-banner {
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 0 5vh 0;
+}
+
 .feature-img-container {
   width: 200px;
   height: 200px;
-  border-radius: 50%;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -54,6 +66,6 @@
   flex-direction: column;
   flex-grow: 1;
   text-align: justify;
-  padding: 1rem;
+  margin: 5vh;
   overflow: auto;
 }

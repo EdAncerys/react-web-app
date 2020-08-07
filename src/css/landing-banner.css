@@ -5,8 +5,8 @@
   line-height: 1rem;
 }
 
-.project-name:hover {
-  color: hsl(200, 100%, 35%);
+.project-name:hover,
+.link:hover {
   transition: all 0.5s;
   transform: scale(0.98);
 }

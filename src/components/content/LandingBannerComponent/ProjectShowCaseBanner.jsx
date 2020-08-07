@@ -33,10 +33,18 @@ export default class ProjectShowCaseBanner extends Component {
               website, so the best place to ﬁnd out what I'm currently working
               on - is my GitHub portfolio.
             </p>
-            <a target="blank" href="https://github.com/EdAncerys">
+            <a
+              className="link"
+              target="blank"
+              href="https://github.com/EdAncerys"
+            >
               GitHub portfolio
             </a>
-            <a target="blank" href="https://www.linkedin.com/in/ancerys/">
+            <a
+              className="link"
+              target="blank"
+              href="https://www.linkedin.com/in/ancerys/"
+            >
               LinkedIn
             </a>
           </div>
