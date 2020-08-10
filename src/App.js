@@ -49,14 +49,14 @@ export default function App() {
   useEffect(() => {
     const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (savedToJSON != null && validateLocalStorage()) {
-      setAboutPage(JSON.parse(savedToJSON)['aboutPage']);
-      setContactPage(JSON.parse(savedToJSON)['contactPage']);
-      setMediumPage(JSON.parse(savedToJSON)['mediumPage']);
-      setRPSPage(JSON.parse(savedToJSON)['rpsPage']);
+      setAboutPage(JSON.parse(savedToJSON).aboutPage);
+      setContactPage(JSON.parse(savedToJSON).contactPage);
+      setMediumPage(JSON.parse(savedToJSON).mediumPage);
+      setRPSPage(JSON.parse(savedToJSON).rpsPage);
       setHangManPage(JSON.parse(savedToJSON).hangManPage);
-      setTickTackToePage(JSON.parse(savedToJSON)['tickTackToePage']);
-      setSelectedProjectId(JSON.parse(savedToJSON)['selectedProjectId']);
-      setSelectedArticleId(JSON.parse(savedToJSON)['selectedArticleId']);
+      setTickTackToePage(JSON.parse(savedToJSON).tickTackToePage);
+      setSelectedProjectId(JSON.parse(savedToJSON).selectedProjectId);
+      setSelectedArticleId(JSON.parse(savedToJSON).selectedArticleId);
     } else localStorage.clear();
   }, []);
 
