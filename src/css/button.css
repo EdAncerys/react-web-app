@@ -91,3 +91,12 @@
   color: hsl(0, 0%, 100%);
   background-color: hsl(0, 100%, 35%);
 }
+
+.btn-nav-gray {
+  color: hsl(200, 100%, 50%);
+}
+
+.btn-nav-gray:hover {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 75%);
+}
