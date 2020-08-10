@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Content from './components/Content';
@@ -8,12 +9,13 @@ import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
 import TickTackToe from './components/pages/TickTackToe';
 import RPS from './components/pages/RPS';
-import './css/App.css';
+import HangMan from './components/pages/HangMan';
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
   const [mediumPage, setMediumPage] = useState(false);
+  const [hangManPage, setHangManPage] = useState(false);
   const [rpsPage, setRPSPage] = useState(false);
   const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
@@ -67,6 +69,7 @@ export default function App() {
     setMediumPage(false);
     setTickTackToePage(false);
     setRPSPage(false);
+    setHangManPage(false);
   };
 
   const goToAboutPage = () => {
@@ -75,6 +78,7 @@ export default function App() {
     setMediumPage(false);
     setTickTackToePage(false);
     setRPSPage(false);
+    setHangManPage(false);
   };
 
   const goToContactPage = () => {
@@ -83,6 +87,7 @@ export default function App() {
     setMediumPage(false);
     setTickTackToePage(false);
     setRPSPage(false);
+    setHangManPage(false);
   };
 
   const goToMediumPage = () => {
@@ -91,6 +96,7 @@ export default function App() {
     setMediumPage(!mediumPage);
     setTickTackToePage(false);
     setRPSPage(false);
+    setHangManPage(false);
   };
 
   const goToMediumPreviewPage = () => {
@@ -104,6 +110,7 @@ export default function App() {
     setMediumPage(false);
     setTickTackToePage(!tickTackToePage);
     setRPSPage(false);
+    setHangManPage(false);
   };
 
   const goToRPSPage = () => {
@@ -112,7 +119,16 @@ export default function App() {
     setMediumPage(false);
     setTickTackToePage(false);
     setRPSPage(!rpsPage);
-    console.log('rps');
+    setHangManPage(false);
+  };
+
+  const goToHangManPage = () => {
+    setAboutPage(false);
+    setContactPage(false);
+    setMediumPage(false);
+    setTickTackToePage(false);
+    setRPSPage(false);
+    setHangManPage(!hangManPage);
   };
 
   // Selected project
@@ -139,13 +155,16 @@ export default function App() {
         goToTickTackToePage={goToTickTackToePage}
         goToRPSPage={goToRPSPage}
         rpsPage={rpsPage}
+        goToHangManPage={goToHangManPage}
+        hangManPage={hangManPage}
       />
       <div className="content">
         {!aboutPage &&
           !contactPage &&
           !mediumPage &&
           !tickTackToePage &&
-          !rpsPage && (
+          !rpsPage &&
+          !hangManPage && (
             <Content
               selectedProject={selectedProject}
               selectedProjectId={selectedProjectId}
@@ -164,6 +183,7 @@ export default function App() {
         )}
         {tickTackToePage && <TickTackToe />}
         {rpsPage && <RPS />}
+        {hangManPage && <HangMan />}
       </div>
       <Footer goToContactPage={goToContactPage} />
     </div>

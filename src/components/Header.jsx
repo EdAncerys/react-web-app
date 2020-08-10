@@ -40,6 +40,13 @@ export default class Header extends Component {
               {' '}
               {this.props.rpsPage ? 'Home' : 'RPS'}
             </NavDropdown.Item>
+            <NavDropdown.Item
+              className="btn-nav-black"
+              onClick={this.props.goToHangManPage}
+            >
+              {' '}
+              {this.props.hangManPage ? 'Home' : 'Hang Man'}
+            </NavDropdown.Item>
 
             <NavDropdown.Divider />
             <NavDropdown.Item
