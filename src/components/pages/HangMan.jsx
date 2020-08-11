@@ -21,42 +21,22 @@ export default function HangMan() {
       const letter = key.toLowerCase();
 
       if (keyCode >= 65 && keyCode <= 90) {
-        if (
-          selectedWord.split('').includes(letter) &&
-          !correctLetters.includes(letter)
-        ) {
-          setCorrectLetters([...correctLetters, letter]);
-        } else if (
-          !selectedWord.split('').includes(letter) &&
-          !wrongLetters.includes(letter)
-        ) {
-          setWrongLetters([...wrongLetters, letter]);
-        } else if (correctLetters.includes(letter)) {
-          console.log('correct guessed already');
-        } else if (wrongLetters.includes(letter)) {
-          console.log('wrong guessed already');
+        if (selectedWord.includes(letter)) {
+          if (!correctLetters.includes(letter)) {
+            setCorrectLetters([...correctLetters, letter]);
+          } else {
+            // show(setShowNotification);
+            console.log(`No letter ${letter}`);
+          }
         } else {
-          console.log('error');
+          if (!wrongLetters.includes(letter)) {
+            setWrongLetters([...wrongLetters, letter]);
+          } else {
+            // show(setShowNotification);
+            console.log(`Letter not correct ${letter}`);
+          }
         }
       }
-      console.log(correctLetters, wrongLetters);
-      // if (keyCode >= 65 && keyCode <= 90) {
-      //   if (selectedWord.includes(letter)) {
-      //     if (!correctLetters.includes(letter)) {
-      //       setCorrectLetters(letter);
-      //     } else {
-      //       // show(setShowNotification);
-      //       console.log(`No letter ${letter}`);
-      //     }
-      //   } else {
-      //     if (!wrongLetters.includes(letter)) {
-      //       setWrongLetters([...wrongLetters, letter]);
-      //     } else {
-      //       // show(setShowNotification);
-      //       console.log(`Letter not correct ${letter}`);
-      //     }
-      //   }
-      // }
     };
     window.addEventListener('keydown', handleKeydown);
 
