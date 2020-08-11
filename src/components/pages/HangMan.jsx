@@ -7,10 +7,11 @@ export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [onHover, setOnHover] = useState(false);
+  const [playable, setPlayable] = useState(true);
 
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
-  const selectedWord = 'world';
+  const selectedWord = 'hello';
   const toggleHover = () => {
     setOnHover(!onHover);
   };
@@ -21,14 +22,14 @@ export default function HangMan() {
       const letter = key.toLowerCase();
 
       if (keyCode >= 65 && keyCode <= 90) {
-        if (selectedWord.includes(letter)) {
+        if (playable && selectedWord.includes(letter)) {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters([...correctLetters, letter]);
           } else {
             // show(setShowNotification);
             console.log(`No letter ${letter}`);
           }
-        } else {
+        } else if (playable) {
           if (!wrongLetters.includes(letter)) {
             setWrongLetters([...wrongLetters, letter]);
           } else {
@@ -40,8 +41,13 @@ export default function HangMan() {
     };
     window.addEventListener('keydown', handleKeydown);
 
+    if (
+      selectedWord.split('').every((letter) => correctLetters.includes(letter))
+    )
+      setPlayable(false);
+
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [correctLetters, wrongLetters]);
+  }, [correctLetters, wrongLetters, playable]);
 
   return (
     <div style={styles.page}>
@@ -51,7 +57,9 @@ export default function HangMan() {
         onMouseLeave={toggleHover}
       >
         Welcome To The Hang Man Game
+        {playable}
       </h1>
+
       <Figure wrongLetters={wrongLetters} />
       <WrongLetters
         correctLetters={correctLetters}
