@@ -57,36 +57,48 @@ export default function HangMan() {
   }, [correctLetters, wrongLetters, playable]);
 
   return (
-    <div style={styles.page}>
-      <h1
-        style={!onHover ? styles.mainText : styles.textOnHover}
-        onMouseEnter={toggleHover}
-        onMouseLeave={toggleHover}
-      >
-        Welcome To The Hang Man Game
-        {playable}
-      </h1>
+    <div style={styles.pageContainer}>
+      <div style={styles.figureContainer}>
+        <p
+          style={!onHover ? styles.mainText : styles.textOnHover}
+          onMouseEnter={toggleHover}
+          onMouseLeave={toggleHover}
+        >
+          Welcome To The Hang Man Game
+          {playable}
+        </p>
 
-      <Figure wrongLetters={wrongLetters} />
-      <WrongLetters wrongLetters={wrongLetters} winner={winner} />
-      <Word
-        selectedWord={selectedWord}
-        correctLetters={correctLetters}
-        wrongLetters={wrongLetters}
-        game={game}
-      />
+        <Figure wrongLetters={wrongLetters} />
+      </div>
+      <div>
+        <WrongLetters wrongLetters={wrongLetters} winner={winner} />
+        <Word
+          selectedWord={selectedWord}
+          correctLetters={correctLetters}
+          wrongLetters={wrongLetters}
+          game={game}
+        />
+      </div>
     </div>
   );
 }
 
 const styles = {
-  page: {
+  mainText: {
+    color: '#546677',
+    fontSize: 'x-large',
+    fontWeight: '600',
+  },
+  pageContainer: {
+    display: 'grid',
+    gridTemplateColumns: '2fr 1fr',
     minHeight: '80vh',
     width: '100vw',
-    backgroundColor: 'gray',
+    backgroundColor: 'hsl(0, 0%, 75%)',
+    padding: '5vw',
   },
-  mainText: {
-    color: '#fff',
+  figureContainer: {
+    paddingRight: '1rem',
   },
   textOnHover: {
     color: 'tomato',
