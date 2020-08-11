@@ -6,7 +6,6 @@ import WrongLetters from '../content/HangManComponent/WrongLetters';
 export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [onHover, setOnHover] = useState(false);
   const [playable, setPlayable] = useState(true);
   const [winner, setWinner] = useState();
   const [game, setGame] = useState(0);
@@ -14,6 +13,13 @@ export default function HangMan() {
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
   const selectedWord = 'hello';
+
+  const startNewGame = () => {
+    setWinner();
+    setCorrectLetters([]);
+    setWrongLetters([]);
+    setPlayable(true);
+  };
 
   useEffect(() => {
     const handleKeydown = (event) => {
@@ -57,9 +63,7 @@ export default function HangMan() {
     <React.Fragment>
       <div style={styles.pageContainer}>
         <div style={styles.headerContainer}>
-          <p style={!onHover ? styles.mainText : styles.textOnHover}>
-            Welcome To The Hang Man Game
-          </p>
+          <p>Welcome To The Hang Man Game</p>
         </div>
         <div style={styles.figureContainer}>
           <Figure wrongLetters={wrongLetters} />
@@ -72,6 +76,15 @@ export default function HangMan() {
             wrongLetters={wrongLetters}
             game={game}
           />
+        </div>
+        <div style={styles.headerContainer}>
+          <div
+            onClick={startNewGame}
+            className="btn btn-danger"
+            variant="danger"
+          >
+            Start Again
+          </div>
         </div>
       </div>
     </React.Fragment>
@@ -105,5 +118,6 @@ const styles = {
   },
   sideContainer: {
     justifySelf: 'left',
+    gridTemplateRows: '50, auto',
   },
 };
