@@ -4,13 +4,14 @@ export default function Word({ selectedWord, correctLetters }) {
   return (
     <div style={styles.container}>
       <p style={styles.whiteText}>Guess The Word</p>
+      {selectedWord} {correctLetters} <br />
       {selectedWord.split('').map((letter, i) => {
         return (
           <span
             style={{ ...styles.guessWordText, ...styles.whiteText }}
             key={i}
           >
-            {correctLetters.includes(letter) ? { letter } : '_'}
+            {/* {correctLetters.includes(letter) ? { letter } : '_'} */}
           </span>
         );
       })}

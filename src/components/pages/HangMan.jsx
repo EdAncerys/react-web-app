@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Figure from '../content/HangManComponent/Figure';
 import Word from '../content/HangManComponent/Word';
+import WrongLetters from '../content/HangManComponent/WrongLetters';
 
 export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [onHover, setOnHover] = useState(false);
 
-  const gameWords = ['rock', 'paper', 'scissors'];
-  const selectedWord = gameWords[Math.floor(Math.random() * gameWords.length)];
-
+  const gameWords = ['hello', 'world'];
+  const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
+  const selectedWord = 'world';
   const toggleHover = () => {
     setOnHover(!onHover);
   };
@@ -17,24 +18,45 @@ export default function HangMan() {
   useEffect(() => {
     const handleKeydown = (event) => {
       const { key, keyCode } = event;
+      const letter = key.toLowerCase();
+
       if (keyCode >= 65 && keyCode <= 90) {
-        const letter = key.toLowerCase();
-        if (selectedWord.includes(letter)) {
-          if (!correctLetters.includes(letter)) {
-            setCorrectLetters((currentLetters) => [...currentLetters, letter]);
-          } else {
-            // show(setShowNotification);
-            console.log(`No letter ${letter}`);
-          }
+        if (
+          selectedWord.split('').includes(letter) &&
+          !correctLetters.includes(letter)
+        ) {
+          setCorrectLetters([...correctLetters, letter]);
+        } else if (
+          !selectedWord.split('').includes(letter) &&
+          !wrongLetters.includes(letter)
+        ) {
+          setWrongLetters([...wrongLetters, letter]);
+        } else if (correctLetters.includes(letter)) {
+          console.log('correct guessed already');
+        } else if (wrongLetters.includes(letter)) {
+          console.log('wrong guessed already');
         } else {
-          if (!wrongLetters.includes(letter)) {
-            setWrongLetters((currentLetters) => [...currentLetters, letter]);
-          } else {
-            // show(setShowNotification);
-            console.log(`Letter not correct ${letter}`);
-          }
+          console.log('error');
         }
       }
+      console.log(correctLetters, wrongLetters);
+      // if (keyCode >= 65 && keyCode <= 90) {
+      //   if (selectedWord.includes(letter)) {
+      //     if (!correctLetters.includes(letter)) {
+      //       setCorrectLetters(letter);
+      //     } else {
+      //       // show(setShowNotification);
+      //       console.log(`No letter ${letter}`);
+      //     }
+      //   } else {
+      //     if (!wrongLetters.includes(letter)) {
+      //       setWrongLetters([...wrongLetters, letter]);
+      //     } else {
+      //       // show(setShowNotification);
+      //       console.log(`Letter not correct ${letter}`);
+      //     }
+      //   }
+      // }
     };
     window.addEventListener('keydown', handleKeydown);
 
@@ -51,7 +73,15 @@ export default function HangMan() {
         This is a Hang Man Game Page
       </h1>
       <Figure wrongLetters={wrongLetters} />
-      <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+      <WrongLetters
+        correctLetters={correctLetters}
+        wrongLetters={wrongLetters}
+      />
+      <Word
+        selectedWord={selectedWord}
+        correctLetters={correctLetters}
+        wrongLetters={wrongLetters}
+      />
     </div>
   );
 }
