@@ -8,6 +8,8 @@ export default function HangMan() {
   const [wrongLetters, setWrongLetters] = useState([]);
   const [onHover, setOnHover] = useState(false);
   const [playable, setPlayable] = useState(true);
+  const [winner, setWinner] = useState();
+  const [game, setGame] = useState(0);
 
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
@@ -43,9 +45,14 @@ export default function HangMan() {
 
     if (
       selectedWord.split('').every((letter) => correctLetters.includes(letter))
-    )
+    ) {
       setPlayable(false);
-
+      setWinner(true);
+      setGame(game + 1);
+    } else if (wrongLetters.length > 5) {
+      setPlayable(false);
+      setWinner(false);
+    }
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [correctLetters, wrongLetters, playable]);
 
@@ -61,14 +68,12 @@ export default function HangMan() {
       </h1>
 
       <Figure wrongLetters={wrongLetters} />
-      <WrongLetters
-        correctLetters={correctLetters}
-        wrongLetters={wrongLetters}
-      />
+      <WrongLetters wrongLetters={wrongLetters} winner={winner} />
       <Word
         selectedWord={selectedWord}
         correctLetters={correctLetters}
         wrongLetters={wrongLetters}
+        game={game}
       />
     </div>
   );

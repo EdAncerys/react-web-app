@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WrongLetters({ wrongLetters, correctLetters }) {
+export default function WrongLetters({ wrongLetters, winner, game }) {
   const handleMessage = () => {
     let textPrint;
     if (!wrongLetters.length > 0) textPrint = wrongLetters;
@@ -11,14 +11,22 @@ export default function WrongLetters({ wrongLetters, correctLetters }) {
   return (
     <div style={styles.container}>
       <p style={styles.whiteText}>Wrong Letters Guessed</p>
-      <p style={styles.guessWordText}>
-        {!wrongLetters.length > 0 ? 'Have No Wrong Attempts' : wrongLetters}
-      </p>
-      {}
-      {wrongLetters.length > 0 && (
-        <p style={styles.guessWordText}>
-          {`You have ${6 - wrongLetters.length} atempts left`}
-        </p>
+      {!winner && (
+        <React.Fragment>
+          <p style={styles.guessWordText}>
+            {!wrongLetters.length > 0 ? 'Have No Wrong Attempts' : wrongLetters}
+          </p>
+          {wrongLetters.length > 0 && (
+            <p style={styles.guessWordText}>
+              {`You have ${6 - wrongLetters.length} attempts left`}
+            </p>
+          )}
+        </React.Fragment>
+      )}
+      {winner && (
+        <React.Fragment>
+          <p style={styles.whiteText}>You Won!</p>
+        </React.Fragment>
       )}
     </div>
   );

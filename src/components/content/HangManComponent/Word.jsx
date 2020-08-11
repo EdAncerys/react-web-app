@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Word({ selectedWord, correctLetters }) {
+export default function Word({ selectedWord, correctLetters, game }) {
   return (
     <div style={styles.container}>
       <p style={styles.whiteText}>Guess The Word</p>
@@ -15,6 +15,7 @@ export default function Word({ selectedWord, correctLetters }) {
           </span>
         );
       })}
+      {game > 0 && <p style={styles.whiteText}>{`You won ${game} games`}</p>}
     </div>
   );
 }
