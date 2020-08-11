@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Figure() {
-  const errors = 6;
+export default function Figure({ wrongLetters }) {
+  const errors = wrongLetters.length;
 
   return (
     <div>
