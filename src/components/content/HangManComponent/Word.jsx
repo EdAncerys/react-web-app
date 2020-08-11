@@ -3,8 +3,8 @@ import React from 'react';
 export default function Word({ selectedWord, correctLetters }) {
   return (
     <div style={styles.container}>
-      <p style={styles.whiteText}>Word container</p>
-      {selectedWord} {correctLetters} <br />
+      <p style={styles.whiteText}>Guess The Word</p>
+
       {selectedWord.split('').map((letter, i) => {
         return (
           <span

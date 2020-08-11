@@ -50,7 +50,7 @@ export default function HangMan() {
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
       >
-        This is a Hang Man Game Page
+        Welcome To The Hang Man Game
       </h1>
       <Figure wrongLetters={wrongLetters} />
       <WrongLetters

@@ -1,15 +1,25 @@
 import React from 'react';
 
 export default function WrongLetters({ wrongLetters, correctLetters }) {
+  const handleMessage = () => {
+    let textPrint;
+    if (!wrongLetters.length > 0) textPrint = wrongLetters;
+    else textPrint = 'Looking Promising...';
+    return textPrint;
+  };
+
   return (
     <div style={styles.container}>
-      <p style={styles.whiteText}>Wron Letters container</p>
+      <p style={styles.whiteText}>Wrong Letters Guessed</p>
       <p style={styles.guessWordText}>
-        {!wrongLetters.length > 0 ? 'No atempts' : wrongLetters}
+        {!wrongLetters.length > 0 ? 'Have No Wrong Attempts' : wrongLetters}
       </p>
-      <p style={styles.guessWordText}>
-        {!correctLetters.length > 0 ? 'No atempts' : correctLetters}
-      </p>
+      {}
+      {wrongLetters.length > 0 && (
+        <p style={styles.guessWordText}>
+          {`You have ${6 - wrongLetters.length} atempts left`}
+        </p>
+      )}
     </div>
   );
 }
