@@ -14,9 +14,6 @@ export default function HangMan() {
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
   const selectedWord = 'hello';
-  const toggleHover = () => {
-    setOnHover(!onHover);
-  };
 
   useEffect(() => {
     const handleKeydown = (event) => {
@@ -57,29 +54,27 @@ export default function HangMan() {
   }, [correctLetters, wrongLetters, playable]);
 
   return (
-    <div style={styles.pageContainer}>
-      <div style={styles.figureContainer}>
-        <p
-          style={!onHover ? styles.mainText : styles.textOnHover}
-          onMouseEnter={toggleHover}
-          onMouseLeave={toggleHover}
-        >
-          Welcome To The Hang Man Game
-          {playable}
-        </p>
-
-        <Figure wrongLetters={wrongLetters} />
+    <React.Fragment>
+      <div style={styles.pageContainer}>
+        <div style={styles.headerContainer}>
+          <p style={!onHover ? styles.mainText : styles.textOnHover}>
+            Welcome To The Hang Man Game
+          </p>
+        </div>
+        <div style={styles.figureContainer}>
+          <Figure wrongLetters={wrongLetters} />
+        </div>
+        <div style={styles.sideContainer}>
+          <WrongLetters wrongLetters={wrongLetters} winner={winner} />
+          <Word
+            selectedWord={selectedWord}
+            correctLetters={correctLetters}
+            wrongLetters={wrongLetters}
+            game={game}
+          />
+        </div>
       </div>
-      <div>
-        <WrongLetters wrongLetters={wrongLetters} winner={winner} />
-        <Word
-          selectedWord={selectedWord}
-          correctLetters={correctLetters}
-          wrongLetters={wrongLetters}
-          game={game}
-        />
-      </div>
-    </div>
+    </React.Fragment>
   );
 }
 
@@ -88,6 +83,10 @@ const styles = {
     color: '#546677',
     fontSize: 'x-large',
     fontWeight: '600',
+  },
+  headerContainer: {
+    gridColumn: '1/3',
+    justifySelf: 'center',
   },
   pageContainer: {
     display: 'grid',
@@ -99,8 +98,12 @@ const styles = {
   },
   figureContainer: {
     paddingRight: '1rem',
+    justifySelf: 'center',
   },
   textOnHover: {
     color: 'tomato',
+  },
+  sideContainer: {
+    justifySelf: 'left',
   },
 };

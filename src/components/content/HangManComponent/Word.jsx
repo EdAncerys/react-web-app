@@ -3,14 +3,11 @@ import React from 'react';
 export default function Word({ selectedWord, correctLetters, game }) {
   return (
     <div style={styles.container}>
-      <p style={styles.whiteText}>Guess The Word</p>
+      <p style={styles.mainText}>Guess The Word</p>
 
       {selectedWord.split('').map((letter, i) => {
         return (
-          <span
-            style={{ ...styles.guessWordText, ...styles.whiteText }}
-            key={i}
-          >
+          <span style={styles.mainText} key={i}>
             {correctLetters.includes(letter) ? letter : '_'}
           </span>
         );
@@ -23,14 +20,14 @@ export default function Word({ selectedWord, correctLetters, game }) {
 const styles = {
   container: {
     width: '100%',
-    height: 200,
-    backgroundColor: 'blue',
+    height: '30vh',
   },
   whiteText: {
     color: '#fff',
   },
-  guessWordText: {
+  mainText: {
+    color: '#546677',
+    fontSize: 'large',
     fontWeight: '600',
-    fontSize: 'x-large',
   },
 };
