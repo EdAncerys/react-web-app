@@ -13,6 +13,7 @@ export default function WrongLetters({ wrongLetters, winner, game }) {
   return (
     <div style={styles.container}>
       <p style={styles.mainText}>Wrong Letters Guessed</p>
+      <p style={styles.infoText}>Type Any Letter To Start</p>
       {!winner && (
         <React.Fragment>
           <p style={styles.mainText}>
@@ -47,6 +48,11 @@ const styles = {
   mainText: {
     color: '#546677',
     fontSize: 'large',
+    fontWeight: '600',
+  },
+  infoText: {
+    color: 'blue',
+    fontSize: 'small',
     fontWeight: '600',
   },
 };

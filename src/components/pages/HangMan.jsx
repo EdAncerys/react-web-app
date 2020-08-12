@@ -8,13 +8,18 @@ export default function HangMan() {
   const [wrongLetters, setWrongLetters] = useState([]);
   const [playable, setPlayable] = useState(true);
   const [winner, setWinner] = useState();
-  const [game, setGame] = useState(0);
+  const [gameWins, setGameWins] = useState(0);
 
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
   const selectedWord = 'hello';
 
-  const startNewGame = () => {
+  const playNewGame = () => {
+    playAgain();
+    setGameWins(0);
+  };
+
+  const playAgain = () => {
     setWinner();
     setCorrectLetters([]);
     setWrongLetters([]);
@@ -31,14 +36,12 @@ export default function HangMan() {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters([...correctLetters, letter]);
           } else {
-            // show(setShowNotification);
             console.log(`No letter ${letter}`);
           }
         } else if (playable) {
           if (!wrongLetters.includes(letter)) {
             setWrongLetters([...wrongLetters, letter]);
           } else {
-            // show(setShowNotification);
             console.log(`Letter not correct ${letter}`);
           }
         }
@@ -47,23 +50,25 @@ export default function HangMan() {
     window.addEventListener('keydown', handleKeydown);
 
     if (
+      playable &&
       selectedWord.split('').every((letter) => correctLetters.includes(letter))
     ) {
       setPlayable(false);
       setWinner(true);
-      setGame(game + 1);
-    } else if (wrongLetters.length > 5) {
+      setGameWins(gameWins + 1);
+    }
+    if (playable && wrongLetters.length > 4) {
       setPlayable(false);
       setWinner(false);
     }
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [correctLetters, wrongLetters, playable]);
+  }, [correctLetters, wrongLetters]);
 
   return (
     <React.Fragment>
       <div style={styles.pageContainer}>
         <div style={styles.headerContainer}>
-          <p>Welcome To The Hang Man Game</p>
+          <p style={styles.mainText}>Welcome To The Hang Man Game</p>
         </div>
         <div style={styles.figureContainer}>
           <Figure wrongLetters={wrongLetters} />
@@ -74,16 +79,15 @@ export default function HangMan() {
             selectedWord={selectedWord}
             correctLetters={correctLetters}
             wrongLetters={wrongLetters}
-            game={game}
+            gameWins={gameWins}
           />
         </div>
         <div style={styles.headerContainer}>
-          <div
-            onClick={startNewGame}
-            className="btn btn-danger"
-            variant="danger"
-          >
+          <div onClick={playAgain} className="btn btn-danger" variant="danger">
             Start Again
+          </div>
+          <div onClick={playNewGame} className="btn btn-black" variant="danger">
+            New Game
           </div>
         </div>
       </div>
