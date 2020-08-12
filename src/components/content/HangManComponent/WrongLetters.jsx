@@ -45,7 +45,6 @@ export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
 const styles = {
   container: {
     width: '100%',
-    height: '30vh',
   },
   whiteText: {
     color: '#fff',

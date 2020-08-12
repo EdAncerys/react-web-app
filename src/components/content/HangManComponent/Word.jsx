@@ -30,7 +30,6 @@ export default function Word({
 const styles = {
   container: {
     width: '100%',
-    height: '30vh',
   },
   whiteText: {
     color: '#fff',

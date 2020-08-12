@@ -15,10 +15,6 @@ export default function HangMan() {
 
   const isRowBased = useMediaQuery('(min-width: 600px)');
 
-  useEffect(() => {
-    console.log(isRowBased);
-  }, [isRowBased]);
-
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
   const selectedWord = 'hello';
@@ -81,15 +77,15 @@ export default function HangMan() {
   }, [correctLetters, playable ? wrongLetters : '']);
 
   return (
-    <React.Fragment>
-      <div style={styles.pageContainer(isRowBased)}>
+    <div style={styles.pageContainer}>
+      <div style={styles.pageContent}>
         <div style={styles.headerContainer}>
           <p style={styles.mainText}>Welcome To The Hang Man Game</p>
         </div>
-        <div style={styles.figureContainer}>
+        <div style={styles.figureContainer(isRowBased)}>
           <Figure wrongLetters={wrongLetters} playable={playable} />
         </div>
-        <div style={styles.sideContainer}>
+        <div style={styles.sideContainer(isRowBased)}>
           <WrongLetters
             wrongLetters={wrongLetters}
             winner={winner}
@@ -112,7 +108,7 @@ export default function HangMan() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 
@@ -121,29 +117,38 @@ const styles = {
     color: '#546677',
     fontSize: 'x-large',
     fontWeight: '600',
+    textAlign: 'center',
   },
   headerContainer: {
-    gridColumn: '1/3',
+    gridColumn: '1/5',
+    justifySelf: 'center',
+    margin: 20,
+  },
+  pageContainer: {
+    display: 'grid',
+    backgroundColor: 'hsl(0, 0%, 75%)',
+    width: '100vw',
+  },
+  pageContent: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    gridTemplateRows: 'auto auto auto',
+    gridGap: '1rem',
+    minHeight: '80vh',
+    maxWidth: 800,
+    padding: '5vw',
     justifySelf: 'center',
   },
-  pageContainer: (isRowBased) => ({
-    display: 'flex',
-    flexDirection: isRowBased ? 'column' : 'row',
-    gridTemplateColumns: '2fr 1fr',
-    minHeight: '80vh',
-    width: '100vw',
-    backgroundColor: 'hsl(0, 0%, 75%)',
-    padding: '5vw',
-  }),
-  figureContainer: {
+  figureContainer: (isRowBased) => ({
+    gridColumn: isRowBased ? '1/3' : '1/5',
     paddingRight: '1rem',
     justifySelf: 'center',
-  },
+  }),
   textOnHover: {
     color: 'tomato',
   },
-  sideContainer: {
-    justifySelf: 'left',
-    gridTemplateRows: '50, auto',
-  },
+  sideContainer: (isRowBased) => ({
+    gridColumn: isRowBased ? '3/5' : '1/5',
+    justifySelf: 'center',
+  }),
 };
