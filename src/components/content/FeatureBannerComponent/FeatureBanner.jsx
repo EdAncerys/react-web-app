@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import ThereAndBackImg from '../../../images/map-min.png';
 import TickTackToeImg from '../../../images/tick-tack-toe-min.png';
+import HangMan from '../../../images/hang-man-min.png';
 import Rock from '../../../images/RPS/rock-min.png';
 
 export default class FeatureBanner extends Component {
   render() {
     return (
       <div className="feature-banner">
+        <div
+          className="feature-banner-component feature-content-2"
+          onClick={this.props.goToHangManPage}
+        >
+          <div className="feature-img-container">
+            <img className="feature-img" alt="ThereAndBack" src={HangMan} />
+          </div>
+          <div className="feature-content">
+            <p>
+              Hangman is a paper and pencil guessing game for two or more
+              players. One player thinks of a word, phrase or sentence and the
+              other(s) tries to guess it by suggesting letters within a certain
+              number of guesses.
+            </p>
+          </div>
+        </div>
         <div
           className="feature-banner-component feature-banner-component-2"
           onClick={this.props.goToRPSPage}
@@ -27,10 +44,7 @@ export default class FeatureBanner extends Component {
         <div
           className="feature-banner-component feature-content-2"
           onClick={() =>
-            window.open(
-              'https://github.com/AndrewHulme/route_planner',
-              '_blank'
-            )
+            window.open('https://thereandback.surge.sh/', '_blank')
           }
         >
           <div className="feature-img-container">
