@@ -12,8 +12,10 @@ export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
 
   return (
     <div style={styles.container}>
-      <p style={styles.mainText}>Wrong Letters Guessed</p>
-      <p style={styles.infoText}>Type Any Letter To Start</p>
+      <p style={styles.mainText} onClick={prompt}>
+        Wrong Letters Guessed
+      </p>
+      <p style={styles.infoText}>Type a Letter To Start</p>
       {!winner && (
         <React.Fragment>
           <p style={styles.mainText}>

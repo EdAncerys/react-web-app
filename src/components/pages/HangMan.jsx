@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Figure from '../content/HangManComponent/Figure';
 import Word from '../content/HangManComponent/Word';
+import wordList from '../content/HangManComponent/wordList';
 import WrongLetters from '../content/HangManComponent/WrongLetters';
 
 import { useMediaQuery } from '../content/MediaGueries';
@@ -12,12 +13,14 @@ export default function HangMan() {
   const [winner, setWinner] = useState();
   const [gameWins, setGameWins] = useState(0);
   const [gameLoose, setGameLoose] = useState(0);
+  const [selectedWord, setSelectedWord] = useState('');
 
   const isRowBased = useMediaQuery('(min-width: 600px)');
 
-  const gameWords = ['hello', 'world'];
-  const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
-  const selectedWord = 'hello';
+  useEffect(() => {
+    const gameWords = wordList;
+    setSelectedWord(gameWords[Math.floor(Math.random() * gameWords.length)]);
+  }, [gameLoose, gameWins]);
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.HangMan';
@@ -44,6 +47,7 @@ export default function HangMan() {
 
   useEffect(() => {
     const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+
     if (savedToJSON != null && validateLocalStorage()) {
       setCorrectLetters(JSON.parse(savedToJSON).correctLetters);
       setWrongLetters(JSON.parse(savedToJSON).wrongLetters);
@@ -97,13 +101,13 @@ export default function HangMan() {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters([...correctLetters, letter]);
           } else {
-            console.log(`No letter ${letter}`);
+            // console.log(`No letter ${letter}`);
           }
         } else {
           if (playable && !wrongLetters.includes(letter)) {
             setWrongLetters([...wrongLetters, letter]);
           } else {
-            console.log(`Letter not correct ${letter}`);
+            // console.log(`Letter not correct ${letter}`);
           }
         }
       }

@@ -9,7 +9,6 @@ export default function Word({
   return (
     <div style={styles.container}>
       <p style={styles.mainText}>Guess The Word</p>
-
       {selectedWord.split('').map((letter, i) => {
         return (
           <span style={styles.mainText} key={i}>
