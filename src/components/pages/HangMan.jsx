@@ -9,6 +9,7 @@ export default function HangMan() {
   const [playable, setPlayable] = useState(true);
   const [winner, setWinner] = useState();
   const [gameWins, setGameWins] = useState(0);
+  const [gameLoose, setGameLoose] = useState(0);
 
   const gameWords = ['hello', 'world'];
   const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
@@ -17,6 +18,7 @@ export default function HangMan() {
   const playNewGame = () => {
     playAgain();
     setGameWins(0);
+    setGameLoose(0);
   };
 
   const playAgain = () => {
@@ -24,6 +26,22 @@ export default function HangMan() {
     setCorrectLetters([]);
     setWrongLetters([]);
     setPlayable(true);
+  };
+
+  const handlePlayable = () => {
+    if (
+      playable &&
+      selectedWord.split('').every((letter) => correctLetters.includes(letter))
+    ) {
+      setPlayable(false);
+      setWinner(true);
+      setGameWins(gameWins + 1);
+    }
+    if (playable && wrongLetters.length > 5) {
+      setPlayable(false);
+      setWinner(false);
+      setGameLoose(gameLoose + 1);
+    }
   };
 
   useEffect(() => {
@@ -38,8 +56,8 @@ export default function HangMan() {
           } else {
             console.log(`No letter ${letter}`);
           }
-        } else if (playable) {
-          if (!wrongLetters.includes(letter)) {
+        } else {
+          if (playable && !wrongLetters.includes(letter)) {
             setWrongLetters([...wrongLetters, letter]);
           } else {
             console.log(`Letter not correct ${letter}`);
@@ -49,20 +67,10 @@ export default function HangMan() {
     };
     window.addEventListener('keydown', handleKeydown);
 
-    if (
-      playable &&
-      selectedWord.split('').every((letter) => correctLetters.includes(letter))
-    ) {
-      setPlayable(false);
-      setWinner(true);
-      setGameWins(gameWins + 1);
-    }
-    if (playable && wrongLetters.length > 4) {
-      setPlayable(false);
-      setWinner(false);
-    }
+    handlePlayable();
+
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [correctLetters, wrongLetters]);
+  }, [correctLetters, playable ? wrongLetters : '']);
 
   return (
     <React.Fragment>
@@ -71,15 +79,20 @@ export default function HangMan() {
           <p style={styles.mainText}>Welcome To The Hang Man Game</p>
         </div>
         <div style={styles.figureContainer}>
-          <Figure wrongLetters={wrongLetters} />
+          <Figure wrongLetters={wrongLetters} playable={playable} />
         </div>
         <div style={styles.sideContainer}>
-          <WrongLetters wrongLetters={wrongLetters} winner={winner} />
+          <WrongLetters
+            wrongLetters={wrongLetters}
+            winner={winner}
+            correctLetters={correctLetters}
+          />
           <Word
             selectedWord={selectedWord}
             correctLetters={correctLetters}
             wrongLetters={wrongLetters}
             gameWins={gameWins}
+            gameLoose={gameLoose}
           />
         </div>
         <div style={styles.headerContainer}>

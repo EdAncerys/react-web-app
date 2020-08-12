@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WrongLetters({ wrongLetters, winner, game }) {
+export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
   const handleWrongLetters = (wrongLetters) => {
     return wrongLetters
       .map((letter, i) => <span key={i}>{letter}</span>)
@@ -17,7 +17,7 @@ export default function WrongLetters({ wrongLetters, winner, game }) {
       {!winner && (
         <React.Fragment>
           <p style={styles.mainText}>
-            {!wrongLetters.length > 0
+            {!wrongLetters.length > 0 && correctLetters.length > 0
               ? 'Looking Good...'
               : handleWrongLetters(wrongLetters)}
           </p>
@@ -30,7 +30,12 @@ export default function WrongLetters({ wrongLetters, winner, game }) {
       )}
       {winner && (
         <React.Fragment>
-          <p style={styles.whiteText}>You Won!</p>
+          <p style={styles.whiteText}>Congratulations! You won! 😃</p>
+        </React.Fragment>
+      )}
+      {wrongLetters.length > 5 && (
+        <React.Fragment>
+          <p style={styles.whiteText}>Unfortunately you lost. 😕</p>
         </React.Fragment>
       )}
     </div>
@@ -51,8 +56,8 @@ const styles = {
     fontWeight: '600',
   },
   infoText: {
-    color: 'blue',
-    fontSize: 'small',
+    color: '#fff',
+    fontSize: 'large',
     fontWeight: '600',
   },
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Figure({ wrongLetters }) {
+export default function Figure({ wrongLetters, playable }) {
   const errors = wrongLetters.length;
 
   return (

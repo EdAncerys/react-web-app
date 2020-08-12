@@ -1,6 +1,11 @@
 import React from 'react';
 
-export default function Word({ selectedWord, correctLetters, gameWins }) {
+export default function Word({
+  selectedWord,
+  correctLetters,
+  gameWins,
+  gameLoose,
+}) {
   return (
     <div style={styles.container}>
       <p style={styles.mainText}>Guess The Word</p>
@@ -12,8 +17,11 @@ export default function Word({ selectedWord, correctLetters, gameWins }) {
           </span>
         );
       })}
-      {gameWins > 0 && (
-        <p style={styles.whiteText}>{`You won ${gameWins} games`}</p>
+      {(gameWins > 0 || gameLoose > 0) && (
+        <React.Fragment>
+          <p style={styles.whiteText}>{`You won ${gameWins} games`}</p>
+          <p style={styles.whiteText}>{`You Lost ${gameLoose} games`}</p>
+        </React.Fragment>
       )}
     </div>
   );
