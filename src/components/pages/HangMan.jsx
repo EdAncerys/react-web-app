@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Figure from '../content/HangManComponent/Figure';
 import Word from '../content/HangManComponent/Word';
+import wordList from '../content/HangManComponent/wordList';
 import WrongLetters from '../content/HangManComponent/WrongLetters';
 
 import { useMediaQuery } from '../content/MediaGueries';
@@ -12,12 +13,16 @@ export default function HangMan() {
   const [winner, setWinner] = useState();
   const [gameWins, setGameWins] = useState(0);
   const [gameLoose, setGameLoose] = useState(0);
+  const [selectedWord, setSelectedWord] = useState('');
+  const [newWord, setNewWord] = useState(true);
+  const [popUp, setPopUp] = useState(false);
 
   const isRowBased = useMediaQuery('(min-width: 600px)');
 
-  const gameWords = ['hello', 'world'];
-  const selectedWord1 = gameWords[Math.floor(Math.random() * gameWords.length)];
-  const selectedWord = 'hello';
+  useEffect(() => {
+    const gameWords = wordList;
+    setSelectedWord(gameWords[Math.floor(Math.random() * gameWords.length)]);
+  }, [newWord]);
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.HangMan';
@@ -31,6 +36,7 @@ export default function HangMan() {
     winner: winner,
     gameWins: gameWins,
     gameLoose: gameLoose,
+    selectedWord: selectedWord,
   };
 
   const validateLocalStorage = () => {
@@ -44,6 +50,7 @@ export default function HangMan() {
 
   useEffect(() => {
     const savedToJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+
     if (savedToJSON != null && validateLocalStorage()) {
       setCorrectLetters(JSON.parse(savedToJSON).correctLetters);
       setWrongLetters(JSON.parse(savedToJSON).wrongLetters);
@@ -51,6 +58,7 @@ export default function HangMan() {
       setWinner(JSON.parse(savedToJSON).winner);
       setGameWins(JSON.parse(savedToJSON).gameWins);
       setGameLoose(JSON.parse(savedToJSON).gameLoose);
+      setSelectedWord(JSON.parse(savedToJSON).selectedWord);
     } else localStorage.clear();
   }, []);
 
@@ -65,6 +73,7 @@ export default function HangMan() {
   };
 
   const playAgain = () => {
+    setNewWord(!newWord);
     setWinner();
     setCorrectLetters([]);
     setWrongLetters([]);
@@ -87,6 +96,13 @@ export default function HangMan() {
     }
   };
 
+  const handleNotification = (message) => {
+    setPopUp(message);
+    setTimeout(() => {
+      setPopUp(false);
+    }, 2000);
+  };
+
   useEffect(() => {
     const handleKeydown = (event) => {
       const { key, keyCode } = event;
@@ -97,13 +113,13 @@ export default function HangMan() {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters([...correctLetters, letter]);
           } else {
-            console.log(`No letter ${letter}`);
+            handleNotification('You have already entered this letter');
           }
         } else {
           if (playable && !wrongLetters.includes(letter)) {
             setWrongLetters([...wrongLetters, letter]);
           } else {
-            console.log(`Letter not correct ${letter}`);
+            handleNotification('You have already entered this letter');
           }
         }
       }
@@ -113,13 +129,18 @@ export default function HangMan() {
     handlePlayable();
 
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [correctLetters, playable ? wrongLetters : '']);
+  }, [handlePlayable, playable, selectedWord, wrongLetters, correctLetters]);
 
   return (
     <div style={styles.pageContainer}>
       <div style={styles.pageContent}>
         <div style={styles.headerContainer}>
           <p style={styles.mainText}>Welcome To The Hang Man Game</p>
+          {popUp && (
+            <div style={styles.popUpContainer}>
+              <p style={styles.popUpText}>{popUp}</p>
+            </div>
+          )}
         </div>
         <div style={styles.figureContainer(isRowBased)}>
           <Figure wrongLetters={wrongLetters} playable={playable} />
@@ -158,6 +179,10 @@ const styles = {
     fontWeight: '600',
     textAlign: 'center',
   },
+  popUpText: {
+    color: '#000',
+    justifySelf: 'center',
+  },
   headerContainer: {
     gridColumn: '1/5',
     justifySelf: 'center',
@@ -167,6 +192,14 @@ const styles = {
     display: 'grid',
     backgroundColor: 'hsl(0, 0%, 75%)',
     width: '100vw',
+  },
+  popUpContainer: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    margin: 'auto',
   },
   pageContent: {
     display: 'grid',
@@ -183,9 +216,6 @@ const styles = {
     paddingRight: '1rem',
     justifySelf: 'center',
   }),
-  textOnHover: {
-    color: 'tomato',
-  },
   sideContainer: (isRowBased) => ({
     gridColumn: isRowBased ? '3/5' : '1/5',
     justifySelf: 'center',

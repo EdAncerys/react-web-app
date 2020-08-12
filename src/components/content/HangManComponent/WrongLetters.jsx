@@ -12,8 +12,10 @@ export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
 
   return (
     <div style={styles.container}>
-      <p style={styles.mainText}>Wrong Letters Guessed</p>
-      <p style={styles.infoText}>Type Any Letter To Start</p>
+      <p style={styles.mainText} onClick={prompt}>
+        Wrong Letters Guessed
+      </p>
+      <p style={styles.infoText}>Type a Letter To Start</p>
       {!winner && (
         <React.Fragment>
           <p style={styles.mainText}>
@@ -30,12 +32,22 @@ export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
       )}
       {winner && (
         <React.Fragment>
-          <p style={styles.whiteText}>Congratulations! You won! 😃</p>
+          <p style={styles.whiteText}>
+            Congratulations! You won!{' '}
+            <span role="img" aria-label="happy face">
+              😃
+            </span>
+          </p>
         </React.Fragment>
       )}
       {wrongLetters.length > 5 && (
         <React.Fragment>
-          <p style={styles.whiteText}>Unfortunately you lost. 😕</p>
+          <p style={styles.whiteText}>
+            Unfortunately you lost.{' '}
+            <span role="img" aria-label="sad face">
+              😕
+            </span>
+          </p>
         </React.Fragment>
       )}
     </div>
