@@ -13,6 +13,7 @@ export default class Content extends Component {
         <FeatureBanner
           goToTickTackToePage={this.props.goToTickTackToePage}
           goToRPSPage={this.props.goToRPSPage}
+          goToHangManPage={this.props.goToHangManPage}
         />
       </React.Fragment>
     );

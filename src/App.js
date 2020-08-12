@@ -172,6 +172,7 @@ export default function App() {
               selectedProjectId={selectedProjectId}
               goToTickTackToePage={goToTickTackToePage}
               goToRPSPage={goToRPSPage}
+              goToHangManPage={goToHangManPage}
             />
           )}
         {aboutPage && <About />}
