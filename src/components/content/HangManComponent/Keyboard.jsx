@@ -1,20 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import LetterButton from './LetterButton';
 import Button from '../../Button';
 
 import { HangManContext } from '../../pages/HangMan';
 
-export default function Keyboard({ props }) {
-  const { handleKeyboard } = useContext(HangManContext);
+export default function Keyboard({}) {
+  const { handleKeyboard, isRowBased } = useContext(HangManContext);
 
   const [toggle, setToggle] = useState(false);
 
+  useEffect(() => {
+    setToggle(!toggle);
+  }, [isRowBased]);
+
   return (
     <div style={styles.container}>
-      {!toggle && (
+      {toggle && (
         <Button title="Show Keyboard" onClick={() => setToggle(!toggle)} />
       )}
-      {toggle && (
+      {!toggle && (
         <>
           <div style={{ display: 'flex' }}>
             <LetterButton title="q" onClick={(e) => handleKeyboard(e)} />

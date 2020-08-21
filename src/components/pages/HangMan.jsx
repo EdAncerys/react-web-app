@@ -150,7 +150,9 @@ export default function HangMan() {
   };
 
   return (
-    <HangManContext.Provider value={{ popUp, wrongLetters, handleKeyboard }}>
+    <HangManContext.Provider
+      value={{ popUp, wrongLetters, handleKeyboard, isRowBased }}
+    >
       <div style={styles.container}>
         <div style={styles.content}>
           {popUp && (
@@ -239,7 +241,6 @@ const styles = {
   keyboard: {
     alignSelf: 'start',
     gridArea: 'e',
-    border: '1px solid black',
     width: '90vw',
   },
   footer: {
