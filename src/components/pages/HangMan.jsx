@@ -7,6 +7,7 @@ import WrongLetters from '../content/HangManComponent/WrongLetters';
 import { useMediaQuery } from '../content/MediaGueries';
 import colors from '../../config/colors';
 import Button from '../Button';
+import Keyboard from '../content/HangManComponent/Keyboard';
 
 export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
@@ -154,6 +155,9 @@ export default function HangMan() {
             correctLetters={correctLetters}
           />
         </div>
+        <div style={styles.keyboard}>
+          <Keyboard />
+        </div>
         <div style={styles.footer}>
           <div style={{ display: 'flex' }}>
             <Button
@@ -216,7 +220,7 @@ const styles = {
   },
   content: {
     display: 'grid',
-    gridTemplateAreas: " 'a a a b' 'a a a c' 'd d d d' ",
+    gridTemplateAreas: " 'a a a b' 'e e e c' 'd d d d' ",
     gridTemplateRows: 'auto auto auto',
     gridGap: 30,
     height: '60vh',
@@ -236,6 +240,11 @@ const styles = {
   },
   wrongLetters: {
     gridArea: 'c',
+    alignSelf: 'start',
+    border: '1px solid black',
+  },
+  keyboard: {
+    gridArea: 'e',
     alignSelf: 'start',
     border: '1px solid black',
   },
