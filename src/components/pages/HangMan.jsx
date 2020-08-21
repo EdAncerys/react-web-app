@@ -155,24 +155,15 @@ export default function HangMan() {
           />
         </div>
         <div style={styles.footer}>
-          <div>
-            <div
-              onClick={playAgain}
-              className="btn btn-danger"
-              variant="danger"
-            >
-              Start Again
-            </div>
-            <div
-              onClick={playNewGame}
-              className="btn btn-black"
-              variant="danger"
-            >
-              New Game
-            </div>
+          <div style={{ display: 'flex' }}>
+            <Button
+              title="Start Again"
+              color={colors.danger}
+              onclick={playAgain}
+            />
+            <Button title="New Game" onclick={playNewGame} />
           </div>
         </div>
-        <Button onclick={playNewGame} />
       </div>
     </div>
     // <div style={styles.pageContainer}>

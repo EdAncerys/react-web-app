@@ -6,12 +6,17 @@ export default {
   tomato: '#ED553B',
   black: '#000',
   white: '#fff',
+  danger: '#900603',
   medium: '#aaaaaa',
   light: '#ededed',
   dark: '#666666',
-  danger: '#900603',
   hover: {
-    danger: 'hsl(0, 100%, 40%)',
-    yellow: 'hsl(50, 100%, 70%)',
+    '#004db5': 'hsl(214, 100%, 55%)', // Primary
+    '#173F5F': 'hsl(207, 61%, 43%)', // Secondary
+    '#3CAEA3': 'hsl(174, 49%, 66%)', // Electric
+    '#F6D55C': 'hsl(47, 90%, 56%)', // Yellow
+    '#ED553B': 'hsl(9, 83%, 38%)', // Tomato
+    '#000': 'hsl(0, 20%, 20%)', // Black
+    '#900603': 'hsl(1, 96%, 49%)', // Danger
   },
 };

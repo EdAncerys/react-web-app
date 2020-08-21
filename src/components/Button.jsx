@@ -6,13 +6,13 @@ export default function Button({
   title = 'Title',
   color = colors.primary,
   solid = true,
-  hoverColor = colors.secondary,
   onclick,
 }) {
   const [hover, setHover] = useState(false);
 
   const btnTextColor = solid ? colors.white : color;
   const btnBackgroundColor = solid ? color : '';
+  const hoverColor = colors.hover[color];
 
   return (
     <div
@@ -20,8 +20,10 @@ export default function Button({
         display: 'grid',
         justifyContent: 'center',
         alignItems: 'center',
+
         color: hover ? colors.white : btnTextColor,
         backgroundColor: hover ? hoverColor : btnBackgroundColor,
+
         border: `1px solid ${hover ? hoverColor : color}`,
         borderRadius: 20,
         fontWeight: 'bold',
