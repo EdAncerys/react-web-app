@@ -172,7 +172,7 @@ export default function HangMan() {
             </div>
           </div>
         </div>
-        <Button />
+        <Button onclick={playNewGame} />
       </div>
     </div>
     // <div style={styles.pageContainer}>

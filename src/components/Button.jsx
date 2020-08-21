@@ -7,6 +7,7 @@ export default function Button({
   color = colors.primary,
   solid = true,
   hoverColor = colors.secondary,
+  onclick,
 }) {
   const [hover, setHover] = useState(false);
 
@@ -31,6 +32,7 @@ export default function Button({
         margin: 10,
         cursor: 'pointer',
       }}
+      onClick={onclick}
       onMouseOver={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
     >
