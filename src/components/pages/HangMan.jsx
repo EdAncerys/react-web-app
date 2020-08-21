@@ -9,6 +9,8 @@ import colors from '../../config/colors';
 import Button from '../Button';
 import Keyboard from '../content/HangManComponent/Keyboard';
 
+export const HangManContext = React.createContext();
+
 export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
@@ -106,6 +108,7 @@ export default function HangMan() {
     }, 2000);
   };
 
+  // On Key Press
   useEffect(() => {
     const handleKeydown = (event) => {
       const { key, keyCode } = event;
@@ -134,42 +137,50 @@ export default function HangMan() {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [handlePlayable, playable, selectedWord, wrongLetters, correctLetters]);
 
+  // On Screen Keyboard
+  const handleKeyboard = (e) => {
+    console.log(e.target.title);
+  };
+
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
-        <div style={styles.figure}>
-          <Figure />
-        </div>
-        <div style={styles.word}>
-          <Word
-            selectedWord={selectedWord}
-            correctLetters={correctLetters}
-            gameWins={gameWins}
-            gameLoose={gameLoose}
-          />
-        </div>
-        <div style={styles.wrongLetters}>
-          <WrongLetters
-            wrongLetters={wrongLetters}
-            winner={winner}
-            correctLetters={correctLetters}
-          />
-        </div>
-        <div style={styles.keyboard}>
-          <Keyboard />
-        </div>
-        <div style={styles.footer}>
-          <div style={{ display: 'flex' }}>
-            <Button
-              title="Start Again"
-              color={colors.danger}
-              onclick={playAgain}
+    <HangManContext.Provider value={{ handleKeyboard }}>
+      <div style={styles.container}>
+        <div style={styles.content}>
+          <div style={styles.figure}>
+            <Figure />
+          </div>
+          <div style={styles.word}>
+            <Word
+              selectedWord={selectedWord}
+              correctLetters={correctLetters}
+              gameWins={gameWins}
+              gameLoose={gameLoose}
             />
-            <Button title="New Game" onclick={playNewGame} />
+          </div>
+          <div style={styles.wrongLetters}>
+            <WrongLetters
+              wrongLetters={wrongLetters}
+              winner={winner}
+              correctLetters={correctLetters}
+            />
+          </div>
+          <div style={styles.keyboard}>
+            <Keyboard />
+          </div>
+          <div style={styles.footer}>
+            <div style={{ display: 'flex' }}>
+              <Button
+                title="Start Again"
+                color={colors.danger}
+                onClick={playAgain}
+              />
+              <Button title="New Game" onClick={playNewGame} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </HangManContext.Provider>
+
     // <div style={styles.pageContainer}>
     //   <div style={styles.pageContent}>
     //     <div style={styles.headerContainer}>
@@ -217,6 +228,7 @@ const styles = {
     height: '80vh',
     alignItems: 'center',
     backgroundColor: colors.medium,
+    overflow: 'scroll',
   },
   content: {
     display: 'grid',
@@ -229,30 +241,32 @@ const styles = {
     border: '1px solid black',
   },
   figure: {
-    gridArea: 'a',
     alignSelf: 'start',
+    gridArea: 'a',
+    display: 'grid',
+    justifySelf: 'center',
     border: '1px solid black',
   },
   word: {
-    gridArea: 'b',
     alignSelf: 'start',
+    gridArea: 'b',
     border: '1px solid black',
   },
   wrongLetters: {
-    gridArea: 'c',
     alignSelf: 'start',
+    gridArea: 'c',
     border: '1px solid black',
   },
   keyboard: {
-    gridArea: 'e',
     alignSelf: 'start',
+    gridArea: 'e',
     border: '1px solid black',
   },
   footer: {
-    display: 'grid',
-    justifySelf: 'center',
-    gridArea: 'd',
     alignSelf: 'end',
+    display: 'grid',
+    gridArea: 'd',
+    justifySelf: 'center',
     border: '1px solid black',
   },
   // mainText: {

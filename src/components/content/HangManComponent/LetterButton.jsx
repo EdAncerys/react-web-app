@@ -6,6 +6,7 @@ export default function LetterButton({ title, onClick }) {
 
   return (
     <div
+      title={title}
       style={{
         ...styles.container,
         ...{
@@ -31,7 +32,7 @@ const styles = {
     textTransform: 'uppercase',
     fontSize: 'large',
     padding: 5,
-    margin: 10,
+    margin: 5,
     width: 40,
     height: 40,
     borderRadius: '50%',
