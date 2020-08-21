@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { HangManContext } from '../../pages/HangMan';
 
-export default function Figure({ wrongLetters = 0 }) {
+export default function Figure({}) {
+  const { wrongLetters } = useContext(HangManContext);
   const errors = wrongLetters.length;
 
   return (

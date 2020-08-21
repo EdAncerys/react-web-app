@@ -107,7 +107,7 @@ export default function HangMan() {
     setPopUp(message);
     setTimeout(() => {
       setPopUp(false);
-    }, 2000);
+    }, 1000);
   };
 
   // On Key Press
@@ -150,7 +150,7 @@ export default function HangMan() {
   };
 
   return (
-    <HangManContext.Provider value={{ popUp, handleKeyboard }}>
+    <HangManContext.Provider value={{ popUp, wrongLetters, handleKeyboard }}>
       <div style={styles.container}>
         <div style={styles.content}>
           {popUp && (
@@ -192,44 +192,6 @@ export default function HangMan() {
         </div>
       </div>
     </HangManContext.Provider>
-
-    // <div style={styles.pageContainer}>
-    //   <div style={styles.pageContent}>
-    //     <div style={styles.headerContainer}>
-    //       <p style={styles.mainText}>Welcome To The Hang Man Game</p>
-    //       {popUp && (
-    //         <div style={styles.popUpContainer}>
-    //           <p style={styles.popUpText}>{popUp}</p>
-    //         </div>
-    //       )}
-    //     </div>
-    //     <div style={styles.figureContainer(isRowBased)}>
-    //       <Figure wrongLetters={wrongLetters} playable={playable} />
-    //     </div>
-    //     <div style={styles.sideContainer(isRowBased)}>
-    //       <WrongLetters
-    //         wrongLetters={wrongLetters}
-    //         winner={winner}
-    //         correctLetters={correctLetters}
-    //       />
-    //       <Word
-    //         selectedWord={selectedWord}
-    //         correctLetters={correctLetters}
-    //         wrongLetters={wrongLetters}
-    //         gameWins={gameWins}
-    //         gameLoose={gameLoose}
-    //       />
-    //     </div>
-    //     <div style={styles.headerContainer}>
-    //       <div onClick={playAgain} className="btn btn-danger" variant="danger">
-    //         Start Again
-    //       </div>
-    //       <div onClick={playNewGame} className="btn btn-black" variant="danger">
-    //         New Game
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
 
@@ -250,7 +212,6 @@ const styles = {
     height: '60vh',
     justifyContent: 'center',
     alignItems: 'center',
-    border: '1px solid black',
   },
   notification: {
     gridArea: 'a',
@@ -260,7 +221,6 @@ const styles = {
     display: 'grid',
     justifySelf: 'center',
     alignItems: 'center',
-    border: '1px solid black',
   },
   word: {
     alignSelf: 'start',
@@ -276,59 +236,12 @@ const styles = {
     alignSelf: 'start',
     gridArea: 'e',
     border: '1px solid black',
+    width: '90vw',
   },
   footer: {
     alignSelf: 'end',
     display: 'grid',
     gridArea: 'd',
     justifySelf: 'center',
-    border: '1px solid black',
   },
-  // mainText: {
-  //   color: '#546677',
-  //   fontSize: 'x-large',
-  //   fontWeight: '600',
-  //   textAlign: 'center',
-  // },
-  // popUpText: {
-  //   color: '#000',
-  //   justifySelf: 'center',
-  // },
-  // headerContainer: {
-  //   gridColumn: '1/5',
-  //   justifySelf: 'center',
-  //   margin: 20,
-  // },
-  // pageContainer: {
-  //   display: 'grid',
-  //   backgroundColor: 'hsl(0, 0%, 75%)',
-  //   width: '100vw',
-  // },
-  // popUpContainer: {
-  //   display: 'grid',
-  //   gridTemplateColumns: '1fr',
-  //   position: 'absolute',
-  //   right: 0,
-  //   left: 0,
-  //   margin: 'auto',
-  // },
-  // pageContent: {
-  //   display: 'grid',
-  //   gridTemplateColumns: '1fr 1fr 1fr 1fr',
-  //   gridTemplateRows: 'auto auto auto',
-  //   gridGap: '1rem',
-  //   minHeight: '80vh',
-  //   maxWidth: 800,
-  //   padding: '5vw',
-  //   justifySelf: 'center',
-  // },
-  // figureContainer: (isRowBased) => ({
-  //   gridColumn: isRowBased ? '1/3' : '1/5',
-  //   paddingRight: '1rem',
-  //   justifySelf: 'center',
-  // }),
-  // sideContainer: (isRowBased) => ({
-  //   gridColumn: isRowBased ? '3/5' : '1/5',
-  //   justifySelf: 'center',
-  // }),
 };
