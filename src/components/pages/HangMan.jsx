@@ -6,6 +6,7 @@ import WrongLetters from '../content/HangManComponent/WrongLetters';
 
 import { useMediaQuery } from '../content/MediaGueries';
 import colors from '../../config/colors';
+import Button from '../Button';
 
 export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
@@ -171,6 +172,7 @@ export default function HangMan() {
             </div>
           </div>
         </div>
+        <Button />
       </div>
     </div>
     // <div style={styles.pageContainer}>
