@@ -7,7 +7,7 @@ export default {
   black: '#000',
   white: '#fff',
   danger: '#900603',
-  medium: '#aaaaaa',
+  medium: '#8592a6',
   light: '#ededed',
   dark: '#666666',
   hover: {

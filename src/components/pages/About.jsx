@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import colors from '../../config/colors';
 
 export default class About extends Component {
   render() {
     return (
-      <div className="about-page">
+      <div style={styles.container} className="about-page">
         <h3 className="title-name">About Me</h3>
         <p>
           Driven and ambitious Junior Software Developer with collaborative
@@ -28,3 +29,9 @@ export default class About extends Component {
     );
   }
 }
+
+const styles = {
+  container: {
+    color: colors.medium,
+  },
+};

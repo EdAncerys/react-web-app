@@ -151,7 +151,16 @@ export default function HangMan() {
 
   return (
     <HangManContext.Provider
-      value={{ popUp, wrongLetters, handleKeyboard, isRowBased }}
+      value={{
+        popUp,
+        wrongLetters,
+        handleKeyboard,
+        isRowBased,
+        selectedWord,
+        correctLetters,
+        gameWins,
+        gameLoose,
+      }}
     >
       <div style={styles.container}>
         <div style={styles.content}>
@@ -164,12 +173,7 @@ export default function HangMan() {
             <Figure />
           </div>
           <div style={styles.word}>
-            <Word
-              selectedWord={selectedWord}
-              correctLetters={correctLetters}
-              gameWins={gameWins}
-              gameLoose={gameLoose}
-            />
+            <Word />
           </div>
           <div style={styles.wrongLetters}>
             <WrongLetters
@@ -231,7 +235,6 @@ const styles = {
   word: {
     alignSelf: 'start',
     gridArea: 'b',
-    border: '1px solid black',
   },
   wrongLetters: {
     alignSelf: 'start',
