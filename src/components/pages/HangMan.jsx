@@ -176,11 +176,7 @@ export default function HangMan() {
             <Word />
           </div>
           <div style={styles.wrongLetters}>
-            <WrongLetters
-              wrongLetters={wrongLetters}
-              winner={winner}
-              correctLetters={correctLetters}
-            />
+            <WrongLetters />
           </div>
           <div style={styles.keyboard}>
             <Keyboard />
@@ -239,7 +235,6 @@ const styles = {
   wrongLetters: {
     alignSelf: 'start',
     gridArea: 'c',
-    border: '1px solid black',
   },
   keyboard: {
     alignSelf: 'start',

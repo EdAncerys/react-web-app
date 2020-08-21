@@ -7,7 +7,7 @@ import { HangManContext } from '../../pages/HangMan';
 export default function Keyboard({}) {
   const { handleKeyboard, isRowBased } = useContext(HangManContext);
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     setToggle(!toggle);

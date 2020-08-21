@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { HangManContext } from '../../pages/HangMan';
+import colors from '../../../config/colors';
 
-export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
+export default function WrongLetters({}) {
+  const { wrongLetters, winner, correctLetters } = useContext(HangManContext);
+
   const handleWrongLetters = (wrongLetters) => {
     return wrongLetters
       .map((letter, i) => <span key={i}>{letter}</span>)
@@ -12,25 +16,17 @@ export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
 
   return (
     <div style={styles.container}>
-      <p style={styles.mainText} onClick={prompt}>
-        Wrong Letters Guessed
-      </p>
-      <p style={styles.infoText}>Type a Letter To Start</p>
-      {!winner && (
-        <React.Fragment>
-          <p style={styles.mainText}>
-            {!wrongLetters.length > 0 && correctLetters.length > 0
-              ? 'Looking Good...'
-              : handleWrongLetters(wrongLetters)}
-          </p>
-          {wrongLetters.length > 0 && (
-            <p style={{ ...styles.mainText, ...styles.whiteText }}>
-              {`You have ${6 - wrongLetters.length} attempts left`}
-            </p>
-          )}
-        </React.Fragment>
-      )}
-      {winner && (
+      <div style={styles.header}>Wrong Letters Guessed</div>
+      <div style={styles.content}>
+        <div style={styles.text}>{handleWrongLetters(wrongLetters)}</div>
+      </div>
+      <div style={styles.footer}>
+        <div style={styles.footerText}>
+          {`You have ${6 - wrongLetters.length} attempts left`}
+        </div>
+      </div>
+
+      {/* {winner && (
         <React.Fragment>
           <p style={styles.whiteText}>
             Congratulations! You won!{' '}
@@ -49,26 +45,43 @@ export default function WrongLetters({ wrongLetters, winner, correctLetters }) {
             </span>
           </p>
         </React.Fragment>
-      )}
+      )} */}
     </div>
   );
 }
 
 const styles = {
   container: {
-    width: '100%',
+    display: 'grid',
+    justifyContent: 'center',
   },
-  whiteText: {
-    color: '#fff',
+  header: {
+    display: 'grid',
+    justifyContent: 'center',
+    color: colors.primary,
+    fontSize: 24,
+    fontWeight: 800,
+    margin: 10,
   },
-  mainText: {
-    color: '#546677',
-    fontSize: 'large',
+  content: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  text: {
+    color: colors.danger,
+    fontSize: 20,
     fontWeight: '600',
+    margin: 5,
   },
-  infoText: {
-    color: '#fff',
-    fontSize: 'large',
+  footer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  footerText: {
+    fontSize: 18,
     fontWeight: '600',
+    color: colors.secondary,
+    margin: 10,
   },
 };
