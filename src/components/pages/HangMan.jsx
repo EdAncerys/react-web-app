@@ -115,19 +115,7 @@ export default function HangMan() {
       const letter = key.toLowerCase();
 
       if (keyCode >= 65 && keyCode <= 90) {
-        if (playable && selectedWord.includes(letter)) {
-          if (!correctLetters.includes(letter)) {
-            setCorrectLetters([...correctLetters, letter]);
-          } else {
-            handleNotification('You have already entered this letter');
-          }
-        } else {
-          if (playable && !wrongLetters.includes(letter)) {
-            setWrongLetters([...wrongLetters, letter]);
-          } else {
-            handleNotification('You have already entered this letter');
-          }
-        }
+        handleLetterInput(letter);
       }
     };
     window.addEventListener('keydown', handleKeydown);
@@ -139,7 +127,24 @@ export default function HangMan() {
 
   // On Screen Keyboard
   const handleKeyboard = (e) => {
-    console.log(e.target.title);
+    const letter = e.target.title;
+    handleLetterInput(letter);
+  };
+
+  const handleLetterInput = (letter) => {
+    if (playable && selectedWord.includes(letter)) {
+      if (!correctLetters.includes(letter)) {
+        setCorrectLetters([...correctLetters, letter]);
+      } else {
+        handleNotification('You have already entered this letter');
+      }
+    } else {
+      if (playable && !wrongLetters.includes(letter)) {
+        setWrongLetters([...wrongLetters, letter]);
+      } else {
+        handleNotification('You have already entered this letter');
+      }
+    }
   };
 
   return (
