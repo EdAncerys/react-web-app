@@ -7,7 +7,7 @@ import { HangManContext } from '../../pages/HangMan';
 export default function Keyboard({ props }) {
   const { handleKeyboard } = useContext(HangManContext);
 
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   return (
     <div style={styles.container}>

@@ -4,7 +4,7 @@ import Word from '../content/HangManComponent/Word';
 import wordList from '../content/HangManComponent/wordList';
 import WrongLetters from '../content/HangManComponent/WrongLetters';
 
-import { useMediaQuery } from '../content/MediaGueries';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import Button from '../Button';
 import Keyboard from '../content/HangManComponent/Keyboard';
 import Notification from '../content/HangManComponent/Notification';
@@ -186,7 +186,11 @@ export default function HangMan() {
                 color={colors.danger}
                 onClick={playAgain}
               />
-              <Button title="New Game" onClick={playNewGame} />
+              <Button
+                title="New Game"
+                color={colors.black}
+                onClick={playNewGame}
+              />
             </div>
           </div>
         </div>
