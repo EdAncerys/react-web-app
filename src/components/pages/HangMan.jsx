@@ -133,7 +133,46 @@ export default function HangMan() {
   }, [handlePlayable, playable, selectedWord, wrongLetters, correctLetters]);
 
   return (
-    <div style={styles.container}></div>
+    <div style={styles.container}>
+      <div style={styles.content}>
+        <div style={styles.figure}>
+          <Figure />
+        </div>
+        <div style={styles.word}>
+          <Word
+            selectedWord={selectedWord}
+            correctLetters={correctLetters}
+            gameWins={gameWins}
+            gameLoose={gameLoose}
+          />
+        </div>
+        <div style={styles.wrongLetters}>
+          <WrongLetters
+            wrongLetters={wrongLetters}
+            winner={winner}
+            correctLetters={correctLetters}
+          />
+        </div>
+        <div style={styles.footer}>
+          <div>
+            <div
+              onClick={playAgain}
+              className="btn btn-danger"
+              variant="danger"
+            >
+              Start Again
+            </div>
+            <div
+              onClick={playNewGame}
+              className="btn btn-black"
+              variant="danger"
+            >
+              New Game
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     // <div style={styles.pageContainer}>
     //   <div style={styles.pageContent}>
     //     <div style={styles.headerContainer}>
@@ -178,8 +217,41 @@ const styles = {
   container: {
     display: 'grid',
     width: '100vw',
-    height: '100vh',
-    backgroundColor: colors.hover.yellow,
+    height: '80vh',
+    alignItems: 'center',
+    backgroundColor: colors.medium,
+  },
+  content: {
+    display: 'grid',
+    gridTemplateAreas: " 'a a a b' 'a a a c' 'd d d d' ",
+    gridTemplateRows: 'auto auto auto',
+    gridGap: 30,
+    height: '60vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: '1px solid black',
+  },
+  figure: {
+    gridArea: 'a',
+    alignSelf: 'start',
+    border: '1px solid black',
+  },
+  word: {
+    gridArea: 'b',
+    alignSelf: 'start',
+    border: '1px solid black',
+  },
+  wrongLetters: {
+    gridArea: 'c',
+    alignSelf: 'start',
+    border: '1px solid black',
+  },
+  footer: {
+    display: 'grid',
+    justifySelf: 'center',
+    gridArea: 'd',
+    alignSelf: 'end',
+    border: '1px solid black',
   },
   // mainText: {
   //   color: '#546677',
