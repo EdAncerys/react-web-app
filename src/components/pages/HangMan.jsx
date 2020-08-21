@@ -5,9 +5,11 @@ import wordList from '../content/HangManComponent/wordList';
 import WrongLetters from '../content/HangManComponent/WrongLetters';
 
 import { useMediaQuery } from '../content/MediaGueries';
-import colors from '../../config/colors';
 import Button from '../Button';
 import Keyboard from '../content/HangManComponent/Keyboard';
+import Notification from '../content/HangManComponent/Notification';
+
+import colors from '../../config/colors';
 
 export const HangManContext = React.createContext();
 
@@ -148,9 +150,14 @@ export default function HangMan() {
   };
 
   return (
-    <HangManContext.Provider value={{ handleKeyboard }}>
+    <HangManContext.Provider value={{ popUp, handleKeyboard }}>
       <div style={styles.container}>
         <div style={styles.content}>
+          {popUp && (
+            <div style={styles.notification}>
+              <Notification />
+            </div>
+          )}
           <div style={styles.figure}>
             <Figure />
           </div>
@@ -237,19 +244,22 @@ const styles = {
   },
   content: {
     display: 'grid',
-    gridTemplateAreas: " 'a a a b' 'e e e c' 'd d d d' ",
-    gridTemplateRows: 'auto auto auto',
+    gridTemplateAreas: " 'a a b b' 'a a c c ' 'e e e e' 'd d d d' ",
+    gridTemplateRows: 'auto auto auto auto',
     gridGap: 30,
     height: '60vh',
     justifyContent: 'center',
     alignItems: 'center',
     border: '1px solid black',
   },
+  notification: {
+    gridArea: 'a',
+  },
   figure: {
-    alignSelf: 'start',
     gridArea: 'a',
     display: 'grid',
     justifySelf: 'center',
+    alignItems: 'center',
     border: '1px solid black',
   },
   word: {
