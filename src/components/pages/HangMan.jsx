@@ -4,7 +4,14 @@ import Word from '../content/HangManComponent/Word';
 import wordList from '../content/HangManComponent/wordList';
 import WrongLetters from '../content/HangManComponent/WrongLetters';
 
-import { useMediaQuery } from '../content/MediaGueries';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import Button from '../Button';
+import Keyboard from '../content/HangManComponent/Keyboard';
+import Notification from '../content/HangManComponent/Notification';
+
+import colors from '../../config/colors';
+
+export const HangManContext = React.createContext();
 
 export default function HangMan() {
   const [correctLetters, setCorrectLetters] = useState([]);
@@ -96,32 +103,26 @@ export default function HangMan() {
     }
   };
 
+  useEffect(() => {
+    if (winner) handleNotification('Congratulations! You won!');
+    if (wrongLetters.length > 5) handleNotification('Unfortunately you lost.');
+  }, [winner, wrongLetters]);
+
   const handleNotification = (message) => {
     setPopUp(message);
     setTimeout(() => {
       setPopUp(false);
-    }, 2000);
+    }, 1000);
   };
 
+  // On Key Press
   useEffect(() => {
     const handleKeydown = (event) => {
       const { key, keyCode } = event;
       const letter = key.toLowerCase();
 
       if (keyCode >= 65 && keyCode <= 90) {
-        if (playable && selectedWord.includes(letter)) {
-          if (!correctLetters.includes(letter)) {
-            setCorrectLetters([...correctLetters, letter]);
-          } else {
-            handleNotification('You have already entered this letter');
-          }
-        } else {
-          if (playable && !wrongLetters.includes(letter)) {
-            setWrongLetters([...wrongLetters, letter]);
-          } else {
-            handleNotification('You have already entered this letter');
-          }
-        }
+        handleLetterInput(letter);
       }
     };
     window.addEventListener('keydown', handleKeydown);
@@ -131,93 +132,135 @@ export default function HangMan() {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [handlePlayable, playable, selectedWord, wrongLetters, correctLetters]);
 
+  // On Screen Keyboard
+  const handleKeyboard = (e) => {
+    const letter = e.target.title;
+    handleLetterInput(letter);
+  };
+
+  const handleLetterInput = (letter) => {
+    if (playable && selectedWord.includes(letter)) {
+      if (!correctLetters.includes(letter)) {
+        setCorrectLetters([...correctLetters, letter]);
+      } else {
+        if (playable)
+          handleNotification('You have already entered this letter');
+      }
+    } else {
+      if (playable && !wrongLetters.includes(letter)) {
+        setWrongLetters([...wrongLetters, letter]);
+      } else {
+        if (playable)
+          handleNotification('You have already entered this letter');
+      }
+    }
+  };
+
   return (
-    <div style={styles.pageContainer}>
-      <div style={styles.pageContent}>
-        <div style={styles.headerContainer}>
-          <p style={styles.mainText}>Welcome To The Hang Man Game</p>
+    <HangManContext.Provider
+      value={{
+        popUp,
+        wrongLetters,
+        handleKeyboard,
+        isRowBased,
+        selectedWord,
+        correctLetters,
+        gameWins,
+        gameLoose,
+      }}
+    >
+      <div
+        style={{
+          ...styles.container,
+          ...{ alignItems: !isRowBased ? 'start' : 'center' },
+        }}
+      >
+        <div
+          style={{ ...styles.content, ...{ gridGap: !isRowBased ? 5 : 30 } }}
+        >
           {popUp && (
-            <div style={styles.popUpContainer}>
-              <p style={styles.popUpText}>{popUp}</p>
+            <div style={styles.notification}>
+              <Notification />
             </div>
           )}
-        </div>
-        <div style={styles.figureContainer(isRowBased)}>
-          <Figure wrongLetters={wrongLetters} playable={playable} />
-        </div>
-        <div style={styles.sideContainer(isRowBased)}>
-          <WrongLetters
-            wrongLetters={wrongLetters}
-            winner={winner}
-            correctLetters={correctLetters}
-          />
-          <Word
-            selectedWord={selectedWord}
-            correctLetters={correctLetters}
-            wrongLetters={wrongLetters}
-            gameWins={gameWins}
-            gameLoose={gameLoose}
-          />
-        </div>
-        <div style={styles.headerContainer}>
-          <div onClick={playAgain} className="btn btn-danger" variant="danger">
-            Start Again
+          <div style={styles.figure}>
+            <Figure />
           </div>
-          <div onClick={playNewGame} className="btn btn-black" variant="danger">
-            New Game
+          <div style={styles.word}>
+            <Word />
+          </div>
+          <div style={styles.wrongLetters}>
+            <WrongLetters />
+          </div>
+          <div style={styles.keyboard}>
+            <Keyboard />
+          </div>
+          <div style={styles.footer}>
+            <div style={{ display: 'flex' }}>
+              <Button
+                title="Start Again"
+                color={colors.danger}
+                onClick={playAgain}
+              />
+              <Button
+                title="New Game"
+                color={colors.black}
+                onClick={playNewGame}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </HangManContext.Provider>
   );
 }
 
 const styles = {
-  mainText: {
-    color: '#546677',
-    fontSize: 'x-large',
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  popUpText: {
-    color: '#000',
-    justifySelf: 'center',
-  },
-  headerContainer: {
-    gridColumn: '1/5',
-    justifySelf: 'center',
-    margin: 20,
-  },
-  pageContainer: {
+  container: {
     display: 'grid',
-    backgroundColor: 'hsl(0, 0%, 75%)',
+    width: '100vw',
+    height: '80vh',
+    backgroundColor: colors.light,
+    justifyContent: 'center',
+    overflow: 'scroll',
+  },
+  content: {
+    display: 'grid',
+    gridTemplateAreas: " 'a a b b' 'a a c c ' 'e e e e' 'd d d d' ",
+    gridTemplateRows: 'auto auto auto auto',
+    width: '90vw',
+    height: '60vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notification: {
+    gridArea: 'a',
+  },
+  figure: {
+    gridArea: 'a',
+    display: 'grid',
+    justifySelf: 'center',
+    alignItems: 'center',
+  },
+  word: {
+    alignSelf: 'start',
+    gridArea: 'b',
+  },
+  wrongLetters: {
+    alignSelf: 'start',
+    gridArea: 'c',
+  },
+  keyboard: {
+    display: 'grid',
+    justifySelf: 'center',
+    alignSelf: 'start',
+    gridArea: 'e',
     width: '100vw',
   },
-  popUpContainer: {
+  footer: {
+    alignSelf: 'end',
     display: 'grid',
-    gridTemplateColumns: '1fr',
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    margin: 'auto',
-  },
-  pageContent: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr 1fr',
-    gridTemplateRows: 'auto auto auto',
-    gridGap: '1rem',
-    minHeight: '80vh',
-    maxWidth: 800,
-    padding: '5vw',
+    gridArea: 'd',
     justifySelf: 'center',
   },
-  figureContainer: (isRowBased) => ({
-    gridColumn: isRowBased ? '1/3' : '1/5',
-    paddingRight: '1rem',
-    justifySelf: 'center',
-  }),
-  sideContainer: (isRowBased) => ({
-    gridColumn: isRowBased ? '3/5' : '1/5',
-    justifySelf: 'center',
-  }),
 };

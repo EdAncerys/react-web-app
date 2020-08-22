@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { HangManContext } from '../../pages/HangMan';
+import colors from '../../../config/colors';
 
-export default function Figure({ wrongLetters, playable }) {
+export default function Figure({}) {
+  const { wrongLetters } = useContext(HangManContext);
   const errors = wrongLetters.length;
 
   return (
@@ -30,7 +33,7 @@ export default function Figure({ wrongLetters, playable }) {
 const styles = {
   figure: {
     fill: 'transparent',
-    stroke: '#fff',
+    stroke: colors.black,
     strokeWidth: 4,
     strokeLinecap: 'round',
   },

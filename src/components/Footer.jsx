@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LinkedIn from '../images/LI-In-Bug.png';
+import colors from '../config/colors';
 
 export default class Footer extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <div className="footer">
+      <div style={styles.container} className="footer">
         <React.Fragment>
           <p>&copy; Copyright {this.state.year}. All Rights Reserved</p>
         </React.Fragment>
@@ -41,3 +42,9 @@ export default class Footer extends Component {
     );
   }
 }
+
+const styles = {
+  container: {
+    color: colors.medium,
+  },
+};

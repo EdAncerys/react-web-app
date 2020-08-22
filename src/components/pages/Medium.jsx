@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MediumArticle from '../content/ArticleComponent/MediumAricleComponent';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import colors from '../../config/colors';
 
 export default function Medium(props) {
   const [mediumArticles, setMediumArticles] = useState();
@@ -33,7 +34,7 @@ export default function Medium(props) {
   };
 
   return mediumArticles ? (
-    <div className="medium-page">
+    <div style={styles.container} className="medium-page">
       <h3 className="title-name">
         {props.selectedArticleId ? '' : 'Medium Articles'}
       </h3>
@@ -52,3 +53,9 @@ export default function Medium(props) {
     <div className="medium-error">{axiosError ? axiosError : 'Loading...'}</div>
   );
 }
+
+const styles = {
+  container: {
+    color: colors.medium,
+  },
+};
