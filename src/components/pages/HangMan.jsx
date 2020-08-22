@@ -103,6 +103,11 @@ export default function HangMan() {
     }
   };
 
+  useEffect(() => {
+    if (winner) handleNotification('Congratulations! You won!');
+    if (wrongLetters.length > 5) handleNotification('Unfortunately you lost.');
+  }, [winner, wrongLetters]);
+
   const handleNotification = (message) => {
     setPopUp(message);
     setTimeout(() => {
@@ -138,13 +143,15 @@ export default function HangMan() {
       if (!correctLetters.includes(letter)) {
         setCorrectLetters([...correctLetters, letter]);
       } else {
-        handleNotification('You have already entered this letter');
+        if (playable)
+          handleNotification('You have already entered this letter');
       }
     } else {
       if (playable && !wrongLetters.includes(letter)) {
         setWrongLetters([...wrongLetters, letter]);
       } else {
-        handleNotification('You have already entered this letter');
+        if (playable)
+          handleNotification('You have already entered this letter');
       }
     }
   };
