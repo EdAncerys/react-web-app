@@ -11,6 +11,8 @@ import TickTackToe from './components/pages/TickTackToe';
 import RPS from './components/pages/RPS';
 import HangMan from './components/pages/HangMan';
 
+export const AppContext = React.createContext();
+
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
   const [contactPage, setContactPage] = useState(false);
@@ -144,51 +146,55 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <Header
-        aboutPage={aboutPage}
-        contactPage={contactPage}
-        mediumPage={mediumPage}
-        goToHomePage={goToHomePage}
-        goToAboutPage={goToAboutPage}
-        goToContactPage={goToContactPage}
-        goToMediumPage={goToMediumPage}
-        tickTackToePage={tickTackToePage}
-        goToTickTackToePage={goToTickTackToePage}
-        goToRPSPage={goToRPSPage}
-        rpsPage={rpsPage}
-        goToHangManPage={goToHangManPage}
-        hangManPage={hangManPage}
-      />
-      <div className="content">
-        {!aboutPage &&
-          !contactPage &&
-          !mediumPage &&
-          !tickTackToePage &&
-          !rpsPage &&
-          !hangManPage && (
-            <Content
-              selectedProject={selectedProject}
-              selectedProjectId={selectedProjectId}
-              goToTickTackToePage={goToTickTackToePage}
-              goToRPSPage={goToRPSPage}
-              goToHangManPage={goToHangManPage}
+    <AppContext.Provider
+      value={{
+        goToHomePage,
+        goToAboutPage,
+        aboutPage,
+        goToMediumPage,
+        mediumPage,
+        goToTickTackToePage,
+        tickTackToePage,
+        goToRPSPage,
+        rpsPage,
+        goToHangManPage,
+        hangManPage,
+        goToContactPage,
+        contactPage,
+      }}
+    >
+      <div className="App">
+        <Header />
+        <div className="content">
+          {!aboutPage &&
+            !contactPage &&
+            !mediumPage &&
+            !tickTackToePage &&
+            !rpsPage &&
+            !hangManPage && (
+              <Content
+                selectedProject={selectedProject}
+                selectedProjectId={selectedProjectId}
+                goToTickTackToePage={goToTickTackToePage}
+                goToRPSPage={goToRPSPage}
+                goToHangManPage={goToHangManPage}
+              />
+            )}
+          {aboutPage && <About />}
+          {contactPage && <Contact />}
+          {mediumPage && (
+            <Medium
+              selectedArticleId={selectedArticleId}
+              selectedArticle={selectedArticle}
+              goToMediumPreviewPage={goToMediumPreviewPage}
             />
           )}
-        {aboutPage && <About />}
-        {contactPage && <Contact />}
-        {mediumPage && (
-          <Medium
-            selectedArticleId={selectedArticleId}
-            selectedArticle={selectedArticle}
-            goToMediumPreviewPage={goToMediumPreviewPage}
-          />
-        )}
-        {tickTackToePage && <TickTackToe />}
-        {rpsPage && <RPS />}
-        {hangManPage && <HangMan />}
+          {tickTackToePage && <TickTackToe />}
+          {rpsPage && <RPS />}
+          {hangManPage && <HangMan />}
+        </div>
+        <Footer goToContactPage={goToContactPage} />
       </div>
-      <Footer goToContactPage={goToContactPage} />
-    </div>
+    </AppContext.Provider>
   );
 }

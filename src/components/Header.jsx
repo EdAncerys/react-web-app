@@ -1,63 +1,81 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Navbar, NavDropdown, Button } from 'react-bootstrap';
+import { AppContext } from '../../src/App';
 
-export default class Header extends Component {
-  render() {
-    return (
+export default function Header({ props }) {
+  const {
+    goToHomePage,
+    goToAboutPage,
+    aboutPage,
+    goToMediumPage,
+    mediumPage,
+    goToTickTackToePage,
+    tickTackToePage,
+    goToRPSPage,
+    rpsPage,
+    goToHangManPage,
+    hangManPage,
+    goToContactPage,
+    contactPage,
+  } = useContext(AppContext);
+
+  return (
+    <div style={styles.container}>
       <Navbar sticky="top" className="navbar-home">
         <Navbar.Brand>
-          <span onClick={this.props.goToHomePage} className="logo">
+          <span onClick={goToHomePage} className="logo">
             Ed Ancerys
           </span>
         </Navbar.Brand>
         <div className="navbar-right">
           <Button
-            onClick={this.props.goToAboutPage}
+            onClick={goToAboutPage}
             className="btn btn-danger"
             variant="danger"
           >
-            {this.props.aboutPage ? 'Home' : 'About'}
+            {aboutPage ? 'Home' : 'About'}
           </Button>
 
           <NavDropdown title="More">
             <NavDropdown.Item
               className="btn-nav-black"
-              onClick={this.props.goToMediumPage}
+              onClick={goToMediumPage}
             >
-              {this.props.mediumPage ? 'Home' : 'Medium'}
+              {mediumPage ? 'Home' : 'Medium'}
             </NavDropdown.Item>
             <NavDropdown.Item
               className="btn-nav-lemon"
-              onClick={this.props.goToTickTackToePage}
+              onClick={goToTickTackToePage}
             >
               {' '}
-              {this.props.tickTackToePage ? 'Home' : 'TickTackToe'}
+              {tickTackToePage ? 'Home' : 'TickTackToe'}
             </NavDropdown.Item>
-            <NavDropdown.Item
-              className="btn-nav-danger"
-              onClick={this.props.goToRPSPage}
-            >
+            <NavDropdown.Item className="btn-nav-danger" onClick={goToRPSPage}>
               {' '}
-              {this.props.rpsPage ? 'Home' : 'RPS'}
+              {rpsPage ? 'Home' : 'RPS'}
             </NavDropdown.Item>
             <NavDropdown.Item
               className="btn-nav-gray"
-              onClick={this.props.goToHangManPage}
+              onClick={goToHangManPage}
             >
               {' '}
-              {this.props.hangManPage ? 'Home' : 'Hang Man'}
+              {hangManPage ? 'Home' : 'Hang Man'}
             </NavDropdown.Item>
 
             <NavDropdown.Divider />
             <NavDropdown.Item
               className="btn-nav-blue"
-              onClick={this.props.goToContactPage}
+              onClick={goToContactPage}
             >
-              {this.props.contactPage ? 'Home' : 'Contact'}
+              {contactPage ? 'Home' : 'Contact'}
             </NavDropdown.Item>
           </NavDropdown>
         </div>
       </Navbar>
-    );
-  }
+    </div>
+  );
 }
+
+const styles = {
+  container: {},
+};
