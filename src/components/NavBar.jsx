@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Navbar, NavDropdown, Button } from 'react-bootstrap';
-import { AppContext } from '../../src/App';
+import { AppContext } from '../App';
 
 export default function Header({ props }) {
   const {

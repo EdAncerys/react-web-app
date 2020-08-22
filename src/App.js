@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
-import Header from './components/Header';
+import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Content from './components/Content';
 import About from './components/pages/About';
@@ -164,7 +164,7 @@ export default function App() {
       }}
     >
       <div className="App">
-        <Header />
+        <NavBar />
         <div className="content">
           {!aboutPage &&
             !contactPage &&
