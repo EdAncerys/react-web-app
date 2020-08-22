@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { HangManContext } from '../../pages/HangMan';
 
 import { FiCloudLightning } from 'react-icons/fi';
-import { IconContext } from 'react-icons';
 
 import colors from '../../../config/colors';
 
@@ -43,6 +42,7 @@ const styles = {
   header: {
     display: 'grid',
     justifyContent: 'center',
+    textAlign: 'center',
     color: colors.primary,
     fontSize: 24,
     fontWeight: 800,

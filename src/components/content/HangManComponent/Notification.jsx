@@ -12,6 +12,7 @@ export default function Notification({}) {
 const styles = {
   container: {
     position: 'absolute',
+    textAlign: 'center',
     backgroundColor: colors.secondary,
     color: colors.white,
     padding: 30,

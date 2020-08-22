@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { HangManContext } from '../../pages/HangMan';
+
 import colors from '../../../config/colors';
 
 export default function WrongLetters({}) {
-  const { wrongLetters, winner, correctLetters } = useContext(HangManContext);
+  const { wrongLetters } = useContext(HangManContext);
 
   const handleWrongLetters = (wrongLetters) => {
     return wrongLetters
@@ -37,6 +38,7 @@ const styles = {
   header: {
     display: 'grid',
     justifyContent: 'center',
+    textAlign: 'center',
     color: colors.primary,
     fontSize: 24,
     fontWeight: 800,
@@ -58,6 +60,7 @@ const styles = {
     justifyContent: 'center',
   },
   footerText: {
+    textAlign: 'center',
     fontSize: 18,
     fontWeight: '600',
     color: colors.secondary,

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { HangManContext } from '../../pages/HangMan';
+import colors from '../../../config/colors';
 
 export default function Figure({}) {
   const { wrongLetters } = useContext(HangManContext);
@@ -32,7 +33,7 @@ export default function Figure({}) {
 const styles = {
   figure: {
     fill: 'transparent',
-    stroke: '#fff',
+    stroke: colors.black,
     strokeWidth: 4,
     strokeLinecap: 'round',
   },

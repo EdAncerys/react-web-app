@@ -169,8 +169,15 @@ export default function HangMan() {
         gameLoose,
       }}
     >
-      <div style={styles.container}>
-        <div style={styles.content}>
+      <div
+        style={{
+          ...styles.container,
+          ...{ alignItems: !isRowBased ? 'start' : 'center' },
+        }}
+      >
+        <div
+          style={{ ...styles.content, ...{ gridGap: !isRowBased ? 5 : 30 } }}
+        >
           {popUp && (
             <div style={styles.notification}>
               <Notification />
@@ -213,15 +220,15 @@ const styles = {
     display: 'grid',
     width: '100vw',
     height: '80vh',
-    alignItems: 'center',
-    backgroundColor: colors.medium,
+    backgroundColor: colors.light,
+    justifyContent: 'center',
     overflow: 'scroll',
   },
   content: {
     display: 'grid',
     gridTemplateAreas: " 'a a b b' 'a a c c ' 'e e e e' 'd d d d' ",
     gridTemplateRows: 'auto auto auto auto',
-    gridGap: 30,
+    width: '90vw',
     height: '60vh',
     justifyContent: 'center',
     alignItems: 'center',
@@ -244,9 +251,11 @@ const styles = {
     gridArea: 'c',
   },
   keyboard: {
+    display: 'grid',
+    justifySelf: 'center',
     alignSelf: 'start',
     gridArea: 'e',
-    width: '90vw',
+    width: '100vw',
   },
   footer: {
     alignSelf: 'end',

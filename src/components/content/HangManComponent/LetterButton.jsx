@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { HangManContext } from '../../pages/HangMan';
+
 import colors from '../../../config/colors';
 
 export default function LetterButton({ title, onClick }) {
+  const { isRowBased } = useContext(HangManContext);
   const [hover, setHover] = useState(false);
 
   return (
@@ -13,6 +16,11 @@ export default function LetterButton({ title, onClick }) {
           backgroundColor: hover
             ? colors.hover[colors.primary]
             : colors.primary,
+          fontSize: !isRowBased ? 'small' : 'large',
+          padding: 5,
+          margin: 5,
+          width: !isRowBased ? 30 : 40,
+          height: !isRowBased ? 30 : 40,
         },
       }}
       onClick={onClick}
@@ -30,11 +38,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     textTransform: 'uppercase',
-    fontSize: 'large',
-    padding: 5,
-    margin: 5,
-    width: 40,
-    height: 40,
     borderRadius: '50%',
     color: colors.white,
     cursor: 'pointer',
