@@ -13,7 +13,7 @@ import colors from '../../config/colors';
 
 export const HangManContext = React.createContext();
 
-export default function HangMan() {
+export default function HangMan({ mediaQuery }) {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [playable, setPlayable] = useState(true);
@@ -23,8 +23,6 @@ export default function HangMan() {
   const [selectedWord, setSelectedWord] = useState('');
   const [newWord, setNewWord] = useState(true);
   const [popUp, setPopUp] = useState(false);
-
-  const isRowBased = useMediaQuery('(min-width: 600px)');
 
   useEffect(() => {
     const gameWords = wordList;
@@ -162,7 +160,7 @@ export default function HangMan() {
         popUp,
         wrongLetters,
         handleKeyboard,
-        isRowBased,
+        mediaQuery,
         selectedWord,
         correctLetters,
         gameWins,
@@ -172,11 +170,11 @@ export default function HangMan() {
       <div
         style={{
           ...styles.container,
-          ...{ alignItems: !isRowBased ? 'start' : 'center' },
+          ...{ alignItems: !mediaQuery ? 'start' : 'center' },
         }}
       >
         <div
-          style={{ ...styles.content, ...{ gridGap: !isRowBased ? 5 : 30 } }}
+          style={{ ...styles.content, ...{ gridGap: !mediaQuery ? 5 : 30 } }}
         >
           {popUp && (
             <div style={styles.notification}>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
-import Header from './components/Header';
+import { useMediaQuery } from './hooks/useMediaQuery';
+import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Content from './components/Content';
 import About from './components/pages/About';
@@ -10,6 +11,8 @@ import Medium from './components/pages/Medium';
 import TickTackToe from './components/pages/TickTackToe';
 import RPS from './components/pages/RPS';
 import HangMan from './components/pages/HangMan';
+
+export const AppContext = React.createContext();
 
 export default function App() {
   const [aboutPage, setAboutPage] = useState(false);
@@ -20,6 +23,10 @@ export default function App() {
   const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [selectedArticleId, setSelectedArticleId] = useState();
+  const [dropDown, setDropDown] = useState(false);
+  const [dropDownHover, setDropDownHover] = useState(false);
+
+  const mediaQuery = useMediaQuery('(min-width: 800px)');
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
@@ -144,51 +151,60 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <Header
-        aboutPage={aboutPage}
-        contactPage={contactPage}
-        mediumPage={mediumPage}
-        goToHomePage={goToHomePage}
-        goToAboutPage={goToAboutPage}
-        goToContactPage={goToContactPage}
-        goToMediumPage={goToMediumPage}
-        tickTackToePage={tickTackToePage}
-        goToTickTackToePage={goToTickTackToePage}
-        goToRPSPage={goToRPSPage}
-        rpsPage={rpsPage}
-        goToHangManPage={goToHangManPage}
-        hangManPage={hangManPage}
-      />
-      <div className="content">
-        {!aboutPage &&
-          !contactPage &&
-          !mediumPage &&
-          !tickTackToePage &&
-          !rpsPage &&
-          !hangManPage && (
-            <Content
-              selectedProject={selectedProject}
-              selectedProjectId={selectedProjectId}
-              goToTickTackToePage={goToTickTackToePage}
-              goToRPSPage={goToRPSPage}
-              goToHangManPage={goToHangManPage}
+    <AppContext.Provider
+      value={{
+        goToHomePage,
+        goToAboutPage,
+        aboutPage,
+        goToMediumPage,
+        mediumPage,
+        goToTickTackToePage,
+        tickTackToePage,
+        goToRPSPage,
+        rpsPage,
+        goToHangManPage,
+        hangManPage,
+        goToContactPage,
+        contactPage,
+        dropDown,
+        setDropDown,
+        dropDownHover,
+        setDropDownHover,
+        mediaQuery,
+      }}
+    >
+      <div className="App">
+        <NavBar />
+        <div className="content">
+          {!aboutPage &&
+            !contactPage &&
+            !mediumPage &&
+            !tickTackToePage &&
+            !rpsPage &&
+            !hangManPage && (
+              <Content
+                selectedProject={selectedProject}
+                selectedProjectId={selectedProjectId}
+                goToTickTackToePage={goToTickTackToePage}
+                goToRPSPage={goToRPSPage}
+                goToHangManPage={goToHangManPage}
+              />
+            )}
+          {aboutPage && <About />}
+          {contactPage && <Contact />}
+          {mediumPage && (
+            <Medium
+              selectedArticleId={selectedArticleId}
+              selectedArticle={selectedArticle}
+              goToMediumPreviewPage={goToMediumPreviewPage}
             />
           )}
-        {aboutPage && <About />}
-        {contactPage && <Contact />}
-        {mediumPage && (
-          <Medium
-            selectedArticleId={selectedArticleId}
-            selectedArticle={selectedArticle}
-            goToMediumPreviewPage={goToMediumPreviewPage}
-          />
-        )}
-        {tickTackToePage && <TickTackToe />}
-        {rpsPage && <RPS />}
-        {hangManPage && <HangMan />}
+          {tickTackToePage && <TickTackToe />}
+          {rpsPage && <RPS />}
+          {hangManPage && <HangMan mediaQuery={mediaQuery} />}
+        </div>
+        <Footer goToContactPage={goToContactPage} />
       </div>
-      <Footer goToContactPage={goToContactPage} />
-    </div>
+    </AppContext.Provider>
   );
 }
