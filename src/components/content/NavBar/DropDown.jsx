@@ -20,6 +20,8 @@ export default function DropDown({ props }) {
     hangManPage,
     dropDownHover,
     mediaQuery,
+    setDropDown,
+    dropDown,
   } = useContext(AppContext);
 
   return (
@@ -34,6 +36,7 @@ export default function DropDown({ props }) {
           borderRadius: 10,
         },
       }}
+      onMouseLeave={() => setDropDown(!dropDown)}
     >
       {!mediaQuery && (
         <div>
