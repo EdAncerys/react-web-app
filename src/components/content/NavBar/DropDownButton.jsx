@@ -9,7 +9,7 @@ export default function DropDown({
   title = 'Title',
   color = colors.primary,
 }) {
-  const { setDropDownHover } = useContext(AppContext);
+  const { setDropDownHover, setDropDown, mediaQuery } = useContext(AppContext);
   const [hover, setHover] = useState(false);
 
   return (
@@ -18,10 +18,14 @@ export default function DropDown({
         ...styles.dropDownButton,
         ...{
           backgroundColor: hover ? color : '',
+          paddingLeft: mediaQuery ? 20 : '5vw',
           color: hover ? colors.white : colors.primary,
         },
       }}
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        setDropDown(false);
+      }}
       onMouseOver={() => {
         setHover(!hover);
         setDropDownHover(color);
@@ -42,6 +46,5 @@ const styles = {
     fontSize: 'inherit',
     fontWeight: 'bold',
     padding: 10,
-    paddingLeft: 20,
   },
 };

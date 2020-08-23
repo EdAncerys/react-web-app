@@ -29,11 +29,14 @@ export default function DropDown({ props }) {
       style={{
         ...styles.container,
         ...{
-          border: `1px solid ${dropDownHover ? dropDownHover : colors.primary}`,
-          width: 300,
+          border: mediaQuery
+            ? `1px solid ${dropDownHover ? dropDownHover : colors.primary}`
+            : '',
+          width: mediaQuery ? 300 : '100vw',
+          height: mediaQuery ? '' : '100vh',
           marginTop: 80,
-          right: '5vw',
-          borderRadius: 10,
+          right: mediaQuery ? '5vw' : '',
+          borderRadius: mediaQuery ? 10 : '',
         },
       }}
       onMouseLeave={() => setDropDown(!dropDown)}
