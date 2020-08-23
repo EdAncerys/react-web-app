@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../../App';
+import DropDownButton from './DropDownButton';
 
 import colors from '../../../config/colors';
 
@@ -17,14 +18,8 @@ export default function DropDown({ props }) {
 
   return (
     <div style={styles.container}>
-      <div
-        style={styles.navigation}
-        onClick={goToTickTackToePage}
-        onMouseOver={() => setDropDownHover(!dropDownHover)}
-        onMouseLeave={() => setDropDownHover(!dropDownHover)}
-      >
-        tickTackToe
-      </div>
+      <DropDownButton onClick={goToTickTackToePage} page={tickTackToePage} />
+
       <div>tickTackToe</div>
       <div>tickTackToe</div>
     </div>
@@ -43,11 +38,13 @@ const styles = {
     right: '5vw',
     backgroundColor: colors.white,
     border: `1px solid ${colors.primary}`,
-    borderRadius: 20,
+    borderRadius: 10,
   },
-  navigation: {
-    backgroundColor: colors.tomato,
+  dropDownButton: {
+    cursor: 'pointer',
+    fontSize: 'inherit',
+    fontWeight: 'bold',
     padding: 10,
-    marginTop: 10,
+    paddingLeft: 20,
   },
 };
