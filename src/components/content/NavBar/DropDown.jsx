@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../../App';
 import DropDownButton from './DropDownButton';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import colors from '../../../config/colors';
 
 export default function DropDown({ props }) {
   const {
+    goToHomePage,
     goToAboutPage,
     aboutPage,
     goToMediumPage,
@@ -29,12 +31,13 @@ export default function DropDown({ props }) {
       style={{
         ...styles.container,
         ...{
+          position: mediaQuery ? 'absolute' : 'relative',
+          marginTop: mediaQuery ? 80 : 0,
           border: mediaQuery
             ? `1px solid ${dropDownHover ? dropDownHover : colors.primary}`
             : '',
-          width: mediaQuery ? 300 : '100vw',
+          width: mediaQuery ? 300 : '90vw',
           height: mediaQuery ? '' : '100vh',
-          marginTop: mediaQuery ? 80 : 70,
           right: mediaQuery ? '5vw' : '',
           borderRadius: mediaQuery ? 10 : '',
         },
@@ -91,7 +94,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
-    position: 'absolute',
     backgroundColor: colors.white,
   },
   dropDownButton: {
@@ -100,5 +102,10 @@ const styles = {
     fontWeight: 'bold',
     padding: 10,
     paddingLeft: 20,
+  },
+  logo: {
+    fontSize: 28,
+    color: colors.dark,
+    flex: 1,
   },
 };

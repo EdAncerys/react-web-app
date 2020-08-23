@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
 import NavBarNavigation from './content/NavBar/NavBarNavigation';
-import NavBarMobile from './content/NavBar/NavBarMobile';
 import DropDown from '../components/content/NavBar/DropDown';
 
 import colors from '../config/colors';
