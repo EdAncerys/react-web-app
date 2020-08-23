@@ -18,10 +18,24 @@ export default function DropDown({ props }) {
 
   return (
     <div style={styles.container}>
-      <DropDownButton onClick={goToTickTackToePage} page={tickTackToePage} />
+      <DropDownButton
+        title="TickTackToe"
+        onClick={goToTickTackToePage}
+        page={tickTackToePage}
+      />
+      <DropDownButton
+        title="RPS"
+        color={colors.tomato}
+        onClick={goToRPSPage}
+        page={rpsPage}
+      />
 
-      <div>tickTackToe</div>
-      <div>tickTackToe</div>
+      <DropDownButton
+        title="RPS"
+        color={colors.dark}
+        onClick={goToHangManPage}
+        page={hangManPage}
+      />
     </div>
   );
 }
@@ -33,7 +47,7 @@ const styles = {
     overflow: 'hidden',
     position: 'absolute',
     width: 300,
-    height: 300,
+    // height: 300,
     marginTop: 60,
     right: '5vw',
     backgroundColor: colors.white,

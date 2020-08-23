@@ -3,7 +3,12 @@ import { AppContext } from '../../../App';
 
 import colors from '../../../config/colors';
 
-export default function DropDown({ onClick, page }) {
+export default function DropDown({
+  onClick,
+  page,
+  title = 'Title',
+  color = colors.primary,
+}) {
   const { setDropDownHover } = useContext(AppContext);
   const [hover, setHover] = useState(false);
 
@@ -12,7 +17,7 @@ export default function DropDown({ onClick, page }) {
       style={{
         ...styles.dropDownButton,
         ...{
-          backgroundColor: hover ? colors.primary : '',
+          backgroundColor: hover ? color : '',
           color: hover ? colors.white : colors.primary,
         },
       }}
@@ -26,7 +31,7 @@ export default function DropDown({ onClick, page }) {
         setDropDownHover(false);
       }}
     >
-      {page ? 'Home' : 'TickTackToe'}
+      {page ? 'Home' : title}
     </div>
   );
 }

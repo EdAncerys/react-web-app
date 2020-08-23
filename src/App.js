@@ -22,7 +22,7 @@ export default function App() {
   const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [selectedArticleId, setSelectedArticleId] = useState();
-  const [dropDown, setDropDown] = useState(true);
+  const [dropDown, setDropDown] = useState(false);
   const [dropDownHover, setDropDownHover] = useState(false);
 
   // Save state to local storage
