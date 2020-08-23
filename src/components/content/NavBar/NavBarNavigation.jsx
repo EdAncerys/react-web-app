@@ -1,23 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../../App';
+
 import Button from '../../Button';
-import { IoMdArrowDropdown } from 'react-icons/io';
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 import colors from '../../../config/colors';
 
 export default function NavBarNavigation({}) {
   const {
-    goToHomePage,
     goToAboutPage,
     aboutPage,
     goToMediumPage,
     mediumPage,
-    goToTickTackToePage,
-    tickTackToePage,
-    goToRPSPage,
-    rpsPage,
-    goToHangManPage,
-    hangManPage,
     goToContactPage,
     contactPage,
     dropDown,
@@ -52,12 +46,16 @@ export default function NavBarNavigation({}) {
           },
         }}
         onClick={() => setDropDown(!dropDown)}
-        onMouseOver={() => setHover(!hover)}
+        onMouseOver={() => {
+          setHover(!hover);
+          setDropDown(!dropDown);
+        }}
         onMouseLeave={() => setHover(!hover)}
       >
         Games
         <div>
-          <IoMdArrowDropdown size={20} />
+          {!dropDown && <IoMdArrowDropdown size={20} />}
+          {dropDown && <IoMdArrowDropup size={20} />}
         </div>
       </div>
     </div>

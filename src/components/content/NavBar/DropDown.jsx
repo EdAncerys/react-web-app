@@ -13,10 +13,12 @@ export default function DropDown({ props }) {
 const styles = {
   container: {
     position: 'absolute',
-    width: 400,
+    width: 300,
     height: 300,
     marginTop: 60,
     right: '5vw',
     backgroundColor: colors.white,
+    border: `1px solid ${colors.primary}`,
+    borderRadius: 20,
   },
 };
