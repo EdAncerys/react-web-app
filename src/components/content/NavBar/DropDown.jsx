@@ -6,6 +6,12 @@ import colors from '../../../config/colors';
 
 export default function DropDown({ props }) {
   const {
+    goToAboutPage,
+    aboutPage,
+    goToMediumPage,
+    mediumPage,
+    goToContactPage,
+    contactPage,
     goToTickTackToePage,
     tickTackToePage,
     goToRPSPage,
@@ -13,6 +19,7 @@ export default function DropDown({ props }) {
     goToHangManPage,
     hangManPage,
     dropDownHover,
+    mediaQuery,
   } = useContext(AppContext);
 
   return (
@@ -21,9 +28,35 @@ export default function DropDown({ props }) {
         ...styles.container,
         ...{
           border: `1px solid ${dropDownHover ? dropDownHover : colors.primary}`,
+          width: 300,
+          marginTop: 80,
+          right: '5vw',
+          borderRadius: 10,
         },
       }}
     >
+      {!mediaQuery && (
+        <div>
+          <DropDownButton
+            title="About"
+            color={colors.danger}
+            onClick={goToAboutPage}
+            page={aboutPage}
+          />
+          <DropDownButton
+            title="Medium"
+            color={colors.black}
+            onClick={goToMediumPage}
+            page={mediumPage}
+          />
+          <DropDownButton
+            title="Contact"
+            color={colors.yellow}
+            onClick={goToContactPage}
+            page={contactPage}
+          />
+        </div>
+      )}
       <DropDownButton
         title="TickTackToe"
         color={colors.secondary}
@@ -53,11 +86,7 @@ const styles = {
     flexDirection: 'column',
     overflow: 'hidden',
     position: 'absolute',
-    width: 300,
-    marginTop: 80,
-    right: '5vw',
     backgroundColor: colors.white,
-    borderRadius: 10,
   },
   dropDownButton: {
     cursor: 'pointer',

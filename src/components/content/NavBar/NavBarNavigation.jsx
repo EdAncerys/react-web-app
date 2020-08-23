@@ -4,6 +4,7 @@ import { AppContext } from '../../../App';
 import Button from '../../Button';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 import { BsList } from 'react-icons/bs';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import colors from '../../../config/colors';
 
@@ -53,13 +54,11 @@ export default function NavBarNavigation({}) {
             },
           }}
           onClick={() => setDropDown(!dropDown)}
-          onMouseOver={() => {
-            setDropDownHover(!dropDownHover);
-            setDropDown(!dropDown);
-          }}
+          onMouseOver={() => setDropDownHover(!dropDownHover)}
           onMouseLeave={() => setDropDownHover(!dropDownHover)}
         >
-          {!mediaQuery && <BsList size={30} />}
+          {!mediaQuery && !dropDown && <BsList size={30} />}
+          {!mediaQuery && dropDown && <AiOutlineClose size={30} />}
           {mediaQuery && (
             <div>
               Games
