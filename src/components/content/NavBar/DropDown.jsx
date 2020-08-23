@@ -34,7 +34,7 @@ export default function DropDown({ props }) {
             : '',
           width: mediaQuery ? 300 : '100vw',
           height: mediaQuery ? '' : '100vh',
-          marginTop: 80,
+          marginTop: mediaQuery ? 80 : 70,
           right: mediaQuery ? '5vw' : '',
           borderRadius: mediaQuery ? 10 : '',
         },
