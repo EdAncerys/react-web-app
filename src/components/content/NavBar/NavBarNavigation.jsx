@@ -67,6 +67,7 @@ export default function NavBarNavigation({}) {
 const styles = {
   container: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'center',
   },
   dropDown: {

@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 // import { Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { AppContext } from '../App';
 import NavBarNavigation from './content/NavBar/NavBarNavigation';
+import DropDown from '../components/content/NavBar/DropDown';
 
 import colors from '../config/colors';
+import { FiGrid } from 'react-icons/fi';
 
 export default function Header({ props }) {
   const {
@@ -70,6 +72,7 @@ export default function Header({ props }) {
     //     </div>
     //   </Navbar>
     // </div>
+
     <div style={styles.container}>
       <div style={styles.navigation}>
         <div style={styles.logo} className="logo" onClick={goToHomePage}>
@@ -77,15 +80,18 @@ export default function Header({ props }) {
         </div>
         <NavBarNavigation />
       </div>
-      {dropDown && <div style={styles.dropDown}></div>}
+      {dropDown && <DropDown />}
     </div>
   );
 }
 
 const styles = {
   container: {
+    display: 'grid',
     position: 'sticky',
     top: 0,
+    width: '100vw',
+    justifyContent: 'center',
     backgroundColor: colors.white,
   },
   logo: {
@@ -95,14 +101,8 @@ const styles = {
   },
   navigation: {
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    width: '100vw',
-  },
-  dropDown: {
-    position: 'absolute',
-    width: 400,
-    height: 400,
-    marginTop: 10,
-    backgroundColor: colors.white,
+    width: '90vw',
   },
 };
