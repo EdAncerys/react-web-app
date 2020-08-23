@@ -42,9 +42,7 @@ export default function NavBarNavigation({}) {
         style={{
           ...styles.dropDown,
           ...{
-            color: dropDownHover
-              ? colors.hover[colors.primary]
-              : colors.primary,
+            color: dropDownHover ? dropDownHover : colors.primary,
           },
         }}
         onClick={() => setDropDown(!dropDown)}

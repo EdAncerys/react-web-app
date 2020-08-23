@@ -24,7 +24,7 @@ export default function DropDown({
       onClick={onClick}
       onMouseOver={() => {
         setHover(!hover);
-        setDropDownHover(colors.primary);
+        setDropDownHover(color);
       }}
       onMouseLeave={() => {
         setHover(!hover);

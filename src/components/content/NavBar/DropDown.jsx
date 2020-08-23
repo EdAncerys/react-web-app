@@ -13,13 +13,20 @@ export default function DropDown({ props }) {
     goToHangManPage,
     hangManPage,
     dropDownHover,
-    setDropDownHover,
   } = useContext(AppContext);
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        ...styles.container,
+        ...{
+          border: `1px solid ${dropDownHover ? dropDownHover : colors.primary}`,
+        },
+      }}
+    >
       <DropDownButton
         title="TickTackToe"
+        color={colors.secondary}
         onClick={goToTickTackToePage}
         page={tickTackToePage}
       />
@@ -31,8 +38,8 @@ export default function DropDown({ props }) {
       />
 
       <DropDownButton
-        title="RPS"
-        color={colors.dark}
+        title="Hang Man"
+        color={colors.electric}
         onClick={goToHangManPage}
         page={hangManPage}
       />
@@ -47,11 +54,9 @@ const styles = {
     overflow: 'hidden',
     position: 'absolute',
     width: 300,
-    // height: 300,
     marginTop: 60,
     right: '5vw',
     backgroundColor: colors.white,
-    border: `1px solid ${colors.primary}`,
     borderRadius: 10,
   },
   dropDownButton: {
