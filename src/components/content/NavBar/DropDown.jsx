@@ -54,7 +54,7 @@ const styles = {
     overflow: 'hidden',
     position: 'absolute',
     width: 300,
-    marginTop: 60,
+    marginTop: 80,
     right: '5vw',
     backgroundColor: colors.white,
     borderRadius: 10,

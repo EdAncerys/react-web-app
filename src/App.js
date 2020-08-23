@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
+import { useMediaQuery } from './hooks/useMediaQuery';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Content from './components/Content';
@@ -24,6 +25,8 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState();
   const [dropDown, setDropDown] = useState(false);
   const [dropDownHover, setDropDownHover] = useState(false);
+
+  const mediaQuery = useMediaQuery('(min-width: 800px)');
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
@@ -167,6 +170,7 @@ export default function App() {
         setDropDown,
         dropDownHover,
         setDropDownHover,
+        mediaQuery,
       }}
     >
       <div className="App">
@@ -197,7 +201,7 @@ export default function App() {
           )}
           {tickTackToePage && <TickTackToe />}
           {rpsPage && <RPS />}
-          {hangManPage && <HangMan />}
+          {hangManPage && <HangMan mediaQuery={mediaQuery} />}
         </div>
         <Footer goToContactPage={goToContactPage} />
       </div>

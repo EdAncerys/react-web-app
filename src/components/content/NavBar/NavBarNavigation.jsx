@@ -3,6 +3,7 @@ import { AppContext } from '../../../App';
 
 import Button from '../../Button';
 import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { BsList } from 'react-icons/bs';
 
 import colors from '../../../config/colors';
 
@@ -18,44 +19,54 @@ export default function NavBarNavigation({}) {
     setDropDown,
     dropDownHover,
     setDropDownHover,
+    mediaQuery,
   } = useContext(AppContext);
 
   return (
     <div style={styles.container}>
-      <Button
-        title={aboutPage ? 'Home' : 'About'}
-        color={colors.danger}
-        solid={false}
-        onClick={goToAboutPage}
-      />
-      <Button
-        title={mediumPage ? 'Home' : 'Medium'}
-        color={colors.black}
-        onClick={goToMediumPage}
-      />
-      <Button
-        title={contactPage ? 'Home' : 'Contact'}
-        color={colors.yellow}
-        onClick={goToContactPage}
-      />
-      <div
-        style={{
-          ...styles.dropDown,
-          ...{
-            color: dropDownHover ? dropDownHover : colors.primary,
-          },
-        }}
-        onClick={() => setDropDown(!dropDown)}
-        onMouseOver={() => {
-          setDropDownHover(!dropDownHover);
-          setDropDown(!dropDown);
-        }}
-        onMouseLeave={() => setDropDownHover(!dropDownHover)}
-      >
-        Games
-        <div>
-          {!dropDown && <IoMdArrowDropdown size={20} />}
-          {dropDown && <IoMdArrowDropup size={20} />}
+      <div style={styles.wrapper}>
+        {mediaQuery && (
+          <>
+            <Button
+              title={aboutPage ? 'Home' : 'About'}
+              color={colors.danger}
+              solid={false}
+              onClick={goToAboutPage}
+            />
+            <Button
+              title={mediumPage ? 'Home' : 'Medium'}
+              color={colors.black}
+              onClick={goToMediumPage}
+            />
+            <Button
+              title={contactPage ? 'Home' : 'Contact'}
+              color={colors.yellow}
+              onClick={goToContactPage}
+            />
+          </>
+        )}
+        <div
+          style={{
+            ...styles.dropDown,
+            ...{
+              color: dropDownHover ? dropDownHover : colors.primary,
+            },
+          }}
+          onClick={() => setDropDown(!dropDown)}
+          onMouseOver={() => {
+            setDropDownHover(!dropDownHover);
+            setDropDown(!dropDown);
+          }}
+          onMouseLeave={() => setDropDownHover(!dropDownHover)}
+        >
+          {!mediaQuery && <BsList size={30} />}
+          {mediaQuery && (
+            <div>
+              Games
+              {!dropDown && <IoMdArrowDropdown size={20} />}
+              {dropDown && <IoMdArrowDropup size={20} />}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -64,9 +75,12 @@ export default function NavBarNavigation({}) {
 
 const styles = {
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: 'grid',
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  wrapper: {
+    display: 'flex',
   },
   dropDown: {
     display: 'flex',

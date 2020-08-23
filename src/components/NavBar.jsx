@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
 import NavBarNavigation from './content/NavBar/NavBarNavigation';
+import NavBarMobile from './content/NavBar/NavBarMobile';
 import DropDown from '../components/content/NavBar/DropDown';
 
 import colors from '../config/colors';
 
 export default function Header({ props }) {
-  const { goToHomePage, dropDown } = useContext(AppContext);
+  const { goToHomePage, dropDown, mediaQuery } = useContext(AppContext);
 
   return (
     <div style={styles.container}>
@@ -24,14 +25,15 @@ export default function Header({ props }) {
 const styles = {
   container: {
     display: 'grid',
+    justifyContent: 'center',
     position: 'sticky',
     top: 0,
     width: '100vw',
-    justifyContent: 'center',
+    padding: 10,
     backgroundColor: colors.white,
   },
   logo: {
-    fontSize: 30,
+    fontSize: 28,
     color: colors.dark,
     flex: 1,
   },
