@@ -16,7 +16,7 @@ export default {
     '#3CAEA3': 'hsl(174, 49%, 66%)', // Electric
     '#F6D55C': 'hsl(47, 90%, 56%)', // Yellow
     '#ED553B': 'hsl(9, 83%, 38%)', // Tomato
-    '#4c494b': 'hsl(320, 10%, 20%%)', // Black
+    '#4c494b': 'hsl(320, 10%, 20%)', // Black
     '#900603': 'hsl(1, 96%, 49%)', // Danger
   },
 };

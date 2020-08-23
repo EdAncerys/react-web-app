@@ -20,10 +20,8 @@ export default function Button({
         display: 'grid',
         justifyContent: 'center',
         alignItems: 'center',
-
         color: hover ? colors.white : btnTextColor,
         backgroundColor: hover ? hoverColor : btnBackgroundColor,
-
         border: `1px solid ${hover ? hoverColor : color}`,
         borderRadius: 20,
         fontWeight: 'bold',

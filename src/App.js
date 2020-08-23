@@ -22,6 +22,7 @@ export default function App() {
   const [tickTackToePage, setTickTackToePage] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [selectedArticleId, setSelectedArticleId] = useState();
+  const [dropDown, setDropDown] = useState(true);
 
   // Save state to local storage
   const LOCAL_STORAGE_KEY = 'EdAncerys.App';
@@ -161,6 +162,8 @@ export default function App() {
         hangManPage,
         goToContactPage,
         contactPage,
+        dropDown,
+        setDropDown,
       }}
     >
       <div className="App">

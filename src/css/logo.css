@@ -6,7 +6,5 @@
 .logo {
   cursor: pointer;
   font-family: Comfortaa, sans-serif;
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: #546677;
+  /* color: #546677; */
 }
