@@ -16,9 +16,9 @@ export default function NavBarNavigation({}) {
     contactPage,
     dropDown,
     setDropDown,
+    dropDownHover,
+    setDropDownHover,
   } = useContext(AppContext);
-
-  const [hover, setHover] = useState(false);
 
   return (
     <div style={styles.container}>
@@ -42,15 +42,17 @@ export default function NavBarNavigation({}) {
         style={{
           ...styles.dropDown,
           ...{
-            color: hover ? colors.hover[colors.primary] : colors.primary,
+            color: dropDownHover
+              ? colors.hover[colors.primary]
+              : colors.primary,
           },
         }}
         onClick={() => setDropDown(!dropDown)}
         onMouseOver={() => {
-          setHover(!hover);
+          setDropDownHover(!dropDownHover);
           setDropDown(!dropDown);
         }}
-        onMouseLeave={() => setHover(!hover)}
+        onMouseLeave={() => setDropDownHover(!dropDownHover)}
       >
         Games
         <div>
