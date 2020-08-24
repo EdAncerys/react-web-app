@@ -13,6 +13,7 @@ export default function Word({}) {
   return (
     <div style={styles.container}>
       <div style={styles.header}>Guess The Word</div>
+      {selectedWord}
       <div style={styles.content}>
         {selectedWord.split('').map((letter, i) => {
           return (
