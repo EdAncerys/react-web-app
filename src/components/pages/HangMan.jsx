@@ -74,6 +74,7 @@ export default function HangMan({ mediaQuery }) {
     playAgain();
     setGameWins(0);
     setGameLoose(0);
+    setPopUp(false);
   };
 
   const playAgain = () => {
@@ -107,9 +108,12 @@ export default function HangMan({ mediaQuery }) {
 
   const handleNotification = (message) => {
     setPopUp(message);
-    setTimeout(() => {
-      setPopUp(false);
-    }, 1000);
+    setTimeout(
+      () => {
+        setPopUp(false);
+      },
+      winner ? 10000 : 1000
+    );
   };
 
   // On Key Press
@@ -164,6 +168,8 @@ export default function HangMan({ mediaQuery }) {
         correctLetters,
         gameWins,
         gameLoose,
+        playNewGame,
+        winner,
       }}
     >
       <div
@@ -172,7 +178,6 @@ export default function HangMan({ mediaQuery }) {
           ...{ alignItems: !mediaQuery ? 'start' : 'center' },
         }}
       >
-        {/* <Notification /> */}
         <div
           style={{ ...styles.content, ...{ gridGap: !mediaQuery ? 5 : 30 } }}
         >
@@ -230,11 +235,6 @@ const styles = {
     height: '60vh',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  notification: {
-    // marginLeft: '45vw',
-    justifyContent: 'center',
-    // gridArea: 'a',
   },
   figure: {
     gridArea: 'a',
