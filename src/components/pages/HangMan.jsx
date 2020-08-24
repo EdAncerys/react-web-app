@@ -4,7 +4,6 @@ import Word from '../content/HangManComponent/Word';
 import wordList from '../content/HangManComponent/wordList';
 import WrongLetters from '../content/HangManComponent/WrongLetters';
 
-import { useMediaQuery } from '../../hooks/useMediaQuery';
 import Button from '../Button';
 import Keyboard from '../content/HangManComponent/Keyboard';
 import Notification from '../content/HangManComponent/Notification';
@@ -17,10 +16,10 @@ export default function HangMan({ mediaQuery }) {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [playable, setPlayable] = useState(true);
-  const [winner, setWinner] = useState();
+  const [winner, setWinner] = useState(false);
   const [gameWins, setGameWins] = useState(0);
   const [gameLoose, setGameLoose] = useState(0);
-  const [selectedWord, setSelectedWord] = useState('');
+  const [selectedWord, setSelectedWord] = useState('false');
   const [newWord, setNewWord] = useState(true);
   const [popUp, setPopUp] = useState(false);
 
@@ -75,11 +74,12 @@ export default function HangMan({ mediaQuery }) {
     playAgain();
     setGameWins(0);
     setGameLoose(0);
+    setPopUp(false);
   };
 
   const playAgain = () => {
     setNewWord(!newWord);
-    setWinner();
+    setWinner(false);
     setCorrectLetters([]);
     setWrongLetters([]);
     setPlayable(true);
@@ -108,9 +108,12 @@ export default function HangMan({ mediaQuery }) {
 
   const handleNotification = (message) => {
     setPopUp(message);
-    setTimeout(() => {
-      setPopUp(false);
-    }, 1000);
+    setTimeout(
+      () => {
+        setPopUp(false);
+      },
+      winner ? 10000 : 1000
+    );
   };
 
   // On Key Press
@@ -128,7 +131,7 @@ export default function HangMan({ mediaQuery }) {
     handlePlayable();
 
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [handlePlayable, playable, selectedWord, wrongLetters, correctLetters]);
+  }, [handlePlayable, wrongLetters, correctLetters]);
 
   // On Screen Keyboard
   const handleKeyboard = (e) => {
@@ -165,6 +168,8 @@ export default function HangMan({ mediaQuery }) {
         correctLetters,
         gameWins,
         gameLoose,
+        playNewGame,
+        winner,
       }}
     >
       <div
@@ -230,9 +235,6 @@ const styles = {
     height: '60vh',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  notification: {
-    gridArea: 'a',
   },
   figure: {
     gridArea: 'a',
