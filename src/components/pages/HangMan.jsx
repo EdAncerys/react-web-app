@@ -172,6 +172,7 @@ export default function HangMan({ mediaQuery }) {
           ...{ alignItems: !mediaQuery ? 'start' : 'center' },
         }}
       >
+        {/* <Notification /> */}
         <div
           style={{ ...styles.content, ...{ gridGap: !mediaQuery ? 5 : 30 } }}
         >
@@ -231,7 +232,9 @@ const styles = {
     alignItems: 'center',
   },
   notification: {
-    gridArea: 'a',
+    // marginLeft: '45vw',
+    justifyContent: 'center',
+    // gridArea: 'a',
   },
   figure: {
     gridArea: 'a',

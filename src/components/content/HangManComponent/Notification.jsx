@@ -12,6 +12,13 @@ export default function Notification({}) {
 const styles = {
   container: {
     position: 'absolute',
+    width: '90vw',
+    marginTop: '40%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    left: 0,
+    right: 0,
+    top: 0,
     textAlign: 'center',
     backgroundColor: colors.secondary,
     color: colors.white,
