@@ -22,6 +22,7 @@ const styles = {
   container: {
     position: 'absolute',
     width: '90vw',
+    maxWidth: 600,
     marginTop: '30vh',
     marginRight: 'auto',
     marginLeft: 'auto',
