@@ -239,15 +239,17 @@ const styles = {
   figure: {
     gridArea: 'a',
     display: 'grid',
-    justifySelf: 'center',
+    justifySelf: 'right',
     alignItems: 'center',
   },
   word: {
     alignSelf: 'start',
+    justifySelf: 'left',
     gridArea: 'b',
   },
   wrongLetters: {
     alignSelf: 'start',
+    justifySelf: 'left',
     gridArea: 'c',
   },
   keyboard: {
