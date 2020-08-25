@@ -112,7 +112,7 @@ export default function HangMan({ mediaQuery }) {
       () => {
         setPopUp(false);
       },
-      winner ? 10000 : 1000
+      winner || wrongLetters.length > 5 ? 10000 : 1000
     );
   };
 
