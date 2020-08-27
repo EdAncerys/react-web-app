@@ -14,25 +14,19 @@ export default function Footer({ goToContactPage }) {
 
   return (
     <div style={styles.container}>
-      <React.Fragment>
-        <p>&copy; Copyright {year}. All Rights Reserved</p>
-      </React.Fragment>
-      <React.Fragment>
-        <p onClick={goToContactPage} className="hire-me">
-          Hire Me
-        </p>
-        <img
-          className="linked-in-logo"
-          alt="LinkedIn"
-          src={LinkedIn}
-          onClick={() =>
-            window.open('https://www.linkedin.com/in/ancerys/', '_blank')
-          }
-        />
-      </React.Fragment>
-      <React.Fragment>
-        <p>{date}</p>
-      </React.Fragment>
+      <div>&copy; Copyright {year}. All Rights Reserved</div>
+      <div onClick={goToContactPage} className="hire-me">
+        Hire Me
+      </div>
+      <img
+        className="linked-in-logo"
+        alt="LinkedIn"
+        src={LinkedIn}
+        onClick={() =>
+          window.open('https://www.linkedin.com/in/ancerys/', '_blank')
+        }
+      />
+      <div>{date}</div>
     </div>
   );
 }
@@ -41,7 +35,10 @@ const styles = {
   container: {
     display: 'flex',
     justifyContent: 'space-between',
+    paddingTop: 20,
     width: '90vw',
+    height: '10vh',
+    borderTop: `1px solid ${colors.light}`,
     color: colors.medium,
   },
 };
