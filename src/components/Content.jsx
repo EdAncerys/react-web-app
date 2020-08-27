@@ -1,6 +1,7 @@
 import React from 'react';
 import LandingBanner from './content/LandingBannerComponent/LandingBanner';
 import FeatureBanner from './content/FeatureBannerComponent/FeatureBanner';
+import colors from '../config/colors';
 
 export default function Content({
   selectedProject,
@@ -10,7 +11,7 @@ export default function Content({
   goToHangManPage,
 }) {
   return (
-    <div>
+    <div style={styles.container}>
       <LandingBanner
         selectedProject={selectedProject}
         selectedProjectId={selectedProjectId}
@@ -23,3 +24,9 @@ export default function Content({
     </div>
   );
 }
+
+const styles = {
+  container: {
+    color: colors.medium,
+  },
+};
