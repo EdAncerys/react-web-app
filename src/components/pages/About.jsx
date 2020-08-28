@@ -39,6 +39,7 @@ export default function About({ props }) {
 
 const styles = {
   container: {
+    marginTop: '10vh',
     maxWidth: 800,
     textAlign: 'justify',
     color: colors.medium,
