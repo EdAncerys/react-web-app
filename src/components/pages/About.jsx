@@ -26,7 +26,7 @@ export default function About({ props }) {
         continuous learning process it involves.
       </p>
       <p>
-        <a target="blank" href="https://makers.tech/">
+        <a style={styles.link} target="blank" href="https://makers.tech/">
           Makers Academy
         </a>{' '}
         graduate where I have grown as a person and as a developer. Learned best
@@ -43,5 +43,9 @@ const styles = {
     maxWidth: 800,
     textAlign: 'justify',
     color: colors.medium,
+  },
+  link: {
+    color: colors.primary,
+    textDecoration: 'none',
   },
 };

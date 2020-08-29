@@ -8,10 +8,12 @@ export default function Contact({ props }) {
     <div style={styles.container}>
       <div style={styles.heading}>Get In Touch</div>
       <div>Are you interested in working with me or just have a question?</div>
-      <a style={styles.link} href="lookatemail@gmail.com">
-        Get in touch with me by email
-      </a>
-      <HiOutlineMail size={25} color={colors.primary} />
+      <div style={{ color: colors.primary, marginTop: 20 }}>
+        <a style={styles.link} href="lookatemail@gmail.com">
+          Get in touch with me by email
+        </a>
+        <HiOutlineMail size={25} />
+      </div>
     </div>
   );
 }
