@@ -38,6 +38,7 @@
 import React from 'react';
 import ProjectSelectionBanner from './ProjectSelectionBanner';
 import ProjectShowCaseBanner from './ProjectShowCaseBanner';
+import colors from '../../../config/colors';
 
 export default function LandingBanner({ props }) {
   return (
@@ -55,5 +56,10 @@ export default function LandingBanner({ props }) {
 }
 
 const styles = {
-  container: {},
+  container: {
+    backgroundColor: colors.primary,
+    padding: 50,
+    width: '100vw',
+    height: '60vh',
+  },
 };

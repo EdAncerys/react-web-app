@@ -23,6 +23,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../../App';
 import SelectedProject from './SelectedProject';
+import colors from '../../../config/colors';
 
 export default function ProjectSelectionBanner({}) {
   const { projects } = useContext(AppContext);
@@ -41,5 +42,9 @@ export default function ProjectSelectionBanner({}) {
 }
 
 const styles = {
-  container: {},
+  container: {
+    display: 'grid',
+    justifyContent: 'center',
+    width: '90vw',
+  },
 };
