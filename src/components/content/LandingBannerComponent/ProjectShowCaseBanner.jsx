@@ -250,6 +250,25 @@ export default function ProjectShowCaseBanner({ props }) {
 
 const styles = {
   container: {
-    backgroundColor: colors.tomato,
+    maxWidth: 800,
+    border: `1px solid ${colors.medium}`,
+    borderRadius: 20,
+    color: colors.medium,
+    textAlign: 'justify',
+    overflow: 'scroll',
+    boxShadow: '1px solid black',
+  },
+  title: {
+    display: 'grid',
+    justifyContent: 'center',
+    color: colors.black,
+    backgroundColor: colors.light,
+    padding: 10,
+    fontSize: 24,
+    fontWeight: 600,
+  },
+  text: {
+    color: colors.white,
+    padding: 10,
   },
 };

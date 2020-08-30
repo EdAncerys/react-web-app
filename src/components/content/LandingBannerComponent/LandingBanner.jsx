@@ -14,7 +14,10 @@ export default function LandingBanner({ props }) {
 
 const styles = {
   container: {
-    display: 'flex',
+    display: 'grid',
+    justifyContent: 'center',
+    gridTemplateColumns: 'auto auto',
+    gridGap: 30,
     backgroundColor: colors.primary,
     paddingLeft: '5vw',
     paddingRight: '5vw',
