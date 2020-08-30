@@ -18,9 +18,11 @@ export default function ProjectShowCaseBanner({ props }) {
             of, and all the skills I've developed since beginning to code. Here
             you will find a few highlights I worked on my own or as outlined by
             the{' '}
-            <a target="blank" href="https://makers.tech/">
-              Makers Academy
-            </a>{' '}
+            <Link
+              title="Makers Academy"
+              color={colors.yellow}
+              href="https://makers.tech/"
+            />
             course. Please navigate via the list to view my journey and the
             projects or see my highlights below. Click on a project for more
             details!
@@ -31,7 +33,7 @@ export default function ProjectShowCaseBanner({ props }) {
             - is my GitHub portfolio.
           </div>
           <div style={styles.link}>
-            <Link />
+            <Link href="https://github.com/EdAncerys" />
             <a
               style={{
                 textDecoration: 'none',

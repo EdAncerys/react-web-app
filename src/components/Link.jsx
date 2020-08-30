@@ -5,39 +5,27 @@ import colors from '../config/colors';
 export default function Button({
   title = 'Title',
   color = colors.primary,
-  solid = true,
-  link,
+  href,
 }) {
   const [hover, setHover] = useState(false);
 
-  const btnTextColor = solid ? colors.white : color;
-  const btnBackgroundColor = solid ? color : '';
   const hoverColor = colors.hover[color];
 
   return (
     <a
       style={{
-        display: 'grid',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: hover ? colors.white : btnTextColor,
-        backgroundColor: hover ? hoverColor : btnBackgroundColor,
-        border: `1px solid ${hover ? hoverColor : color}`,
-        borderRadius: 20,
+        color: hover ? hoverColor : color,
         fontWeight: 'bold',
         fontSize: 'inherit',
-        padding: 5,
-        paddingLeft: 20,
-        paddingRight: 20,
-        margin: 10,
+        textDecoration: 'none',
         cursor: 'pointer',
       }}
       onMouseOver={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
       target="blank"
-      href={link}
+      href={href}
     >
-      {title}
+      {title}{' '}
     </a>
   );
 }
