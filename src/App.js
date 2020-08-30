@@ -12,6 +12,17 @@ import TickTackToe from './components/pages/TickTackToe';
 import RPS from './components/pages/RPS';
 import HangMan from './components/pages/HangMan';
 
+const projects = [
+  { id: 1, name: 'About' },
+  { id: 2, name: 'ThereAndBack' },
+  { id: 3, name: 'AceBook' },
+  { id: 4, name: 'MakersBnB' },
+  { id: 5, name: 'Airport Challenge' },
+  { id: 6, name: 'Takeaway Challenge' },
+  { id: 7, name: 'Bank tech test' },
+  { id: 8, name: 'Gilded Rose Refactoring Kata' },
+];
+
 export const AppContext = React.createContext();
 
 export default function App() {
@@ -171,6 +182,9 @@ export default function App() {
         dropDownHover,
         setDropDownHover,
         mediaQuery,
+        selectedProjectId,
+        setSelectedProjectId,
+        projects,
       }}
     >
       <div className="App">
@@ -181,15 +195,7 @@ export default function App() {
             !mediumPage &&
             !tickTackToePage &&
             !rpsPage &&
-            !hangManPage && (
-              <FrontPage
-                selectedProject={selectedProject}
-                selectedProjectId={selectedProjectId}
-                goToTickTackToePage={goToTickTackToePage}
-                goToRPSPage={goToRPSPage}
-                goToHangManPage={goToHangManPage}
-              />
-            )}
+            !hangManPage && <FrontPage />}
           {aboutPage && <About />}
           {contactPage && <Contact />}
           {mediumPage && (
