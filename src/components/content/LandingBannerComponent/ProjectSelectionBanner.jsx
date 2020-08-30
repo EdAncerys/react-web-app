@@ -19,9 +19,5 @@ export default function ProjectSelectionBanner({}) {
 }
 
 const styles = {
-  container: {
-    display: 'grid',
-    justifyContent: 'center',
-    width: '90vw',
-  },
+  container: {},
 };

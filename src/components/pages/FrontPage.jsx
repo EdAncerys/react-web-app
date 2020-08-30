@@ -22,6 +22,6 @@ export default function Content({ props }) {
 
 const styles = {
   container: {
-    color: colors.medium,
+    fontSize: 18,
   },
 };

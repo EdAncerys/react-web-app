@@ -14,9 +14,13 @@ export default function LandingBanner({ props }) {
 
 const styles = {
   container: {
+    display: 'flex',
     backgroundColor: colors.primary,
-    padding: 50,
+    paddingLeft: '5vw',
+    paddingRight: '5vw',
+    paddingTop: '5vh',
+    paddingBottom: '5vh',
     width: '100vw',
-    height: '60vh',
+    overflow: 'scroll',
   },
 };

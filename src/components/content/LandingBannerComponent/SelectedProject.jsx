@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../../../App';
-import { BiFolder } from 'react-icons/bi';
+import { IoIosArrowDropright } from 'react-icons/io';
 
 import colors from '../../../config/colors';
 
@@ -9,27 +9,31 @@ export default function ProjectItem({ id, title }) {
   const [hover, setHover] = useState(false);
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        padding: 5,
+        width: 300,
+        cursor: 'pointer',
+        borderRadius: 5,
+        margin: 10,
+        color: hover ? colors.white : colors.secondary,
+        fontSize: 20,
+        fontWeight: 600,
+        backgroundColor: hover ? colors.medium : colors.white,
+        transition: '0.8s',
+      }}
+    >
       <div
-        style={{
-          color: hover ? colors.electric : colors.white,
-          fontSize: 20,
-          transition: '0.5s',
-        }}
+        style={{ flex: 1 }}
         onClick={() => setSelectedProjectId(id)}
         onMouseOver={() => setHover(!hover)}
         onMouseLeave={() => setHover(!hover)}
       >
         {title}
-        <BiFolder style={{ marginLeft: 10 }} />
       </div>
+      <IoIosArrowDropright />
     </div>
   );
 }
-
-const styles = {
-  container: {
-    cursor: 'pointer',
-    margin: 10,
-  },
-};
