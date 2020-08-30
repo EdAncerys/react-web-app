@@ -1,7 +1,7 @@
 import React from 'react';
-import LandingBanner from './content/LandingBannerComponent/LandingBanner';
-import FeatureBanner from './content/FeatureBannerComponent/FeatureBanner';
-import colors from '../config/colors';
+import LandingBanner from '../content/LandingBannerComponent/LandingBanner';
+import FeatureBanner from '../content/FeatureBannerComponent/FeatureBanner';
+import colors from '../../config/colors';
 
 export default function Content({
   selectedProject,

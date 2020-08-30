@@ -4,7 +4,7 @@ import './css/App.css';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import Content from './components/Content';
+import FrontPage from './components/pages/FrontPage';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
@@ -182,7 +182,7 @@ export default function App() {
             !tickTackToePage &&
             !rpsPage &&
             !hangManPage && (
-              <Content
+              <FrontPage
                 selectedProject={selectedProject}
                 selectedProjectId={selectedProjectId}
                 goToTickTackToePage={goToTickTackToePage}
