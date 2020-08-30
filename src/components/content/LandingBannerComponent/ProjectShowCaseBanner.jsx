@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../../../App';
+import Link from '../../Link';
 
 import colors from '../../../config/colors';
 
 export default function ProjectShowCaseBanner({ props }) {
   const { selectedProjectId } = useContext(AppContext);
+  const [hover, setHover] = useState(false);
 
   return (
     <div style={styles.container}>
@@ -28,20 +30,33 @@ export default function ProjectShowCaseBanner({ props }) {
             website, so the best place to ﬁnd out what I'm currently working on
             - is my GitHub portfolio.
           </div>
-          <a
-            className="link"
-            target="blank"
-            href="https://github.com/EdAncerys"
-          >
-            GitHub portfolio
-          </a>
-          <a
-            className="link"
-            target="blank"
-            href="https://www.linkedin.com/in/ancerys/"
-          >
-            LinkedIn
-          </a>
+          <div style={styles.link}>
+            <Link />
+            <a
+              style={{
+                textDecoration: 'none',
+                color: hover ? colors.yellow : colors.light,
+              }}
+              onMouseOver={() => setHover(!hover)}
+              onMouseLeave={() => setHover(!hover)}
+              target="blank"
+              href="https://github.com/EdAncerys"
+            >
+              GitHub portfolio
+            </a>
+            <a
+              style={{
+                textDecoration: 'none',
+                color: hover ? colors.yellow : colors.light,
+              }}
+              onMouseOver={() => setHover(!hover)}
+              onMouseLeave={() => setHover(!hover)}
+              target="blank"
+              href="https://www.linkedin.com/in/ancerys/"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       )}
       {selectedProjectId === 2 && (
@@ -209,7 +224,7 @@ export default function ProjectShowCaseBanner({ props }) {
             new feature to our system so that we can begin selling a new
             category of items. First an introduction to our system:
           </div>
-          <ul>
+          <ul style={styles.text}>
             <li>
               All items have a SellIn value which denotes the number of days we
               have to sell the item
@@ -251,7 +266,8 @@ export default function ProjectShowCaseBanner({ props }) {
 const styles = {
   container: {
     maxWidth: 800,
-    border: `1px solid ${colors.medium}`,
+    maxHeight: 400,
+    border: `1px solid ${colors.white}`,
     borderRadius: 20,
     color: colors.medium,
     textAlign: 'justify',
@@ -261,8 +277,8 @@ const styles = {
   title: {
     display: 'grid',
     justifyContent: 'center',
-    color: colors.black,
-    backgroundColor: colors.light,
+    color: colors.secondary,
+    backgroundColor: colors.white,
     padding: 10,
     fontSize: 24,
     fontWeight: 600,
@@ -270,5 +286,9 @@ const styles = {
   text: {
     color: colors.white,
     padding: 10,
+  },
+  link: {
+    display: 'grid',
+    justifyContent: 'center',
   },
 };
