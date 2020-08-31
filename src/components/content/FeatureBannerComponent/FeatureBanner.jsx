@@ -57,5 +57,9 @@ export default function FeatureBanner({ props }) {
 }
 
 const styles = {
-  container: {},
+  container: {
+    display: 'grid',
+    justifyContent: 'center',
+    width: '80vw',
+  },
 };

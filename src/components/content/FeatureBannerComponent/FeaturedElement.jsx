@@ -17,10 +17,6 @@ export default function FeaturedElement({
         margin: 20,
         border: `1px solid ${color ? color : colors.light}`,
         borderRadius: 20,
-        // boxShadow: `0 6px 16px 0 ${color ? color : colors.light}, 0 3px 6px 0 ${
-        //   color ? color : colors.light
-        // }`,
-        width: '80vw',
         maxWidth: 1000,
         backgroundColor: color,
         overflow: 'hidden',

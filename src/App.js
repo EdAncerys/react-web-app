@@ -13,7 +13,6 @@ import RPS from './components/pages/RPS';
 import HangMan from './components/pages/HangMan';
 
 const projects = [
-  { id: 1, name: 'About' },
   { id: 2, name: 'ThereAndBack' },
   { id: 3, name: 'AceBook' },
   { id: 4, name: 'MakersBnB' },
@@ -32,7 +31,7 @@ export default function App() {
   const [hangManPage, setHangManPage] = useState(false);
   const [rpsPage, setRPSPage] = useState(false);
   const [tickTackToePage, setTickTackToePage] = useState(false);
-  const [selectedProjectId, setSelectedProjectId] = useState(1);
+  const [selectedProjectId, setSelectedProjectId] = useState(2);
   const [selectedArticleId, setSelectedArticleId] = useState();
   const [dropDown, setDropDown] = useState(false);
   const [dropDownHover, setDropDownHover] = useState(false);

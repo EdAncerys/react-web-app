@@ -18,7 +18,6 @@ const styles = {
     justifyContent: 'center',
     gridTemplateColumns: 'auto auto',
     gridGap: 30,
-    backgroundColor: colors.primary,
     paddingLeft: '5vw',
     paddingRight: '5vw',
     paddingTop: '5vh',
