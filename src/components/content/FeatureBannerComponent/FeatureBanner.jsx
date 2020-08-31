@@ -7,7 +7,6 @@ import HangMan from '../../../images/hang-man-min.png';
 import { AppContext } from '../../../App';
 
 import colors from '../../../config/colors';
-import RPS from '../../pages/RPS';
 
 const hangManContent =
   'Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters within a certain number of guesses.';
@@ -22,12 +21,21 @@ const tickTackToeContent =
   'Tic-tac-toe with a twist! This game commonly is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.';
 
 export default function FeatureBanner({ props }) {
-  const { goToHangManPage, goToTickTackToePage, goToRPSPage } = useContext(
-    AppContext
-  );
+  const {
+    goToHangManPage,
+    goToTickTackToePage,
+    goToRPSPage,
+    mediaQuery,
+  } = useContext(AppContext);
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        display: 'grid',
+        justifyContent: 'center',
+        width: mediaQuery ? '80vw' : '100vw',
+      }}
+    >
       <FeaturedElement
         src={ThereAndBackImg}
         text={thereAndBackComntent}
@@ -55,11 +63,3 @@ export default function FeatureBanner({ props }) {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: 'grid',
-    justifyContent: 'center',
-    width: '80vw',
-  },
-};

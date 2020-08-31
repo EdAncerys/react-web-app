@@ -1,28 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ProjectSelectionBanner from './ProjectSelectionBanner';
 import ProjectShowCaseBanner from './ProjectShowCaseBanner';
-import colors from '../../../config/colors';
+import { AppContext } from '../../../App';
 
 export default function LandingBanner({ props }) {
+  const { mediaQuery } = useContext(AppContext);
+
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        width: '90vw',
+        maxWidth: 1000,
+        gridGap: 20,
+        marginTop: 20,
+        backgroundColor: 'yellow',
+      }}
+    >
       <ProjectSelectionBanner />
       <ProjectShowCaseBanner />
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: 'grid',
-    justifyContent: 'center',
-    gridTemplateColumns: 'auto auto',
-    gridGap: 30,
-    paddingLeft: '5vw',
-    paddingRight: '5vw',
-    paddingTop: '5vh',
-    paddingBottom: '5vh',
-    width: '100vw',
-    overflow: 'scroll',
-  },
-};

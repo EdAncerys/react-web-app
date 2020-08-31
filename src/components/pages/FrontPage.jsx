@@ -65,7 +65,7 @@ const styles = {
     display: 'grid',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '80vw',
+    width: '90vw',
     maxWidth: 800,
     height: 400,
     color: colors.white,

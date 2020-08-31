@@ -251,8 +251,7 @@ export default function ProjectShowCaseBanner({ props }) {
 
 const styles = {
   container: {
-    maxWidth: 800,
-    height: 350,
+    height: 400,
     border: `1px solid ${colors.secondary}`,
     borderRadius: 10,
     color: colors.medium,

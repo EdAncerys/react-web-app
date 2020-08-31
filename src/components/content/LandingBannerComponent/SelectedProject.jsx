@@ -5,7 +5,7 @@ import { IoIosArrowDropright } from 'react-icons/io';
 import colors from '../../../config/colors';
 
 export default function ProjectItem({ id, title }) {
-  const { setSelectedProjectId } = useContext(AppContext);
+  const { setSelectedProjectId, mediaQuery } = useContext(AppContext);
   const [hover, setHover] = useState(false);
 
   return (
@@ -14,12 +14,12 @@ export default function ProjectItem({ id, title }) {
         display: 'flex',
         alignItems: 'center',
         padding: 5,
-        width: 350,
+        width: mediaQuery ? 350 : 150,
         cursor: 'pointer',
         borderRadius: 5,
         margin: 10,
         color: colors.white,
-        fontSize: 20,
+        fontSize: mediaQuery ? 20 : 16,
         fontWeight: 600,
         backgroundColor: hover ? colors.electric : colors.secondary,
         transition: '0.8s',

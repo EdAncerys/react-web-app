@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../../App';
+
 import colors from '../../../config/colors';
 
 export default function FeaturedElement({
@@ -8,15 +10,19 @@ export default function FeaturedElement({
   reverse = false,
   onClick,
 }) {
+  const { mediaQuery } = useContext(AppContext);
+
   return (
     <div
       style={{
         display: 'flex',
+        flexDirection: mediaQuery ? 'row' : 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 20,
+        marginTop: mediaQuery ? 20 : 0,
+        marginBottom: mediaQuery ? 20 : 0,
         border: `1px solid ${color ? color : colors.light}`,
-        borderRadius: 20,
+        borderRadius: mediaQuery ? 20 : 0,
         maxWidth: 1000,
         backgroundColor: color,
         overflow: 'hidden',
@@ -26,7 +32,7 @@ export default function FeaturedElement({
     >
       <div
         style={{
-          order: reverse ? 1 : 0,
+          order: mediaQuery ? (reverse ? 1 : 0) : 1,
           margin: 20,
           flex: 1,
           fontWeight: 'bold',
@@ -41,6 +47,7 @@ export default function FeaturedElement({
         <img
           style={{
             height: 250,
+            margin: 20,
           }}
           alt={src}
           src={src}

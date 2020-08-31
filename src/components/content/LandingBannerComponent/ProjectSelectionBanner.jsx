@@ -6,7 +6,13 @@ export default function ProjectSelectionBanner({}) {
   const { projects } = useContext(AppContext);
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        backgroundColor: 'red',
+      }}
+    >
       {projects.map((project) => (
         <SelectedProject
           key={project.id}
@@ -17,7 +23,3 @@ export default function ProjectSelectionBanner({}) {
     </div>
   );
 }
-
-const styles = {
-  container: {},
-};
