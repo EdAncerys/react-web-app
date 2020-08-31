@@ -9,8 +9,9 @@ export default function ProjectSelectionBanner({}) {
     <div
       style={{
         display: 'flex',
+        justifyContent: 'center',
         flexWrap: 'wrap',
-        backgroundColor: 'red',
+        flex: 0,
       }}
     >
       {projects.map((project) => (

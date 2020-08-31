@@ -10,12 +10,12 @@ export default function LandingBanner({ props }) {
     <div
       style={{
         display: 'flex',
+        flexDirection: mediaQuery ? 'row' : 'column',
         justifyContent: 'center',
         width: '90vw',
         maxWidth: 1000,
         gridGap: 20,
         marginTop: 20,
-        backgroundColor: 'yellow',
       }}
     >
       <ProjectSelectionBanner />

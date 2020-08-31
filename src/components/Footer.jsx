@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LinkedIn from '../images/LI-In-Bug.png';
 import colors from '../config/colors';
+import { AppContext } from '../App';
 
 export default function Footer({ goToContactPage }) {
+  const { mediaQuery } = useContext(AppContext);
   const year = new Date().getFullYear();
   const date = `${
     new Date().getFullYear() +
@@ -13,7 +15,7 @@ export default function Footer({ goToContactPage }) {
   }`;
 
   return (
-    <div style={styles.container}>
+    <div style={{ ...styles.container, ...{ fontSize: mediaQuery ? 18 : 12 } }}>
       <div>&copy; Copyright {year}. All Rights Reserved</div>
       <div onClick={goToContactPage} className="hire-me">
         Hire Me
