@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MediumArticle from '../content/ArticleComponent/MediumAricleComponent';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import { ImSpinner3 } from 'react-icons/im';
+
 import colors from '../../config/colors';
 
 export default function Medium(props) {
@@ -50,7 +52,9 @@ export default function Medium(props) {
       ))}
     </div>
   ) : (
-    <div className="medium-error">{axiosError ? axiosError : 'Loading...'}</div>
+    <div className="medium-error">
+      {axiosError ? axiosError : <ImSpinner3 />}
+    </div>
   );
 }
 

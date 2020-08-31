@@ -112,7 +112,7 @@ export default function HangMan({ mediaQuery }) {
       () => {
         setPopUp(false);
       },
-      winner ? 10000 : 1000
+      winner || wrongLetters.length > 5 ? 10000 : 1000
     );
   };
 
@@ -239,15 +239,17 @@ const styles = {
   figure: {
     gridArea: 'a',
     display: 'grid',
-    justifySelf: 'center',
+    justifySelf: 'right',
     alignItems: 'center',
   },
   word: {
     alignSelf: 'start',
+    justifySelf: 'left',
     gridArea: 'b',
   },
   wrongLetters: {
     alignSelf: 'start',
+    justifySelf: 'left',
     gridArea: 'c',
   },
   keyboard: {

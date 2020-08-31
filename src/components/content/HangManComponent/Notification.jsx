@@ -5,13 +5,15 @@ import Button from '../../Button';
 import colors from '../../../config/colors';
 
 export default function Notification({}) {
-  const { popUp, winner, playNewGame } = useContext(HangManContext);
+  const { popUp, winner, playNewGame, wrongLetters } = useContext(
+    HangManContext
+  );
 
   return (
     <div style={styles.container}>
       {popUp}
 
-      {winner && (
+      {(winner || wrongLetters.length > 5) && (
         <Button title="New Game" color={colors.danger} onClick={playNewGame} />
       )}
     </div>
@@ -22,6 +24,7 @@ const styles = {
   container: {
     position: 'absolute',
     width: '90vw',
+    maxWidth: 600,
     marginTop: '30vh',
     marginRight: 'auto',
     marginLeft: 'auto',

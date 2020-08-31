@@ -4,13 +4,23 @@ import './css/App.css';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import Content from './components/Content';
+import FrontPage from './components/pages/FrontPage';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Medium from './components/pages/Medium';
 import TickTackToe from './components/pages/TickTackToe';
 import RPS from './components/pages/RPS';
 import HangMan from './components/pages/HangMan';
+
+const projects = [
+  { id: 2, name: 'ThereAndBack' },
+  { id: 3, name: 'AceBook' },
+  { id: 4, name: 'MakersBnB' },
+  { id: 5, name: 'Airport Challenge' },
+  { id: 6, name: 'Takeaway Challenge' },
+  { id: 7, name: 'Bank tech test' },
+  { id: 8, name: 'Gilded Rose Refactoring Kata' },
+];
 
 export const AppContext = React.createContext();
 
@@ -21,7 +31,7 @@ export default function App() {
   const [hangManPage, setHangManPage] = useState(false);
   const [rpsPage, setRPSPage] = useState(false);
   const [tickTackToePage, setTickTackToePage] = useState(false);
-  const [selectedProjectId, setSelectedProjectId] = useState(1);
+  const [selectedProjectId, setSelectedProjectId] = useState(2);
   const [selectedArticleId, setSelectedArticleId] = useState();
   const [dropDown, setDropDown] = useState(false);
   const [dropDownHover, setDropDownHover] = useState(false);
@@ -171,6 +181,9 @@ export default function App() {
         dropDownHover,
         setDropDownHover,
         mediaQuery,
+        selectedProjectId,
+        setSelectedProjectId,
+        projects,
       }}
     >
       <div className="App">
@@ -181,15 +194,7 @@ export default function App() {
             !mediumPage &&
             !tickTackToePage &&
             !rpsPage &&
-            !hangManPage && (
-              <Content
-                selectedProject={selectedProject}
-                selectedProjectId={selectedProjectId}
-                goToTickTackToePage={goToTickTackToePage}
-                goToRPSPage={goToRPSPage}
-                goToHangManPage={goToHangManPage}
-              />
-            )}
+            !hangManPage && <FrontPage />}
           {aboutPage && <About />}
           {contactPage && <Contact />}
           {mediumPage && (
