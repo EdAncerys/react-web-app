@@ -3,11 +3,20 @@ import ThereAndBackImg from '../../../images/map-min.png';
 import TickTackToeImg from '../../../images/tick-tack-toe-min.png';
 import HangMan from '../../../images/hang-man-min.png';
 import Rock from '../../../images/RPS/rock-min.png';
+import FeaturedElement from './FeaturedElement';
+import colors from '../../../config/colors';
+import { HangManContext } from '../../pages/HangMan';
 
 export default class FeatureBanner extends Component {
   render() {
     return (
       <div className="feature-banner">
+        <FeaturedElement
+          src={HangMan}
+          text="hello world"
+          color={colors.yellow}
+        />
+
         <div
           className="feature-banner-component feature-content-2"
           onClick={this.props.goToHangManPage}

@@ -13,9 +13,8 @@ export default function Content({ props }) {
 
 const styles = {
   container: {
-    display: 'grid',
-    justifyContent: 'center',
-    width: '90vw',
-    backgroundColor: 'red',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 };
