@@ -21,7 +21,7 @@ export default function ProjectItem({ id, title }) {
         color: hover ? colors.white : colors.secondary,
         fontSize: 20,
         fontWeight: 600,
-        backgroundColor: hover ? colors.medium : colors.white,
+        backgroundColor: hover ? colors.electric : colors.white,
         transition: '0.8s',
       }}
     >

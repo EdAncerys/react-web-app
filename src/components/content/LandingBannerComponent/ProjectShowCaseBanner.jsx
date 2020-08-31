@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../../../App';
 import Link from '../../Link';
 
@@ -6,7 +6,6 @@ import colors from '../../../config/colors';
 
 export default function ProjectShowCaseBanner({ props }) {
   const { selectedProjectId } = useContext(AppContext);
-  const [hover, setHover] = useState(false);
 
   return (
     <div style={styles.container}>
@@ -33,31 +32,16 @@ export default function ProjectShowCaseBanner({ props }) {
             - is my GitHub portfolio.
           </div>
           <div style={styles.link}>
-            <Link href="https://github.com/EdAncerys" />
-            <a
-              style={{
-                textDecoration: 'none',
-                color: hover ? colors.yellow : colors.light,
-              }}
-              onMouseOver={() => setHover(!hover)}
-              onMouseLeave={() => setHover(!hover)}
-              target="blank"
+            <Link
+              title="GitHub portfolio"
+              color={colors.yellow}
               href="https://github.com/EdAncerys"
-            >
-              GitHub portfolio
-            </a>
-            <a
-              style={{
-                textDecoration: 'none',
-                color: hover ? colors.yellow : colors.light,
-              }}
-              onMouseOver={() => setHover(!hover)}
-              onMouseLeave={() => setHover(!hover)}
-              target="blank"
+            />
+            <Link
+              title="LinkedIn"
+              color={colors.yellow}
               href="https://www.linkedin.com/in/ancerys/"
-            >
-              LinkedIn
-            </a>
+            />
           </div>
         </div>
       )}
@@ -270,7 +254,7 @@ const styles = {
     maxWidth: 800,
     maxHeight: 400,
     border: `1px solid ${colors.white}`,
-    borderRadius: 20,
+    borderRadius: 10,
     color: colors.medium,
     textAlign: 'justify',
     overflow: 'scroll',
