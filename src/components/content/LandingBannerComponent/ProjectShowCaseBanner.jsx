@@ -5,10 +5,20 @@ import Link from '../../Link';
 import colors from '../../../config/colors';
 
 export default function ProjectShowCaseBanner({ props }) {
-  const { selectedProjectId } = useContext(AppContext);
+  const { selectedProjectId, mediaQuery } = useContext(AppContext);
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{
+        ...styles.container,
+        ...{
+          borderRadius: mediaQuery ? 10 : 0,
+          boxShadow: mediaQuery
+            ? `0 6px 16px 0 ${colors.secondary}, 0 3px 6px 0 ${colors.light}`
+            : '0 0 0 0',
+        },
+      }}
+    >
       {selectedProjectId === 1 && (
         <div>
           <div style={styles.title}>About</div>
@@ -254,12 +264,10 @@ const styles = {
     height: 400,
     flex: 1,
     border: `1px solid ${colors.secondary}`,
-    borderRadius: 10,
     color: colors.medium,
     textAlign: 'justify',
     overflow: 'scroll',
     boxShadow: '1px solid black',
-    boxShadow: `0 6px 16px 0 ${colors.secondary}, 0 3px 6px 0 ${colors.light}`,
   },
   title: {
     display: 'grid',
