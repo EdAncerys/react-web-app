@@ -12,7 +12,7 @@ export default function LandingBanner({ props }) {
         display: 'flex',
         flexDirection: mediaQuery ? 'row' : 'column',
         justifyContent: 'center',
-        width: '90vw',
+        width: mediaQuery ? '90vw' : '100vw',
         maxWidth: 1000,
         gridGap: 20,
         marginTop: 20,
