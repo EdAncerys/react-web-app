@@ -9,10 +9,9 @@ export default function Contact({ props }) {
       <div style={styles.heading}>Get In Touch</div>
       <div>Are you interested in working with me or just have a question?</div>
       <div style={{ color: colors.primary, marginTop: 20 }}>
-        <a style={styles.link} href="lookatemail@gmail.com">
-          Get in touch with me by email
+        <a style={styles.link} href="mailto: lookatemail@gmail.com">
+          Get in touch with me by email <HiOutlineMail size={25} />
         </a>
-        <HiOutlineMail size={25} />
       </div>
     </div>
   );
@@ -32,6 +31,5 @@ const styles = {
     color: colors.primary,
     fontSize: 20,
     textDecoration: 'none',
-    marginRight: 10,
   },
 };
